@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>My First Post - walikrence的博客 | walirkrence Blog</title>
+    <title>django2.2 结合 vue.js 开发 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/27/Hello-2019/">
+    <link rel="canonical" href="http://localhost:4000/2019/07/27/django2.2-%E7%BB%93%E5%90%88-vue.js-%E5%BC%80%E5%8F%91/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -173,13 +173,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#生活" title="生活">生活</a>
+                        <a class="tag" href="/tags/#django" title="django">django</a>
+                        
+                        <a class="tag" href="/tags/#vue" title="vue">vue</a>
+                        
+                        <a class="tag" href="/tags/#python3" title="python3">python3</a>
                         
                     </div>
-                    <h1>My First Post</h1>
+                    <h1>django2.2 结合 vue.js 开发</h1>
                     
                     
-                    <h2 class="subheading">Hello World, Hello Blog</h2>
+                    <h2 class="subheading"></h2>
                     
                     <span class="meta">Posted by walikrence on July 27, 2019</span>
                 </div>
@@ -199,12 +203,94 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hey">Hey</h2>
-<blockquote>
-  <p>这是我的第一篇博客。</p>
-</blockquote>
+				<h1 id="django22-结合-vuejs-开发">django2.2 结合 vue.js 开发</h1>
+<p>最近在用django开发后端，配合同学的vue.js前端。没用过vue.js
+搜啦下教程终于解决啦。</p>
 
-<p>进入你的博客主页，新的文章将会出现在你的主页上.</p>
+<h2 id="增加中间件">增加中间件</h2>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="s">'corsheaders.middleware.CorsMiddleware'</span><span class="p">,</span>
+<span class="n">CORS_ORIGIN_ALLOW_ALL</span> <span class="o">=</span> <span class="bp">True</span>
+</code></pre></div></div>
+<p>完成后setting.py长这样</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'django.middleware.security.SecurityMiddleware'</span><span class="p">,</span>
+    <span class="s">'django.contrib.sessions.middleware.SessionMiddleware'</span><span class="p">,</span>
+    <span class="s">'corsheaders.middleware.CorsMiddleware'</span><span class="p">,</span>
+    <span class="s">'django.middleware.common.CommonMiddleware'</span><span class="p">,</span>
+    <span class="s">'django.middleware.csrf.CsrfViewMiddleware'</span><span class="p">,</span>
+    <span class="s">'django.contrib.auth.middleware.AuthenticationMiddleware'</span><span class="p">,</span>
+    <span class="s">'django.contrib.messages.middleware.MessageMiddleware'</span><span class="p">,</span>
+    <span class="s">'django.middleware.clickjacking.XFrameOptionsMiddleware'</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">CORS_ORIGIN_ALLOW_ALL</span> <span class="o">=</span> <span class="bp">True</span>
+</code></pre></div></div>
+<h2 id="编译前端代码">编译前端代码</h2>
+<p>进入前端文件夹
+新建一个文件vue.config.js</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="c1">// 指定`build`时,在静态文件上一层添加static目录</span>
+	<span class="na">assetsDir</span><span class="p">:</span> <span class="dl">'</span><span class="s1">static</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div></div>
+<p>编译代码</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm  <span class="nb">install
+</span>npm run build
+</code></pre></div></div>
+<p>得到啦dist文件夹</p>
+<h2 id="配置路径">配置路径</h2>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">'DIRS'</span><span class="p">:</span> <span class="p">[</span><span class="s">'dist'</span><span class="p">],</span>
+</code></pre></div></div>
+<p>配置后setting长这样</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">'BACKEND'</span><span class="p">:</span> <span class="s">'django.template.backends.django.DjangoTemplates'</span><span class="p">,</span>
+        <span class="s">'DIRS'</span><span class="p">:</span> <span class="p">[</span><span class="s">'dist'</span><span class="p">],</span>
+        <span class="s">'APP_DIRS'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">'OPTIONS'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'context_processors'</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s">'django.template.context_processors.debug'</span><span class="p">,</span>
+                <span class="s">'django.template.context_processors.request'</span><span class="p">,</span>
+                <span class="s">'django.contrib.auth.context_processors.auth'</span><span class="p">,</span>
+                <span class="s">'django.contrib.messages.context_processors.messages'</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+</code></pre></div></div>
+<h2 id="配置url">配置url</h2>
+<p>我们这里直接配置首页为localhost</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+<span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span>  <span class="n">TemplateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s">"index.html"</span><span class="p">)),</span>
+</code></pre></div></div>
+<p>配置后urls.py长这样</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span>  <span class="n">TemplateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s">"index.html"</span><span class="p">)),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+<h2 id="配置静态文件">配置静态文件</h2>
+<p>在setting.py末尾添加</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># Add for vuejs
+</span><span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">"dist/static"</span><span class="p">),</span>
+<span class="p">]</span>
+
+</code></pre></div></div>
+<h2 id="启动服务器">启动服务器</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 manage.py runserver 8765
+</code></pre></div></div>
+<h2 id="访问网站">访问网站</h2>
+<p><a href="http://localhost:8765">点我</a></p>
+
+<hr />
+<p>终于部署好啦，现在可以开始愉快的按照API文档写数据交互啦</p>
 
 
                 <hr style="visibility: hidden;">
@@ -212,17 +298,17 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/" data-toggle="tooltip" data-placement="top" title="阿里云重置后mac用ssh登陆服务器失败">
+                        <a href="/2019/07/27/Ubuntu14.04-%E5%AE%89%E8%A3%85ss/" data-toggle="tooltip" data-placement="top" title="Ubuntu18.04 安装ss">
                         Previous<br>
-                        <span>阿里云重置后mac用ssh登陆服务器失败</span>
+                        <span>Ubuntu18.04 安装ss</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/" data-toggle="tooltip" data-placement="top" title="Ubuntu 终端使用 ss">
+                        <a href="/2019/07/27/git-clone-%E9%80%9F%E5%BA%A6%E6%85%A2/" data-toggle="tooltip" data-placement="top" title="git clone 速度慢怎么办">
                         Next<br>
-                        <span>Ubuntu 终端使用 ss</span>
+                        <span>git clone 速度慢怎么办</span>
                         </a>
                     </li>
                     

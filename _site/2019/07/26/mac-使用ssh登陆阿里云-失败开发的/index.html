@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>My First Post - walikrence的博客 | walirkrence Blog</title>
+    <title>阿里云重置后mac用ssh登陆服务器失败 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/27/Hello-2019/">
+    <link rel="canonical" href="http://localhost:4000/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -173,15 +173,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#生活" title="生活">生活</a>
+                        <a class="tag" href="/tags/#ssh" title="ssh">ssh</a>
+                        
+                        <a class="tag" href="/tags/#mac" title="mac">mac</a>
                         
                     </div>
-                    <h1>My First Post</h1>
+                    <h1>阿里云重置后mac用ssh登陆服务器失败</h1>
                     
                     
-                    <h2 class="subheading">Hello World, Hello Blog</h2>
+                    <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on July 27, 2019</span>
+                    <span class="meta">Posted by walikrence on July 26, 2019</span>
                 </div>
             </div>
         </div>
@@ -199,12 +201,33 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hey">Hey</h2>
-<blockquote>
-  <p>这是我的第一篇博客。</p>
-</blockquote>
+				<h1 id="阿里云重置后mac用ssh登陆服务器失败">阿里云重置后mac用ssh登陆服务器失败</h1>
 
-<p>进入你的博客主页，新的文章将会出现在你的主页上.</p>
+<p>出现</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now <span class="o">(</span>man-in-the-middle attack<span class="o">)!</span>
+It is also possible that a host key has just been changed.
+The fingerprint <span class="k">for </span>the ECDSA key sent by the remote host is
+SHA256:服务器发来的fingerprint
+Please contact your system administrator.
+Add correct host key <span class="k">in</span> /Users/wakirencedemac/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key <span class="k">in</span> /Users/wakirencedemac/.ssh/known_hosts:2
+ECDSA host key <span class="k">for </span>服务器的IP地址 has changed and you have requested strict checking.
+Host key verification failed.
+
+</code></pre></div></div>
+
+<p>原因：服务器被我重置了，发来的fingerprint跟我本地记录的不一样了
+解决方法</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-R</span> 服务器的IP地址
+<span class="c">#例如</span>
+ssh-keygen <span class="nt">-R</span> 123.13.45.134
+</code></pre></div></div>
 
 
                 <hr style="visibility: hidden;">
@@ -212,17 +235,17 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/" data-toggle="tooltip" data-placement="top" title="阿里云重置后mac用ssh登陆服务器失败">
+                        <a href="/2019/07/26/NUMA(%E9%9D%9E%E4%B8%80%E8%87%B4%E6%80%A7%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84)%E6%9C%AC/" data-toggle="tooltip" data-placement="top" title="NUMA(非一致性内存架构)（转）">
                         Previous<br>
-                        <span>阿里云重置后mac用ssh登陆服务器失败</span>
+                        <span>NUMA(非一致性内存架构)（转）</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/" data-toggle="tooltip" data-placement="top" title="Ubuntu 终端使用 ss">
+                        <a href="/2019/07/27/Hello-2019/" data-toggle="tooltip" data-placement="top" title="My First Post">
                         Next<br>
-                        <span>Ubuntu 终端使用 ss</span>
+                        <span>My First Post</span>
                         </a>
                     </li>
                     

@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>My First Post - walikrence的博客 | walirkrence Blog</title>
+    <title>Ubuntu18.04 安装ss - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/27/Hello-2019/">
+    <link rel="canonical" href="http://localhost:4000/2019/07/27/Ubuntu14.04-%E5%AE%89%E8%A3%85ss/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -173,13 +173,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#生活" title="生活">生活</a>
+                        <a class="tag" href="/tags/#python" title="python">python</a>
+                        
+                        <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                        
+                        <a class="tag" href="/tags/#ss" title="ss">ss</a>
                         
                     </div>
-                    <h1>My First Post</h1>
+                    <h1>Ubuntu18.04 安装ss</h1>
                     
                     
-                    <h2 class="subheading">Hello World, Hello Blog</h2>
+                    <h2 class="subheading"></h2>
                     
                     <span class="meta">Posted by walikrence on July 27, 2019</span>
                 </div>
@@ -199,12 +203,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hey">Hey</h2>
-<blockquote>
-  <p>这是我的第一篇博客。</p>
-</blockquote>
+				<h1 id="ubuntu1804-安装ss">Ubuntu18.04 安装ss</h1>
+<p>代码如下
+先进入root用户</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>python-pi
+pip <span class="nb">install </span>git+https://github.com/shadowsocks/shadowsocks.git@master
+</code></pre></div></div>
 
-<p>进入你的博客主页，新的文章将会出现在你的主页上.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"server"</span><span class="p">:</span><span class="s2">"服务器 IP 或是域名"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"server_port"</span><span class="p">:</span><span class="err">端口号</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"local_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"local_port"</span><span class="p">:</span><span class="mi">1080</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"password"</span><span class="p">:</span><span class="s2">"密码"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timeout"</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"method"</span><span class="p">:</span><span class="s2">"加密方式 (chacha20-ietf-poly1305 / aes-256-cfb)"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fast_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/local/bin/sslocal <span class="nt">-c</span> /etc/shadowsocks.json <span class="nt">-d</span> start
+</code></pre></div></div>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>proxychains
+</code></pre></div></div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Unset socks proxy</span>
+<span class="nb">unset </span>all_proxy    
+<span class="nb">unset </span>ALL_PROXY
+<span class="c"># Install missing dependencies:</span>
+pip <span class="nb">install </span>pysocks
+<span class="c"># Reset proxy</span>
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div></div>
 
 
                 <hr style="visibility: hidden;">
@@ -212,17 +242,17 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/" data-toggle="tooltip" data-placement="top" title="阿里云重置后mac用ssh登陆服务器失败">
+                        <a href="/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/" data-toggle="tooltip" data-placement="top" title="Ubuntu 终端使用 ss">
                         Previous<br>
-                        <span>阿里云重置后mac用ssh登陆服务器失败</span>
+                        <span>Ubuntu 终端使用 ss</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/" data-toggle="tooltip" data-placement="top" title="Ubuntu 终端使用 ss">
+                        <a href="/2019/07/27/django2.2-%E7%BB%93%E5%90%88-vue.js-%E5%BC%80%E5%8F%91/" data-toggle="tooltip" data-placement="top" title="django2.2 结合 vue.js 开发">
                         Next<br>
-                        <span>Ubuntu 终端使用 ss</span>
+                        <span>django2.2 结合 vue.js 开发</span>
                         </a>
                     </li>
                     

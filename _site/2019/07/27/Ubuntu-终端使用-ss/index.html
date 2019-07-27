@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>My First Post - walikrence的博客 | walirkrence Blog</title>
+    <title>Ubuntu 终端使用 ss - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/27/Hello-2019/">
+    <link rel="canonical" href="http://localhost:4000/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -173,13 +173,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#生活" title="生活">生活</a>
+                        <a class="tag" href="/tags/#python" title="python">python</a>
+                        
+                        <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                        
+                        <a class="tag" href="/tags/#ss" title="ss">ss</a>
                         
                     </div>
-                    <h1>My First Post</h1>
+                    <h1>Ubuntu 终端使用 ss</h1>
                     
                     
-                    <h2 class="subheading">Hello World, Hello Blog</h2>
+                    <h2 class="subheading"></h2>
                     
                     <span class="meta">Posted by walikrence on July 27, 2019</span>
                 </div>
@@ -199,12 +203,37 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="hey">Hey</h2>
+				<h2 id="ubuntu-终端使用-ss">Ubuntu 终端使用 ss</h2>
 <blockquote>
-  <p>这是我的第一篇博客。</p>
+  <p>python Ubuntu</p>
 </blockquote>
 
-<p>进入你的博客主页，新的文章将会出现在你的主页上.</p>
+<ol>
+  <li>安装 proxychains</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>proxychains
+</code></pre></div></div>
+
+<ol>
+  <li>编辑配置文件</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/proxychains.conf
+</code></pre></div></div>
+<p>在最后一行加上</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>socks5 127.0.0.1 1080
+</code></pre></div></div>
+
+<ol>
+  <li>重启</li>
+</ol>
+
+<h1 id="使用">使用</h1>
+<p>在命令前加上proxychains即可
+例如：</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proxychains curl www.google.com
+</code></pre></div></div>
 
 
                 <hr style="visibility: hidden;">
@@ -212,17 +241,17 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/" data-toggle="tooltip" data-placement="top" title="阿里云重置后mac用ssh登陆服务器失败">
+                        <a href="/2019/07/27/Hello-2019/" data-toggle="tooltip" data-placement="top" title="My First Post">
                         Previous<br>
-                        <span>阿里云重置后mac用ssh登陆服务器失败</span>
+                        <span>My First Post</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/" data-toggle="tooltip" data-placement="top" title="Ubuntu 终端使用 ss">
+                        <a href="/2019/07/27/Ubuntu14.04-%E5%AE%89%E8%A3%85ss/" data-toggle="tooltip" data-placement="top" title="Ubuntu18.04 安装ss">
                         Next<br>
-                        <span>Ubuntu 终端使用 ss</span>
+                        <span>Ubuntu18.04 安装ss</span>
                         </a>
                     </li>
                     
