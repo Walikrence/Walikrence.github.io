@@ -1,6 +1,6 @@
 # Site settings
-title: BY Blog
-SEOTitle: walikrence的博客 | BY Blog
+title: walirkrence Blog
+SEOTitle: walikrence的博客 | walirkrence Blog
 header-img: img/post-bg-desk.jpg
 email: walikrence@163.com
 description: "翻过那座山，人们就会听到你的故事"
@@ -12,7 +12,7 @@ github_repo: "https://github.com/Walikrence/Walikrence.github.io.git" # you code
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "翻过那座山，人们就会听到你的故事"
-sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/about-walikrence-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -38,7 +38,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 
 
 
@@ -56,7 +56,7 @@ kramdown:
 
 # 评论系统
 # Disqus（https://disqus.com/）
-# disqus_username: qiubaiying
+# disqus_username: walikrence
 
 # Gitalk
 gitalk:
@@ -112,4 +112,4 @@ service-worker: true
 #     }
 # ]
 
-theme: jekyll-theme-cayman
+# theme: jekyll-theme-cayman

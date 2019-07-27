@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>walirkrence Blog</title>
+    <description>翻过那座山，人们就会听到你的故事</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 27 Jul 2019 23:05:38 +0800</pubDate>
+    <lastBuildDate>Sat, 27 Jul 2019 23:05:38 +0800</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>My First Post</title>
+        <description>&lt;h2 id=&quot;hey&quot;&gt;Hey&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;这是我的第一篇博客。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;进入你的博客主页，新的文章将会出现在你的主页上.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 27 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/27/Hello-2019/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/27/Hello-2019/</guid>
+        
+        <category>生活</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
