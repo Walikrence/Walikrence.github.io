@@ -5,9 +5,106 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 27 Jul 2019 23:45:14 +0800</pubDate>
-    <lastBuildDate>Sat, 27 Jul 2019 23:45:14 +0800</lastBuildDate>
+    <pubDate>Tue, 30 Jul 2019 09:22:36 +0800</pubDate>
+    <lastBuildDate>Tue, 30 Jul 2019 09:22:36 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>minikube安装（国内环境）</title>
+        <description>&lt;h1 id=&quot;minikube安装国内环境&quot;&gt;minikube安装（国内环境）&lt;/h1&gt;
+
+&lt;p&gt;国内环境的原因，minikube本身存在很多网络问题，给minikube初学者造成了很多障碍。不过阿里云有改装版的minikube可以供大家使用从而绕开很多网络问题。&lt;/p&gt;
+
+&lt;p&gt;参考资料：&lt;a href=&quot;https://yq.aliyun.com/articles/574255&quot;&gt;使用minikube安装k8s单节点集群&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;环境&quot;&gt;环境&lt;/h2&gt;
+&lt;p&gt;Ubuntu 18.04.2 &lt;br /&gt;
+2核4G&lt;/p&gt;
+
+&lt;p&gt;以下所有指令均在root权限下执行（这不是个好习惯），如遇权限不足请加sudo&lt;/p&gt;
+
+&lt;h2 id=&quot;前置条件&quot;&gt;前置条件&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装虚拟机
+我这里使用的是virtual box&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://download.virtualbox.org/virtualbox/6.0.10/virtualbox-6.0_6.0.10-132072~Ubuntu~bionic_amd64.deb
+
+dpkg &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; virtualbox-6.0_6.0.10-132072~Ubuntu~bionic_amd64.deb
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;可能遇到缺失依赖的问题,安装依赖可解决&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;libqt5x11extras5 libsdl1.2debian
+&lt;span class=&quot;c&quot;&gt;# 或者&lt;/span&gt;
+apt &lt;span class=&quot;nt&quot;&gt;--fix-broken&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;启动虚拟机时可能因为主板未允许虚拟化而启动失败，在BIOS中设置允许虚拟化即可&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装docker&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
+
+dpkg &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;可能遇到缺失依赖问题，根据提示安装即可&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; libltdl7
+&lt;span class=&quot;c&quot;&gt;# 或&lt;/span&gt;
+apt &lt;span class=&quot;nt&quot;&gt;--fix-broken&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;检查docker是否安装成功&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;安装kubectl&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-Lo&lt;/span&gt; kubectl https://storage.googleapis.com/kubernetes-release/release/v1.9.4/bin/linux/amd64/kubectl &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x kubectl &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo mv &lt;/span&gt;kubectl /usr/local/bin/
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;下载阿里云改装版minikube&quot;&gt;下载阿里云改装版minikube&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-Lo&lt;/span&gt; minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-linux-amd64 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x minikube &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo mv &lt;/span&gt;minikube /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;启动minikube&quot;&gt;启动minikube&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;minikube start &lt;span class=&quot;nt&quot;&gt;--vm-driver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;virtualbox &lt;span class=&quot;nt&quot;&gt;--registry-mirror&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://registry.docker-cn.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;说明&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#指明使用的虚拟机&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--vm-driver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;virtualbox
+&lt;span class=&quot;c&quot;&gt;#使用阿里云镜像，解决网络问题&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;--registry-mirror&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://registry.docker-cn.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;可能遇到的问题：
+虚拟机启动失败
+检查虚拟机是否安装，检查BIOS设置是否允许虚拟化&lt;/p&gt;
+
+&lt;h2 id=&quot;检查minikube&quot;&gt;检查minikube&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl cluster-info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 29 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/29/minikube_%E5%AE%89%E8%A3%85/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/29/minikube_%E5%AE%89%E8%A3%85/</guid>
+        
+        <category>minikube</category>
+        
+        <category>k8s</category>
+        
+        <category>kubernetes</category>
+        
+        <category>国内环境</category>
+        
+        
+      </item>
     
       <item>
         <title>爬取吉林敖东财报</title>
