@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>django2.2 结合 vue.js 开发 - walikrence的博客 | walirkrence Blog</title>
+    <title>实习指南 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/27/django2.2-%E7%BB%93%E5%90%88-vue.js-%E5%BC%80%E5%8F%91/">
+    <link rel="canonical" href="http://localhost:4000/2019/07/30/%E5%AE%9E%E4%B9%A0%E6%8C%87%E5%8D%97/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -173,19 +173,21 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#django" title="django">django</a>
+                        <a class="tag" href="/tags/#minikube" title="minikube">minikube</a>
                         
-                        <a class="tag" href="/tags/#vue" title="vue">vue</a>
+                        <a class="tag" href="/tags/#k8s" title="k8s">k8s</a>
                         
-                        <a class="tag" href="/tags/#python3" title="python3">python3</a>
+                        <a class="tag" href="/tags/#kubernetes" title="kubernetes">kubernetes</a>
+                        
+                        <a class="tag" href="/tags/#国内环境" title="国内环境">国内环境</a>
                         
                     </div>
-                    <h1>django2.2 结合 vue.js 开发</h1>
+                    <h1>实习指南</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on July 27, 2019</span>
+                    <span class="meta">Posted by walikrence on July 30, 2019</span>
                 </div>
             </div>
         </div>
@@ -203,94 +205,16 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="django22-结合-vuejs-开发">django2.2 结合 vue.js 开发</h1>
-<p>最近在用django开发后端，配合同学的vue.js前端。没用过vue.js
-搜啦下教程终于解决啦。</p>
+				<h1 id="实习">实习</h1>
+<p><a href="https://job.bytedance.com/inwtern">字节跳动</a> <br />
+<a href="https://campus.163.com/app/campus/recruitment4campus?projectId=19">网易</a><br />
+<a href="https://join.qq.com/">腾讯</a><br />
+<a href="https://campus.alibaba.com/trainProcess.html">阿里</a><br />
+<a href="http://hr.huya.com/campus_apply/huya/4112">虎牙</a><br /></p>
+<h1 id="简历">简历</h1>
+<p><a href="https://gitee.com/itsay/resume">效果</a><br />
+<a href="https://itsay.gitee.io/resume/">源码</a><br /></p>
 
-<h2 id="增加中间件">增加中间件</h2>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="s">'corsheaders.middleware.CorsMiddleware'</span><span class="p">,</span>
-<span class="n">CORS_ORIGIN_ALLOW_ALL</span> <span class="o">=</span> <span class="bp">True</span>
-</code></pre></div></div>
-<p>完成后setting.py长这样</p>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MIDDLEWARE</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">'django.middleware.security.SecurityMiddleware'</span><span class="p">,</span>
-    <span class="s">'django.contrib.sessions.middleware.SessionMiddleware'</span><span class="p">,</span>
-    <span class="s">'corsheaders.middleware.CorsMiddleware'</span><span class="p">,</span>
-    <span class="s">'django.middleware.common.CommonMiddleware'</span><span class="p">,</span>
-    <span class="s">'django.middleware.csrf.CsrfViewMiddleware'</span><span class="p">,</span>
-    <span class="s">'django.contrib.auth.middleware.AuthenticationMiddleware'</span><span class="p">,</span>
-    <span class="s">'django.contrib.messages.middleware.MessageMiddleware'</span><span class="p">,</span>
-    <span class="s">'django.middleware.clickjacking.XFrameOptionsMiddleware'</span><span class="p">,</span>
-<span class="p">]</span>
-<span class="n">CORS_ORIGIN_ALLOW_ALL</span> <span class="o">=</span> <span class="bp">True</span>
-</code></pre></div></div>
-<h2 id="编译前端代码">编译前端代码</h2>
-<p>进入前端文件夹
-新建一个文件vue.config.js</p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="c1">// 指定`build`时,在静态文件上一层添加static目录</span>
-	<span class="na">assetsDir</span><span class="p">:</span> <span class="dl">'</span><span class="s1">static</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">};</span>
-</code></pre></div></div>
-<p>编译代码</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm  <span class="nb">install
-</span>npm run build
-</code></pre></div></div>
-<p>得到啦dist文件夹</p>
-<h2 id="配置路径">配置路径</h2>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">'DIRS'</span><span class="p">:</span> <span class="p">[</span><span class="s">'dist'</span><span class="p">],</span>
-</code></pre></div></div>
-<p>配置后setting长这样</p>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TEMPLATES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s">'BACKEND'</span><span class="p">:</span> <span class="s">'django.template.backends.django.DjangoTemplates'</span><span class="p">,</span>
-        <span class="s">'DIRS'</span><span class="p">:</span> <span class="p">[</span><span class="s">'dist'</span><span class="p">],</span>
-        <span class="s">'APP_DIRS'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-        <span class="s">'OPTIONS'</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s">'context_processors'</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s">'django.template.context_processors.debug'</span><span class="p">,</span>
-                <span class="s">'django.template.context_processors.request'</span><span class="p">,</span>
-                <span class="s">'django.contrib.auth.context_processors.auth'</span><span class="p">,</span>
-                <span class="s">'django.contrib.messages.context_processors.messages'</span><span class="p">,</span>
-            <span class="p">],</span>
-        <span class="p">},</span>
-    <span class="p">},</span>
-<span class="p">]</span>
-</code></pre></div></div>
-<h2 id="配置url">配置url</h2>
-<p>我们这里直接配置首页为localhost</p>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
-<span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span>  <span class="n">TemplateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s">"index.html"</span><span class="p">)),</span>
-</code></pre></div></div>
-<p>配置后urls.py长这样</p>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
-<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">TemplateView</span>
-
-<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">path</span><span class="p">(</span><span class="s">'admin/'</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
-    <span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span>  <span class="n">TemplateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s">"index.html"</span><span class="p">)),</span>
-<span class="p">]</span>
-
-</code></pre></div></div>
-<h2 id="配置静态文件">配置静态文件</h2>
-<p>在setting.py末尾添加</p>
-<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1"># Add for vuejs
-</span><span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">"dist/static"</span><span class="p">),</span>
-<span class="p">]</span>
-
-</code></pre></div></div>
-<h2 id="启动服务器">启动服务器</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 manage.py runserver 8765
-</code></pre></div></div>
-<h2 id="访问网站">访问网站</h2>
-<p><a href="http://localhost:8765">点我</a></p>
-
-<hr />
-<p>终于部署好啦，现在可以开始愉快的按照API文档写数据交互啦</p>
 
 
                 <hr style="visibility: hidden;">
@@ -298,19 +222,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/27/Ubuntu14.04-%E5%AE%89%E8%A3%85ss/" data-toggle="tooltip" data-placement="top" title="Ubuntu18.04 安装ss">
+                        <a href="/2019/07/29/minikube_%E5%AE%89%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="minikube安装（国内环境）">
                         Previous<br>
-                        <span>Ubuntu18.04 安装ss</span>
+                        <span>minikube安装（国内环境）</span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2019/07/27/git-clone-%E9%80%9F%E5%BA%A6%E6%85%A2/" data-toggle="tooltip" data-placement="top" title="git clone 速度慢怎么办">
-                        Next<br>
-                        <span>git clone 速度慢怎么办</span>
-                        </a>
-                    </li>
                     
                 </ul>
 

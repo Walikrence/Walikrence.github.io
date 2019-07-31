@@ -5,9 +5,37 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 30 Jul 2019 15:30:25 +0800</pubDate>
-    <lastBuildDate>Tue, 30 Jul 2019 15:30:25 +0800</lastBuildDate>
+    <pubDate>Wed, 31 Jul 2019 20:25:31 +0800</pubDate>
+    <lastBuildDate>Wed, 31 Jul 2019 20:25:31 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>实习指南</title>
+        <description>&lt;h1 id=&quot;实习&quot;&gt;实习&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://job.bytedance.com/inwtern&quot;&gt;字节跳动&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;https://campus.163.com/app/campus/recruitment4campus?projectId=19&quot;&gt;网易&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://join.qq.com/&quot;&gt;腾讯&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://campus.alibaba.com/trainProcess.html&quot;&gt;阿里&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;http://hr.huya.com/campus_apply/huya/4112&quot;&gt;虎牙&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;简历&quot;&gt;简历&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://gitee.com/itsay/resume&quot;&gt;效果&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://itsay.gitee.io/resume/&quot;&gt;源码&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 30 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/30/%E5%AE%9E%E4%B9%A0%E6%8C%87%E5%8D%97/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/30/%E5%AE%9E%E4%B9%A0%E6%8C%87%E5%8D%97/</guid>
+        
+        <category>minikube</category>
+        
+        <category>k8s</category>
+        
+        <category>kubernetes</category>
+        
+        <category>国内环境</category>
+        
+        
+      </item>
     
       <item>
         <title>minikube安装（国内环境）</title>
@@ -714,48 +742,6 @@ ssh-keygen &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; 123.13.45.134
         <category>ssh</category>
         
         <category>mac</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>NUMA(非一致性内存架构)（转）</title>
-        <description>&lt;h1 id=&quot;numa非一致性内存架构转&quot;&gt;NUMA(非一致性内存架构)（转）&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/vanbreaker/article/details/7492886&quot;&gt;原文地址&lt;/a&gt;
-—
-—&lt;/p&gt;
-&lt;h2 id=&quot;一基本概念&quot;&gt;一、基本概念&lt;/h2&gt;
-&lt;p&gt;  非一致性内存架构(Non-uniform Memory Architecture)是为了解决传统的对称多处理(Symmetric Multi-processor)系统中的可扩展性问题而诞生的。在对称多处理系统中，处理器共享北桥中的内存控制器来达到共同访问外部内存和IO的目的，也就是说所有的处理器对内存和I/O的访问方式和开销都是相同的。在这种系统中，随着更多的处理器被添加到SMP系统中，总线的竞争将会越来越大，系统的性能也必将随之大打折扣。SMP系统的示意图如下：
-&lt;img src=&quot;../../../../img/NUMA非一致性内存架构/2.png&quot; alt=&quot;1&quot; /&gt;
-  NUMA系统拥有多条内存总线，于是将几个处理器通过内存总线与一块内存相连构成一个组，这样整个庞大的系统就可以被分为若干个组，这个组的概念在NUMA系统中被称为节点(node)。处于该节点中的内存被称为本地内存(local memory),处于其他节点中的内存对于该组而言被称为外部内存(foreign memory)。而节点又可以分为三类，即本地节点(local node)，邻居节点(neighbour node)和远端节点(remote node).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;本地节点：&lt;/strong&gt; 对于某个节点中的所有CPU，此节点称为本地节点；&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;邻居节点：&lt;/strong&gt; 与本地节点相邻的节点称为邻居节点；&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;远端节点：&lt;/strong&gt; 非本地节点或邻居节点的节点，称为远端节点。&lt;/p&gt;
-
-&lt;p&gt;  超立方体可以作为一种有效的拓扑来描述NUMA系统，它将系统中的节点数限制在2^C内，C是每个节点拥有的邻居节点数，如下图所示
-&lt;img src=&quot;../../../../img/NUMA非一致性内存架构/2.png&quot; alt=&quot;2&quot; /&gt;
-以C=3为例，则对于节点1而言，2,3,5则为邻居节点，4,6,7,8为远端节点，显然访问开销的关系为 本地节点&amp;lt;邻居节点&amp;lt;远端节点。&lt;/p&gt;
-
-&lt;h2 id=&quot;amd-hyper-transport&quot;&gt;AMD Hyper-Transport&lt;/h2&gt;
-&lt;p&gt;  古老的SMP系统只拥有一个位于北桥中的内存控制器，而如今更先进的做法是将内存控制器整合到CPU中去，这样每个CPU都拥有自己的内存控制器，不会相互之间产生竞争。最先采用这种做法的一批处理器就是AMD在2003年推出的AMD Opteron系列处理器，其结构如下图所示：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/NUMA非一致性内存架构/3.png&quot; alt=&quot;3&quot; /&gt;
-  可以看到，每个CPU中都整合了一个内存控制器，并且CPU之间采用了一种Hyper-Transport的技术建立连接，这种连接可以使得CPU通过其他CPU来访问外部内存，当然访问开销要比访问本地内存更大。&lt;/p&gt;
-&lt;h2 id=&quot;三操作系统的支持&quot;&gt;三、操作系统的支持&lt;/h2&gt;
-&lt;p&gt;  为了支持NUMA架构，OS的设计必须将内存分布的特点考虑进去。举一个简单的例子，假如一个进程运行在一个给定的处理器中，那么为这个进程所分配的物理内存就应该是该处理器的本地内存，而不是外部内存。为了避免情况变得更糟，OS还要注意避免将一个进程从一个节点给迁移到另一个节点。在一个普通的多处理系统中，OS就应该已经尝试不去在处理器之间迁移进程，因为这意味着一个处理器的cache中的相关内容都将被丢失。如果在某种情况下必须进行迁移，那么OS可以随意选择一个空闲的处理器。但是在NUMA系统中，可选择的新处理器将要受到一些限制，最重要的一点就是新处理器访问内存的开销不能比先前的处理器大，也就是说应该尽可能选择本地节点中的处理器。当找不到符合条件的处理器，OS才能选择其他的处理器。在这种较糟的情况下有两种选择，一种是如果这个进程只是暂时性的被迁移出去，那么可以再将其迁移回更加合适的处理器;如果不是暂时性的，那么可以将该进程的内存拷贝到新处理器的内存中，这样就可以通过访问拷贝的内存来消除访问外部内存的开销，显然这是一种空间换时间的做法。&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 26 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/26/NUMA(%E9%9D%9E%E4%B8%80%E8%87%B4%E6%80%A7%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84)%E6%9C%AC/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/26/NUMA(%E9%9D%9E%E4%B8%80%E8%87%B4%E6%80%A7%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84)%E6%9C%AC/</guid>
-        
-        <category>内存</category>
-        
-        <category>转载</category>
         
         
       </item>
