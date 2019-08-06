@@ -114,3 +114,4 @@ service-worker: true
 
 # theme: jekyll-theme-cayman
 # theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
