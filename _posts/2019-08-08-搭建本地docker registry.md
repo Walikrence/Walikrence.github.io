@@ -38,7 +38,8 @@ vim /etc/docker/daemon.json
 ```
 重启docker
 ```sh
-systemctl restart  docker.service 
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 ```
 
 ## 使用
