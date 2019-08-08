@@ -5,8 +5,8 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 08 Aug 2019 15:28:33 +0800</pubDate>
-    <lastBuildDate>Thu, 08 Aug 2019 15:28:33 +0800</lastBuildDate>
+    <pubDate>Thu, 08 Aug 2019 15:44:18 +0800</pubDate>
+    <lastBuildDate>Thu, 08 Aug 2019 15:44:18 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -71,6 +71,63 @@ docker push &amp;lt;ip&amp;gt;:5000/nginx
         <guid isPermaLink="true">http://localhost:4000/2019/08/08/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0docker-registry/</guid>
         
         <category>docker</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>nginx配置反向代理</title>
+        <description>&lt;h1 id=&quot;nginx配置反向代理&quot;&gt;nginx配置反向代理&lt;/h1&gt;
+
+&lt;p&gt;下载nginx&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nginx &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;配置反向代理&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/nginx/nginx.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;修改为&lt;/p&gt;
+&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;events&lt;/span&gt; {
+  &lt;span class=&quot;n&quot;&gt;worker_connections&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt;;  &lt;span class=&quot;c&quot;&gt;## Default: 1024
+&lt;/span&gt;}
+&lt;span class=&quot;n&quot;&gt;http&lt;/span&gt; {
+    &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; {
+            &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;;
+            &lt;span class=&quot;n&quot;&gt;server_name&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;;
+            &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; / {
+                    &lt;span class=&quot;n&quot;&gt;proxy_pass&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;://&lt;span class=&quot;m&quot;&gt;192&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;168&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;51&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;30003&lt;/span&gt;;
+            }
+    }
+    &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; {
+            &lt;span class=&quot;n&quot;&gt;listen&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;8080&lt;/span&gt;;
+            &lt;span class=&quot;n&quot;&gt;server_name&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;;
+            &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; / {
+                    &lt;span class=&quot;n&quot;&gt;proxy_pass&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;://&lt;span class=&quot;m&quot;&gt;192&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;168&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;51&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;31678&lt;/span&gt;;
+            }            
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;上述配置讲指向本级的80端口的流量代理到 http://192.168.3.51:30003;
+把本机8080端口的流量代理到 http://192.168.3.51:31678;
+需要代理多个端口可直接增加&lt;/p&gt;
+
+&lt;p&gt;重启生效&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nginx -s reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;测试&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl 127.0.0.1:80
+curl 127.0.0.1:8080
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;完成&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/08/nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/08/nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</guid>
+        
+        <category>nginx</category>
         
         
       </item>
@@ -905,24 +962,6 @@ pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pysocks
         <category>ubuntu</category>
         
         <category>ss</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>My First Post</title>
-        <description>&lt;h2 id=&quot;hey&quot;&gt;Hey&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;这是我的第一篇博客。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;进入你的博客主页，新的文章将会出现在你的主页上.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 27 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/27/Hello-2019/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/27/Hello-2019/</guid>
-        
-        <category>生活</category>
         
         
       </item>

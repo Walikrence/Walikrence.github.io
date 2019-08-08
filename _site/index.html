@@ -213,6 +213,39 @@ vim /etc/doc...
 <hr>
 
 <div class="post-preview">
+    <a href="/2019/08/08/nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
+        <h2 class="post-title">
+            nginx配置反向代理
+        </h2>
+        
+        <div class="post-content-preview">
+            nginx配置反向代理
+
+下载nginx
+sudo apt install nginx -y
+
+
+配置反向代理
+vim /etc/nginx/nginx.conf
+
+
+修改为
+events {
+  worker_connections  4096;  ## Default: 1024
+}
+http {
+    server {
+            listen  80;
+        ...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 8, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2019/08/06/kubernetes%E5%AE%89%E8%A3%85/">
         <h2 class="post-title">
             Kubernetes 安装
@@ -448,32 +481,6 @@ proxychains ...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/07/27/Hello-2019/">
-        <h2 class="post-title">
-            My First Post
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Hello World, Hello Blog
-        </h3>
-        
-        <div class="post-content-preview">
-            Hey
-
-  这是我的第一篇博客。
-
-
-进入你的博客主页，新的文章将会出现在你的主页上.
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -569,6 +576,10 @@ proxychains ...
                         
                             
                         
+                            
+                                <a href="/tags/#nginx" title="nginx" rel="2">
+                                    nginx
+                                </a>
                             
                         
                             
