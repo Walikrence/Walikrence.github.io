@@ -10,12 +10,16 @@ tags:								#标签
     - kubernetes
     - 国内环境
 ---
-
 # Kubernetes 安装
 
 ## 安装docker
 ```sh
+sudo apt install vim -y
+```
+```sh
 sudo apt install curl -y
+```
+```sh
 curl -fsSL get.docker.com -o get-docker.sh
 sudo sh get-docker.sh --mirror Aliyun
 sudo systemctl enable docker
@@ -66,6 +70,24 @@ apt-get update && apt-get install -y apt-transport-https curl
 cat <<EOF > /etc/apt/sources.list.d/kubernetes.list
 deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main
 EOF
+apt-get update
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A030B21BA07F4FB
+
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
+```
+
+这里可能会出一点问题，最开始中科大的源是可以用的，不过这几天用不了了，所以换成阿里云的源可以试试
+```sh
+rm /etc/apt/sources.list.d/kubernetes.list
+```
+```sh
+apt-get update && apt-get install -y apt-transport-https curl
+cat <<EOF > /etc/apt/sources.list.d/kubernetes.list
+deb http://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
+EOF
+apt-get update
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6A030B21BA07F4FB
 
 apt-get update
@@ -100,56 +122,32 @@ net.bridge.bridge-nf-call-iptables = 1
 ## 下载需要的镜像并修改标签
 ```sh
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.15.1
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.15.1 k8s.gcr.io/kube-apiserver:v1.15.1
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.15.1
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.15.1 k8s.gcr.io/kube-controller-manager:v1.15.1
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.15.1
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.15.1 k8s.gcr.io/kube-scheduler:v1.15.1
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.15.1
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.15.1 k8s.gcr.io/kube-proxy:v1.15.1
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1 k8s.gcr.io/pause:3.1
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10 k8s.gcr.io/etcd:3.3.10
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.3.1
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.3.1 k8s.gcr.io/coredns:1.3.1
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause-amd64:3.1
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/ k8s.gcr.io/
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.0
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4 k8s.gcr.io/heapster-amd64:v1.5.4
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-grafana-amd64:v5.0.4
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-grafana-amd64:v5.0.4 k8s.gcr.io/heapster-grafana-amd64:v5.0.4
-
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-influxdb-amd64:v1.5.2
-
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-influxdb-amd64:v1.5.2 k8s.gcr.io/heapster-influxdb-amd64:v1.5.2
+
 
 ```
 
@@ -164,6 +162,14 @@ docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-influxdb
 ```sh
 sudo kubeadm init --kubernetes-version=v1.15.1  --pod-network-cidr=192.168.0.0/16
 ```
+<!-- sudo kubeadm init --kubernetes-version=v1.15.1  --pod-network-cidr=10.244.0.0/16 -->
+启动
+```sh
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
 初始化master节点
 
 拉取网络插件calico镜像
@@ -179,7 +185,7 @@ kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/
 kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 ```
 
-配置完成后可能ssh就断开了，因为calico的网段也是192.168.0.0。暂时没有什么很好的解决方案，但是通过连在同一个交换机上的电脑仍然可以ssh连接或者直接操作master节点。
+配置完成后可能ssh就断开了，因为calico的网段也是192.168.0.0。暂时没有什么很好的解决方案，但是通过连在同一个交换机上的电脑仍然可以ssh连接或者直接操作master节点。所以我用笔记本的有线网络连接集群，无线网络连接控制电脑来控制集群
 
 ## 打印加入集群的命令
 ```sh
@@ -187,7 +193,10 @@ kubeadm token create --print-join-command
 ```
 
 ```sh
-
+kubeadm join 192.168.3.51:6443 --token loi96z.64to8ymreeus3bi1     --discovery-token-ca-cert-hash sha256:fceb3233a84491d8ed9b5937869e92d236153fcab3f08d01356da01aea9ce916 
+```
+```sh
+kubeadm join 192.168.3.51:6443 --token u2detf.qlouwrt8ee9ch2q5     --discovery-token-ca-cert-hash sha256:b035c8325964ae4ffcf25140a5f2ac89042b844b4c1c5084748c5dff5f3e2d07 
 ```
 
 
@@ -195,4 +204,8 @@ kubeadm token create --print-join-command
 
 完成初始化步骤后，通过master节点打印出的加入集群命令加入集群
 
+例如
+```sh
+kubeadm join 192.168.3.51:6443 --token yrfk5v.o7jmxj03lopu5042     --discovery-token-ca-cert-hash sha256:b035c8325964ae4ffcf25140a5f2ac89042b844b4c1c5084748c5dff5f3e2d07 
+```
 

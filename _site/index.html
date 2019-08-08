@@ -183,6 +183,36 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2019/08/08/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0docker-registry/">
+        <h2 class="post-title">
+            搭建本地docker registry
+        </h2>
+        
+        <div class="post-content-preview">
+            搭建本地docker registry
+
+服务器配置
+下载registry 镜像
+
+docker pull registry:2
+
+运行
+
+docker run -d -p 5000:5000 --name registry -v /mnt/docker/data/registry:/var/lib/registry registry:2
+
+
+使用镜像的机器的配置
+
+vim /etc/doc...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 8, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2019/08/06/kubernetes%E5%AE%89%E8%A3%85/">
         <h2 class="post-title">
             Kubernetes 安装
@@ -192,12 +222,14 @@
             Kubernetes 安装
 
 安装docker
+sudo apt install vim -y
+
 sudo apt install curl -y
+
 curl -fsSL get.docker.com -o get-docker.sh
 sudo sh get-docker.sh --mirror Aliyun
 sudo systemctl enable docker
-sudo systemctl start docker
-sudo group...
+sudo systemc...
         </div>
     </a>
     <p class="post-meta">
@@ -442,28 +474,6 @@ proxychains ...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/">
-        <h2 class="post-title">
-            阿里云重置后mac用ssh登陆服务器失败
-        </h2>
-        
-        <div class="post-content-preview">
-            阿里云重置后mac用ssh登陆服务器失败
-
-出现
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 26, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -553,6 +563,8 @@ proxychains ...
                                 <a href="/tags/#python3" title="python3" rel="2">
                                     python3
                                 </a>
+                            
+                        
                             
                         
                             
