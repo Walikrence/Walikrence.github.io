@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f606311b-5235-4e31-825e-7d53a998cab0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/2019-12-05 mysql中文乱码/scratch.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2019-12-05 mysql中文乱码.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/23/实习指南/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/23/实习指南/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/26/NUMA(非一致性内存架构)本/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/26/NUMA(非一致性内存架构)本/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/26/mac-使用ssh登陆阿里云-失败开发的/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/26/mac-使用ssh登陆阿里云-失败开发的/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/Hello-2019/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/Hello-2019/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/Ubuntu-终端使用-ss/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/Ubuntu-终端使用-ss/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/Ubuntu14.04-安装ss/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/Ubuntu14.04-安装ss/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/django2.2-结合-vue.js-开发/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/django2.2-结合-vue.js-开发/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/git-clone-速度慢/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/git-clone-速度慢/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/爬取吉林敖东财报/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/爬取吉林敖东财报/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/29/k8s部署应用-以nginx为例/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/29/k8s部署应用-以nginx为例/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/07/29/minikube_安装/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/29/minikube_安装/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/08/06/kubernetes安装/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/06/kubernetes安装/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/08/08/nginx配置反向代理/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/08/nginx配置反向代理/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/08/08/搭建本地docker-registry/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/08/搭建本地docker-registry/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/offline.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/offline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectId" id="1UZJ59qRuWgaiBoVboqdloDtYBP" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Markdown" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/2019-12-05 mysql中文乱码" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f606311b-5235-4e31-825e-7d53a998cab0" name="Default Changelist" comment="" />
+      <created>1575557997725</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575557997725</updated>
+      <workItem from="1575557999350" duration="770000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

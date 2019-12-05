@@ -88,6 +88,10 @@
                     </li>
                     
                     <li>
+                        <a href="/2019-12-05%20mysql%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/scratch/">Mysql解决中文乱码</a>
+                    </li>
+                    
+                    <li>
                         <a href="/tags/">Tags</a>
                     </li>
                     
@@ -222,7 +226,8 @@ docker run <span class="nt">-d</span> <span class="nt">-p</span> 5000:5000 <span
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nl">"insecure-registries"</span><span class="p">:</span><span class="w">    </span><span class="p">[</span><span class="s2">"192.168.3.51:5000"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 <p>重启docker</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart  docker.service 
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl daemon-reload
+<span class="nb">sudo </span>systemctl restart docker
 </code></pre></div></div>
 
 <h2 id="使用">使用</h2>
@@ -266,6 +271,13 @@ docker push &lt;ip&gt;:5000/nginx
                         </a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2019/08/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEmysql/" data-toggle="tooltip" data-placement="top" title="安装配置mysql">
+                        Next<br>
+                        <span>安装配置mysql</span>
+                        </a>
+                    </li>
                     
                 </ul>
 
@@ -349,7 +361,7 @@ docker push &lt;ip&gt;:5000/nginx
                             
         				
                             
-                				<a href="/tags/#ubuntu" title="ubuntu" rel="3">
+                				<a href="/tags/#ubuntu" title="ubuntu" rel="5">
                                     ubuntu
                                 </a>
                             
@@ -378,6 +390,28 @@ docker push &lt;ip&gt;:5000/nginx
                 				<a href="/tags/#nginx" title="nginx" rel="2">
                                     nginx
                                 </a>
+                            
+        				
+                            
+        				
+                            
+                				<a href="/tags/#mysql" title="mysql" rel="2">
+                                    mysql
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
                             
         				
                             

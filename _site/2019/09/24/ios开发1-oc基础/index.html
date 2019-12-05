@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>minikube安装（国内环境） - walikrence的博客 | walirkrence Blog</title>
+    <title>ios开发-1 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/29/minikube_%E5%AE%89%E8%A3%85/">
+    <link rel="canonical" href="http://localhost:4000/2019/09/24/ios%E5%BC%80%E5%8F%911-oc%E5%9F%BA%E7%A1%80/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,21 +177,19 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#minikube" title="minikube">minikube</a>
+                        <a class="tag" href="/tags/#ios" title="ios">ios</a>
                         
-                        <a class="tag" href="/tags/#k8s" title="k8s">k8s</a>
+                        <a class="tag" href="/tags/#oc" title="oc">oc</a>
                         
-                        <a class="tag" href="/tags/#kubernetes" title="kubernetes">kubernetes</a>
-                        
-                        <a class="tag" href="/tags/#国内环境" title="国内环境">国内环境</a>
+                        <a class="tag" href="/tags/#课程作业" title="课程作业">课程作业</a>
                         
                     </div>
-                    <h1>minikube安装（国内环境）</h1>
+                    <h1>ios开发-1</h1>
                     
                     
-                    <h2 class="subheading"></h2>
+                    <h2 class="subheading">oc基础</h2>
                     
-                    <span class="meta">Posted by walikrence on July 29, 2019</span>
+                    <span class="meta">Posted by walikrence on September 24, 2019</span>
                 </div>
             </div>
         </div>
@@ -209,84 +207,120 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="minikube安装国内环境">minikube安装（国内环境）</h1>
+				<h1 id="ios开发-1">ios开发-1</h1>
 
-<p>国内环境的原因，minikube本身存在很多网络问题，给minikube初学者造成了很多障碍。不过阿里云有改装版的minikube可以供大家使用从而绕开很多网络问题。</p>
+<h1 id="oc基础">oc基础</h1>
 
-<p>参考资料：<a href="https://yq.aliyun.com/articles/574255">使用minikube安装k8s单节点集群</a></p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">NSArray</span> <span class="o">*</span><span class="n">nameArr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">array</span><span class="p">];</span>
+    <span class="n">nameArr</span> <span class="o">=</span> <span class="err">@</span><span class="p">[</span><span class="err">@</span><span class="s">"张三"</span><span class="p">,</span><span class="err">@</span><span class="s">"李四"</span><span class="p">,</span><span class="err">@</span><span class="s">"王五"</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">name</span> <span class="o">=</span><span class="n">arc4random</span><span class="p">()</span> <span class="o">%</span> <span class="mi">3</span> <span class="p">;</span>
+    
+    
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">array</span><span class="p">];</span>
+    <span class="n">arr</span> <span class="o">=</span>  <span class="err">@</span><span class="p">[[</span><span class="n">English</span> <span class="n">new</span><span class="p">],[</span><span class="n">Japanese</span> <span class="n">new</span><span class="p">],[</span><span class="n">German</span> <span class="n">new</span><span class="p">]</span> <span class="p">,[</span><span class="n">Spanish</span> <span class="n">new</span><span class="p">]]</span> <span class="p">;</span>
+    <span class="kt">int</span> <span class="n">lan</span> <span class="o">=</span><span class="n">arc4random</span><span class="p">()</span> <span class="o">%</span> <span class="mi">4</span> <span class="p">;</span>
+    <span class="n">Language</span> <span class="o">*</span><span class="n">l</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">lan</span><span class="p">];</span>
+    <span class="n">NSDate</span> <span class="o">*</span><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="n">date</span><span class="p">];</span>
+    <span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">setDateFormat</span><span class="o">:</span><span class="err">@</span><span class="s">"yyyy年MM月dd日"</span><span class="p">];</span>
+    
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">l</span> <span class="n">isFinish</span><span class="p">]){</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span><span class="n">arc4random</span><span class="p">()</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="n">dateWithTimeInterval</span><span class="o">:</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="n">sinceDate</span><span class="o">:</span><span class="n">date</span><span class="p">];</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s">"%@  %@ 学习%@ tour %d unit %d"</span><span class="p">,</span> <span class="n">nameArr</span><span class="p">[</span><span class="n">name</span><span class="p">],[</span><span class="n">dateFormatter</span> <span class="n">stringFromDate</span><span class="o">:</span> <span class="n">date</span><span class="p">],[</span><span class="n">l</span> <span class="n">getName</span><span class="p">],[</span><span class="n">l</span> <span class="n">getTour</span><span class="p">],</span> <span class="p">[</span><span class="n">l</span> <span class="n">getUnit</span><span class="p">]);</span>
+        <span class="p">[</span><span class="n">l</span> <span class="n">learnOneUnit</span><span class="p">];</span>
+    <span class="p">}</span>
+</code></pre></div></div>
 
-<h2 id="环境">环境</h2>
-<p>Ubuntu 18.04.2 <br />
-2核4G</p>
+<p>声明一个数组并初始化</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">NSArray</span> <span class="o">*</span><span class="n">nameArr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">array</span><span class="p">];</span>
+    <span class="n">nameArr</span> <span class="o">=</span> <span class="err">@</span><span class="p">[</span><span class="err">@</span><span class="s">"张三"</span><span class="p">,</span><span class="err">@</span><span class="s">"李四"</span><span class="p">,</span><span class="err">@</span><span class="s">"王五"</span><span class="p">];</span>
+    <span class="n">NSArray</span> <span class="o">*</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="n">array</span><span class="p">];</span>
+    <span class="n">arr</span> <span class="o">=</span>  <span class="err">@</span><span class="p">[[</span><span class="n">English</span> <span class="n">new</span><span class="p">],[</span><span class="n">Japanese</span> <span class="n">new</span><span class="p">],[</span><span class="n">German</span> <span class="n">new</span><span class="p">]</span> <span class="p">,[</span><span class="n">Spanish</span> <span class="n">new</span><span class="p">]]</span> <span class="p">;</span>
+</code></pre></div></div>
 
-<p>以下所有指令均在root权限下执行（这不是个好习惯），如遇权限不足请加sudo</p>
+<p>获取随机数</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">name</span> <span class="o">=</span><span class="n">arc4random</span><span class="p">()</span> <span class="o">%</span> <span class="mi">3</span> <span class="p">;</span>
+<span class="kt">int</span> <span class="n">lan</span> <span class="o">=</span><span class="n">arc4random</span><span class="p">()</span> <span class="o">%</span> <span class="mi">4</span> <span class="p">;</span>
+</code></pre></div></div>
 
-<h2 id="前置条件">前置条件</h2>
+<p>声明日期类型</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">NSDate</span> <span class="o">*</span><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="n">date</span><span class="p">];</span>
+</code></pre></div></div>
 
-<ul>
-  <li>安装虚拟机
-我这里使用的是virtual box</li>
-</ul>
+<p>声明日期格式化</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">dateFormatter</span> <span class="n">setDateFormat</span><span class="o">:</span><span class="err">@</span><span class="s">"yyyy年MM月dd日"</span><span class="p">];</span>
+</code></pre></div></div>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://download.virtualbox.org/virtualbox/6.0.10/virtualbox-6.0_6.0.10-132072~Ubuntu~bionic_amd64.deb
+<p>使用格式化输出日期</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NSLog</span><span class="p">(</span><span class="err">@</span><span class="s">"%@"</span><span class="p">,[</span><span class="n">dateFormatter</span> <span class="n">stringFromDate</span><span class="o">:</span> <span class="n">date</span><span class="p">])</span>
+</code></pre></div></div>
 
-dpkg <span class="nt">-i</span> virtualbox-6.0_6.0.10-132072~Ubuntu~bionic_amd64.deb
+<p>类的声明</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">@</span><span class="n">interface</span> <span class="n">Language</span> <span class="o">:</span> <span class="n">NSObject</span> <span class="p">{</span>
+    <span class="n">NSInteger</span> <span class="n">progress_tour</span><span class="p">;</span>
+    <span class="n">NSInteger</span> <span class="n">progress_unit</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">learnOneUnit</span><span class="p">;</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">getTour</span><span class="p">;</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">getUnit</span><span class="p">;</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">bool</span><span class="p">)</span><span class="n">isFinish</span><span class="p">;</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">getName</span><span class="p">;</span>
+
+<span class="err">@</span><span class="n">end</span>
+
+<span class="err">@</span><span class="n">interface</span> <span class="n">English</span> <span class="o">:</span> <span class="n">Language</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">getName</span><span class="p">;</span>
+<span class="err">@</span><span class="n">end</span>
+
 
 </code></pre></div></div>
 
-<p>可能遇到缺失依赖的问题,安装依赖可解决</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nt">-y</span> <span class="nb">install </span>libqt5x11extras5 libsdl1.2debian
-<span class="c"># 或者</span>
-apt <span class="nt">--fix-broken</span> <span class="nb">install</span> <span class="nt">-y</span>
+<p>类的实现</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">@</span><span class="n">implementation</span> <span class="n">Language</span>
+
+<span class="o">-</span><span class="p">()</span><span class="n">init</span><span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="o">=</span><span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">progress_tour</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">progress_unit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">learnOneUnit</span><span class="p">{</span>
+    <span class="n">progress_unit</span> <span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">progress_unit</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">progress_unit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">progress_tour</span> <span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">getTour</span><span class="p">;{</span>
+    <span class="k">return</span> <span class="n">progress_tour</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">getUnit</span><span class="p">{</span>
+    <span class="k">return</span> <span class="n">progress_unit</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">bool</span><span class="p">)</span><span class="n">isFinish</span><span class="p">{</span>
+    <span class="k">return</span> <span class="n">progress_tour</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">getName</span><span class="p">{</span>
+    <span class="k">return</span> <span class="err">@</span><span class="s">"name"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="err">@</span><span class="n">end</span>
+
+<span class="err">@</span><span class="n">implementation</span> <span class="n">English</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">getName</span><span class="p">{</span>
+    <span class="k">return</span> <span class="err">@</span><span class="s">"英语"</span><span class="p">;</span>
+<span class="p">}</span>
+
 </code></pre></div></div>
 
-<p>启动虚拟机时可能因为主板未允许虚拟化而启动失败，在BIOS中设置允许虚拟化即可</p>
-
-<ul>
-  <li>安装docker</li>
-</ul>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
-
-dpkg <span class="nt">-i</span> docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
-</code></pre></div></div>
-<p>可能遇到缺失依赖问题，根据提示安装即可</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install</span> <span class="nt">-y</span> libltdl7
-<span class="c"># 或</span>
-apt <span class="nt">--fix-broken</span> <span class="nb">install</span> <span class="nt">-y</span>
-</code></pre></div></div>
-<p>检查docker是否安装成功</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker version
-</code></pre></div></div>
-
-<ul>
-  <li>安装kubectl</li>
-</ul>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-Lo</span> kubectl https://storage.googleapis.com/kubernetes-release/release/v1.9.4/bin/linux/amd64/kubectl <span class="o">&amp;&amp;</span> <span class="nb">chmod</span> +x kubectl <span class="o">&amp;&amp;</span> <span class="nb">sudo mv </span>kubectl /usr/local/bin/
-
-</code></pre></div></div>
-
-<h2 id="下载阿里云改装版minikube">下载阿里云改装版minikube</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-Lo</span> minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-linux-amd64 <span class="o">&amp;&amp;</span> <span class="nb">chmod</span> +x minikube <span class="o">&amp;&amp;</span> <span class="nb">sudo mv </span>minikube /usr/local/bin/
-</code></pre></div></div>
-
-<h2 id="启动minikube">启动minikube</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>minikube start <span class="nt">--vm-driver</span><span class="o">=</span>virtualbox <span class="nt">--registry-mirror</span><span class="o">=</span>https://registry.docker-cn.com
-</code></pre></div></div>
-<p>说明</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#指明使用的虚拟机</span>
-<span class="nt">--vm-driver</span><span class="o">=</span>virtualbox
-<span class="c">#使用阿里云镜像，解决网络问题</span>
-<span class="nt">--registry-mirror</span><span class="o">=</span>https://registry.docker-cn.com
-</code></pre></div></div>
-
-<p>可能遇到的问题：
-虚拟机启动失败
-检查虚拟机是否安装，检查BIOS设置是否允许虚拟化</p>
-
-<h2 id="检查minikube">检查minikube</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl cluster-info
+<p>使用类的方法</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">l</span> <span class="n">getName</span><span class="p">]</span>
 </code></pre></div></div>
 
 
@@ -295,17 +329,17 @@ apt <span class="nt">--fix-broken</span> <span class="nb">install</span> <span c
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/29/k8s%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8-%E4%BB%A5nginx%E4%B8%BA%E4%BE%8B/" data-toggle="tooltip" data-placement="top" title="k8s部署应用（以nginx为例）">
+                        <a href="/2019/08/29/Mac%E4%B8%8B%E4%BD%BF%E7%94%A8CImg/" data-toggle="tooltip" data-placement="top" title="Mac下使用CImg">
                         Previous<br>
-                        <span>k8s部署应用（以nginx为例）</span>
+                        <span>Mac下使用CImg</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/08/06/kubernetes%E5%AE%89%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="Kubernetes 安装">
+                        <a href="/2019/10/02/mysql%E6%B1%82%E6%97%A5%E6%9C%9F%E4%B9%8B%E5%B7%AE/" data-toggle="tooltip" data-placement="top" title="mysql求日期之差">
                         Next<br>
-                        <span>Kubernetes 安装</span>
+                        <span>mysql求日期之差</span>
                         </a>
                     </li>
                     

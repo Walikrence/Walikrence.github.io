@@ -88,6 +88,10 @@
                     </li>
                     
                     <li>
+                        <a href="/2019-12-05%20mysql%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/scratch/">Mysql解决中文乱码</a>
+                    </li>
+                    
+                    <li>
                         <a href="/tags/">Tags</a>
                     </li>
                     
@@ -182,6 +186,201 @@
                 postlist-container
             ">
     			
+<div class="post-preview">
+    <a href="/2019/12/05/mysql%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">
+        <h2 class="post-title">
+            Mysql解决中文乱码
+        </h2>
+        
+        <div class="post-content-preview">
+            Mysql解决中文乱码
+系统：ubuntu
+
+最近自己搭建后台出现中文乱码情况，经过排查发现是mysql的charater_set_server默认为latin1
+
+查看方法
+show variables like '%char%'
+
+修改方法
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+
+在末尾添加
+
+character_set_server = utf...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on December 5, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/10/02/mysql%E6%B1%82%E6%97%A5%E6%9C%9F%E4%B9%8B%E5%B7%AE/">
+        <h2 class="post-title">
+            mysql求日期之差
+        </h2>
+        
+        <div class="post-content-preview">
+            mysql求日期之差
+
+SELECT * ,
+
+TIMESTAMPDIFF(HOUR,
+
+work_time,
+
+off_duty_time
+) AS duration
+FROM stationing_service
+
+
+
+
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on October 2, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/09/24/ios%E5%BC%80%E5%8F%911-oc%E5%9F%BA%E7%A1%80/">
+        <h2 class="post-title">
+            ios开发-1
+        </h2>
+        
+        <h3 class="post-subtitle">
+            oc基础
+        </h3>
+        
+        <div class="post-content-preview">
+            ios开发-1
+
+oc基础
+
+ NSArray *nameArr = [NSArray array];
+    nameArr = @[@"张三",@"李四",@"王五"];
+    int name =arc4random() % 3 ;
+    
+    
+    NSArray *arr = [NSArray array];
+    arr =  @[[English new],[Ja...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on September 24, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/08/29/Mac%E4%B8%8B%E4%BD%BF%E7%94%A8CImg/">
+        <h2 class="post-title">
+            Mac下使用CImg
+        </h2>
+        
+        <div class="post-content-preview">
+            Mac下使用CImg
+
+环境
+macOS 10.14.4
+
+准备
+下载CImg.h
+编译
+
+  #include "CImg.h"
+
+
+
+g++ test.cpp -o main
+
+
+报错
+
+
+In file included from test.cpp:1:
+./CImg.h:371:10: fatal error: 'X11/Xlib.h' file not found
+#include...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 29, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/08/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEredis/">
+        <h2 class="post-title">
+            安装配置redis
+        </h2>
+        
+        <div class="post-content-preview">
+            安装配置redis
+
+环境
+Ubuntu 18.04
+
+apt安装
+sudo apt install redis-server
+
+
+检查是否安装成功
+redis-cli -v 
+
+
+源代码安装
+apt install make -y
+apt install gcc -y
+wget http://download.redis.io/releases/redis-4.0.11.tar.gz
+ta...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 12, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/08/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEmysql/">
+        <h2 class="post-title">
+            安装配置mysql
+        </h2>
+        
+        <div class="post-content-preview">
+            安装配置mysql
+
+环境
+Ubuntu 18.04
+
+安装
+sudo apt install mysql-server -y
+
+初始化配置
+sudo mysql_secure_installation
+
+
+修改配置
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+原为
+bind-address            = 127.0.0.1
+
+修改为
+bind...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 12, 2019
+    </p>
+</div>
+<hr>
+
 <div class="post-preview">
     <a href="/2019/08/08/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0docker-registry/">
         <h2 class="post-title">
@@ -299,188 +498,6 @@ Ubuntu 18.04.2
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/07/29/k8s%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8-%E4%BB%A5nginx%E4%B8%BA%E4%BE%8B/">
-        <h2 class="post-title">
-            k8s部署应用（以nginx为例）
-        </h2>
-        
-        <div class="post-content-preview">
-            k8s部署应用（以nginx为例）
-
-概念
-
-deploy
-
-  A Deployment controller provides declarative updates for Pods and ReplicaSets.
-
-
-deploy 提供一个更新pod 和 replicasets的更新说明
-
-
-  You describe a desired state in a Deploymen...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 29, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/%E7%88%AC%E5%8F%96%E5%90%89%E6%9E%97%E6%95%96%E4%B8%9C%E8%B4%A2%E6%8A%A5/">
-        <h2 class="post-title">
-            爬取吉林敖东财报
-        </h2>
-        
-        <h3 class="post-subtitle">
-            python3
-        </h3>
-        
-        <div class="post-content-preview">
-            爬取吉林敖东财报
-
-  python3
-
-
-直接上代码吧
-from bs4 import BeautifulSoup
-import  urllib.request
-import os
-
-url = r'http://gg.cfi.cn/cbgg/212/000623.html'
-res = urllib.request.urlopen(url)
-html = res.read().decod...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/git-clone-%E9%80%9F%E5%BA%A6%E6%85%A2/">
-        <h2 class="post-title">
-            git clone 速度慢怎么办
-        </h2>
-        
-        <div class="post-content-preview">
-            git clone 速度慢怎么办
-天朝git clone 速度慢怎么办？
-解决方法
-
-git config --global http.proxy socks5://127.0.0.1:1080
-git config --global https.proxy socks5://127.0.0.1:1080
-
-1080替换成对应的ss本地端口，默认为1080
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/django2.2-%E7%BB%93%E5%90%88-vue.js-%E5%BC%80%E5%8F%91/">
-        <h2 class="post-title">
-            django2.2 结合 vue.js 开发
-        </h2>
-        
-        <div class="post-content-preview">
-            django2.2 结合 vue.js 开发
-最近在用django开发后端，配合同学的vue.js前端。没用过vue.js
-搜啦下教程终于解决啦。
-
-增加中间件
-
-'corsheaders.middleware.CorsMiddleware',
-CORS_ORIGIN_ALLOW_ALL = True
-
-完成后setting.py长这样
-MIDDLEWARE = [
-    'django....
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/Ubuntu14.04-%E5%AE%89%E8%A3%85ss/">
-        <h2 class="post-title">
-            Ubuntu18.04 安装ss
-        </h2>
-        
-        <div class="post-content-preview">
-            Ubuntu18.04 安装ss
-代码如下
-先进入root用户
-apt install python-pi
-pip install git+https://github.com/shadowsocks/shadowsocks.git@master
-
-
-{
-    "server":"服务器 IP 或是域名",
-    "server_port":端口号,
-    "local_address...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/">
-        <h2 class="post-title">
-            Ubuntu 终端使用 ss
-        </h2>
-        
-        <div class="post-content-preview">
-            Ubuntu 终端使用 ss
-
-  python Ubuntu
-
-
-
-  安装 proxychains
-
-
-apt install proxychains
-
-
-
-  编辑配置文件
-
-
-vi /etc/proxychains.conf
-
-在最后一行加上
-socks5 127.0.0.1 1080
-
-
-
-  重启
-
-
-使用
-在命令前加上proxychains即可
-例如：
-proxychains ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -551,7 +568,7 @@ proxychains ...
                             
                         
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="3">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="5">
                                     ubuntu
                                 </a>
                             
@@ -580,6 +597,28 @@ proxychains ...
                                 <a href="/tags/#nginx" title="nginx" rel="2">
                                     nginx
                                 </a>
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#mysql" title="mysql" rel="2">
+                                    mysql
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
                             
                         
                             
