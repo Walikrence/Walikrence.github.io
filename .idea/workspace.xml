@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f606311b-5235-4e31-825e-7d53a998cab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/2019-12-05 mysql中文乱码/scratch.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/2019-12-05 mysql中文乱码.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2020-01-08-apt使用国内镜像源.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2020-01-08-docker安装.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019-12-05 mysql中文乱码/scratch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-12-05 mysql中文乱码/scratch/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019/07/23/实习指南/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/23/实习指南/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019/07/26/NUMA(非一致性内存架构)本/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/26/NUMA(非一致性内存架构)本/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019/07/26/mac-使用ssh登陆阿里云-失败开发的/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/26/mac-使用ssh登陆阿里云-失败开发的/index.html" afterDir="false" />
@@ -19,6 +20,12 @@
       <change beforePath="$PROJECT_DIR$/_site/2019/08/06/kubernetes安装/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/06/kubernetes安装/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019/08/08/nginx配置反向代理/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/08/nginx配置反向代理/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019/08/08/搭建本地docker-registry/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/08/搭建本地docker-registry/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/08/12/安装配置mysql/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/12/安装配置mysql/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/08/12/安装配置redis/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/12/安装配置redis/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/08/29/Mac下使用CImg/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/29/Mac下使用CImg/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/09/24/ios开发1-oc基础/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/09/24/ios开发1-oc基础/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/10/02/mysql求日期之差/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/10/02/mysql求日期之差/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2019/12/05/mysql中文乱码/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/12/05/mysql中文乱码/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
@@ -49,10 +56,13 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Markdown" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/_posts" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_posts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/2019-12-05 mysql中文乱码" />
     </key>
@@ -79,8 +89,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575557997725</updated>
-      <workItem from="1575557999350" duration="770000" />
+      <workItem from="1575557999350" duration="1004000" />
+      <workItem from="1578453932237" duration="1792000" />
     </task>
+    <task id="LOCAL-00001" summary="修正标题">
+      <created>1578454013652</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578454013652</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,10 +110,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="修正标题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修正标题" />
   </component>
 </project>

@@ -1,13 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>walirkrence Blog</title>
+    <title>walikrence Blog</title>
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 05 Dec 2019 23:16:49 +0800</pubDate>
-    <lastBuildDate>Thu, 05 Dec 2019 23:16:49 +0800</lastBuildDate>
+    <pubDate>Wed, 08 Jan 2020 16:02:35 +0800</pubDate>
+    <lastBuildDate>Wed, 08 Jan 2020 16:02:35 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>docker安装</title>
+        <description>&lt;h1 id=&quot;docker-安装&quot;&gt;Docker 安装&lt;/h1&gt;
+
+&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker.io &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;docker
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;使用国内镜像&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/docker/daemon.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;registry-mirrors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://registry.docker-cn.com&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl daemon-reload
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 08 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/08/docker%E5%AE%89%E8%A3%85/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/08/docker%E5%AE%89%E8%A3%85/</guid>
+        
+        <category>Docker</category>
+        
+        <category>Ubuntu</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>apt使用国内镜像源</title>
+        <description>&lt;h1 id=&quot;apt使用国内镜像源&quot;&gt;apt使用国内镜像源&lt;/h1&gt;
+
+&lt;p&gt;apt国内镜像源有阿里源，163源，清华源，中科大源等。&lt;br /&gt;
+这里以阿里源为例子&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.aliyun.com/mirror&quot;&gt;阿里镜像站&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.53322f70gKan05&quot;&gt;Ubuntu镜像&lt;/a&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;系统版本：Ubuntu 18.04(bionic)&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/apt/sources.list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 08 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/08/apt%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/08/apt%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+        
+        <category>apt</category>
+        
+        <category>Ubuntu</category>
+        
+        
+      </item>
     
       <item>
         <title>Mysql解决中文乱码</title>
@@ -787,287 +867,6 @@ curl 127.0.0.1:8080
         <guid isPermaLink="true">http://localhost:4000/2019/08/08/nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</guid>
         
         <category>nginx</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Kubernetes 安装</title>
-        <description>&lt;h1 id=&quot;kubernetes-安装&quot;&gt;Kubernetes 安装&lt;/h1&gt;
-
-&lt;h2 id=&quot;安装docker&quot;&gt;安装docker&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;vim &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; get.docker.com &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; get-docker.sh
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;sh get-docker.sh &lt;span class=&quot;nt&quot;&gt;--mirror&lt;/span&gt; Aliyun
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;docker
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start docker
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;groupadd docker
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;usermod &lt;span class=&quot;nt&quot;&gt;-aG&lt;/span&gt; docker &lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;usermod &lt;span class=&quot;nt&quot;&gt;-aG&lt;/span&gt; docker &amp;lt;你的用户名&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;docker使用镜像&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/docker/daemon.json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;修改成&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;registry-mirrors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://registry.docker-cn.com&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl daemon-reload
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart docker
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;关闭交换&quot;&gt;关闭交换&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;swapoff &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;永久关闭交换&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/fstab
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-vim highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;UUID&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;42&lt;/span&gt;cf9d46&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;ae0d&lt;span class=&quot;m&quot;&gt;-488&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-9&lt;/span&gt;e3a&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;b6f78708bea1 /               ext4    errors&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;remount&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;ro &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;       &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-#/swapfile                                 none            &lt;span class=&quot;k&quot;&gt;swap&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;sw&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;       &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;修改后重启&lt;/p&gt;
-
-&lt;h2 id=&quot;安装kubelet-kubeadm-kubectl&quot;&gt;安装kubelet kubeadm kubectl&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; apt-transport-https curl
-&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; /etc/apt/sources.list.d/kubernetes.list
-deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main
-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
-&lt;/span&gt;apt-get update
-apt-key adv &lt;span class=&quot;nt&quot;&gt;--keyserver&lt;/span&gt; keyserver.ubuntu.com &lt;span class=&quot;nt&quot;&gt;--recv-keys&lt;/span&gt; 6A030B21BA07F4FB
-
-apt-get update
-apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这里可能会出一点问题，最开始中科大的源是可以用的，不过这几天用不了了，所以换成阿里云的源可以试试&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; /etc/apt/sources.list.d/kubernetes.list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; apt-transport-https curl
-&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; /etc/apt/sources.list.d/kubernetes.list
-deb http://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
-&lt;/span&gt;apt-get update
-apt-key adv &lt;span class=&quot;nt&quot;&gt;--keyserver&lt;/span&gt; keyserver.ubuntu.com &lt;span class=&quot;nt&quot;&gt;--recv-keys&lt;/span&gt; 6A030B21BA07F4FB
-
-apt-get update
-apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在末尾添加&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Environment=&quot;KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl daemon-reload
-systemctl restart kubelet
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;关闭防火墙&quot;&gt;关闭防火墙&lt;/h2&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/sysctl.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;在末尾添加&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;net.bridge.bridge-nf-call-ip6tables &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
-net.bridge.bridge-nf-call-iptables &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;下载需要的镜像并修改标签&quot;&gt;下载需要的镜像并修改标签&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.15.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.15.1 k8s.gcr.io/kube-apiserver:v1.15.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.15.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.15.1 k8s.gcr.io/kube-controller-manager:v1.15.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.15.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.15.1 k8s.gcr.io/kube-scheduler:v1.15.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.15.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.15.1 k8s.gcr.io/kube-proxy:v1.15.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1 k8s.gcr.io/pause:3.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10 k8s.gcr.io/etcd:3.3.10
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.3.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.3.1 k8s.gcr.io/coredns:1.3.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause-amd64:3.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/ k8s.gcr.io/
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.0
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4 k8s.gcr.io/heapster-amd64:v1.5.4
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-grafana-amd64:v5.0.4
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-grafana-amd64:v5.0.4 k8s.gcr.io/heapster-grafana-amd64:v5.0.4
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-influxdb-amd64:v1.5.2
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-influxdb-amd64:v1.5.2 k8s.gcr.io/heapster-influxdb-amd64:v1.5.2
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;以上所有步骤在所有master和slave机器上完成。&lt;/p&gt;
-
-&lt;h1 id=&quot;master节点步骤&quot;&gt;master节点步骤&lt;/h1&gt;
-
-&lt;p&gt;完成上面步骤后&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;kubeadm init &lt;span class=&quot;nt&quot;&gt;--kubernetes-version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;v1.15.1  &lt;span class=&quot;nt&quot;&gt;--pod-network-cidr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;192.168.0.0/16
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;!-- sudo kubeadm init --kubernetes-version=v1.15.1  --pod-network-cidr=10.244.0.0/16 --&gt;
-&lt;p&gt;启动&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.kube
-&lt;span class=&quot;nb&quot;&gt;sudo cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; /etc/kubernetes/admin.conf &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.kube/config
-&lt;span class=&quot;nb&quot;&gt;sudo chown&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;:&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.kube/config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;初始化master节点&lt;/p&gt;
-
-&lt;p&gt;拉取网络插件calico镜像&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker pull quay.io/calico/node:v3.1.3
-docker pull quay.io/calico/cni:v3.1.3
-docker pull quay.io/calico/typha:v0.7.4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;配置网络插件&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-kubectl apply &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;配置完成后可能ssh就断开了，因为calico的网段也是192.168.0.0。暂时没有什么很好的解决方案，但是通过连在同一个交换机上的电脑仍然可以ssh连接或者直接操作master节点。所以我用笔记本的有线网络连接集群，无线网络连接控制电脑来控制集群&lt;/p&gt;
-
-&lt;h2 id=&quot;打印加入集群的命令&quot;&gt;打印加入集群的命令&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubeadm token create &lt;span class=&quot;nt&quot;&gt;--print-join-command&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubeadm &lt;span class=&quot;nb&quot;&gt;join &lt;/span&gt;192.168.3.51:6443 &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt; loi96z.64to8ymreeus3bi1     &lt;span class=&quot;nt&quot;&gt;--discovery-token-ca-cert-hash&lt;/span&gt; sha256:fceb3233a84491d8ed9b5937869e92d236153fcab3f08d01356da01aea9ce916 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubeadm &lt;span class=&quot;nb&quot;&gt;join &lt;/span&gt;192.168.3.51:6443 &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt; u2detf.qlouwrt8ee9ch2q5     &lt;span class=&quot;nt&quot;&gt;--discovery-token-ca-cert-hash&lt;/span&gt; sha256:b035c8325964ae4ffcf25140a5f2ac89042b844b4c1c5084748c5dff5f3e2d07 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;slave节点&quot;&gt;slave节点&lt;/h1&gt;
-
-&lt;p&gt;完成初始化步骤后，通过master节点打印出的加入集群命令加入集群&lt;/p&gt;
-
-&lt;p&gt;例如&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubeadm &lt;span class=&quot;nb&quot;&gt;join &lt;/span&gt;192.168.3.51:6443 &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt; yrfk5v.o7jmxj03lopu5042     &lt;span class=&quot;nt&quot;&gt;--discovery-token-ca-cert-hash&lt;/span&gt; sha256:b035c8325964ae4ffcf25140a5f2ac89042b844b4c1c5084748c5dff5f3e2d07 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Tue, 06 Aug 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/08/06/kubernetes%E5%AE%89%E8%A3%85/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/08/06/kubernetes%E5%AE%89%E8%A3%85/</guid>
-        
-        <category>kubernetes</category>
-        
-        <category>国内环境</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>minikube安装（国内环境）</title>
-        <description>&lt;h1 id=&quot;minikube安装国内环境&quot;&gt;minikube安装（国内环境）&lt;/h1&gt;
-
-&lt;p&gt;国内环境的原因，minikube本身存在很多网络问题，给minikube初学者造成了很多障碍。不过阿里云有改装版的minikube可以供大家使用从而绕开很多网络问题。&lt;/p&gt;
-
-&lt;p&gt;参考资料：&lt;a href=&quot;https://yq.aliyun.com/articles/574255&quot;&gt;使用minikube安装k8s单节点集群&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;环境&quot;&gt;环境&lt;/h2&gt;
-&lt;p&gt;Ubuntu 18.04.2 &lt;br /&gt;
-2核4G&lt;/p&gt;
-
-&lt;p&gt;以下所有指令均在root权限下执行（这不是个好习惯），如遇权限不足请加sudo&lt;/p&gt;
-
-&lt;h2 id=&quot;前置条件&quot;&gt;前置条件&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;安装虚拟机
-我这里使用的是virtual box&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://download.virtualbox.org/virtualbox/6.0.10/virtualbox-6.0_6.0.10-132072~Ubuntu~bionic_amd64.deb
-
-dpkg &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; virtualbox-6.0_6.0.10-132072~Ubuntu~bionic_amd64.deb
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;可能遇到缺失依赖的问题,安装依赖可解决&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;libqt5x11extras5 libsdl1.2debian
-&lt;span class=&quot;c&quot;&gt;# 或者&lt;/span&gt;
-apt &lt;span class=&quot;nt&quot;&gt;--fix-broken&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;启动虚拟机时可能因为主板未允许虚拟化而启动失败，在BIOS中设置允许虚拟化即可&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;安装docker&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
-
-dpkg &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; docker-ce_17.03.0~ce-0~ubuntu-xenial_amd64.deb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;可能遇到缺失依赖问题，根据提示安装即可&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; libltdl7
-&lt;span class=&quot;c&quot;&gt;# 或&lt;/span&gt;
-apt &lt;span class=&quot;nt&quot;&gt;--fix-broken&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;检查docker是否安装成功&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker version
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;安装kubectl&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-Lo&lt;/span&gt; kubectl https://storage.googleapis.com/kubernetes-release/release/v1.9.4/bin/linux/amd64/kubectl &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x kubectl &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo mv &lt;/span&gt;kubectl /usr/local/bin/
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;下载阿里云改装版minikube&quot;&gt;下载阿里云改装版minikube&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-Lo&lt;/span&gt; minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-linux-amd64 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x minikube &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo mv &lt;/span&gt;minikube /usr/local/bin/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;启动minikube&quot;&gt;启动minikube&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;minikube start &lt;span class=&quot;nt&quot;&gt;--vm-driver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;virtualbox &lt;span class=&quot;nt&quot;&gt;--registry-mirror&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://registry.docker-cn.com
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;说明&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#指明使用的虚拟机&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;--vm-driver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;virtualbox
-&lt;span class=&quot;c&quot;&gt;#使用阿里云镜像，解决网络问题&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;--registry-mirror&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://registry.docker-cn.com
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;可能遇到的问题：
-虚拟机启动失败
-检查虚拟机是否安装，检查BIOS设置是否允许虚拟化&lt;/p&gt;
-
-&lt;h2 id=&quot;检查minikube&quot;&gt;检查minikube&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl cluster-info
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 29 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/29/minikube_%E5%AE%89%E8%A3%85/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/29/minikube_%E5%AE%89%E8%A3%85/</guid>
-        
-        <category>minikube</category>
-        
-        <category>k8s</category>
-        
-        <category>kubernetes</category>
-        
-        <category>国内环境</category>
         
         
       </item>
