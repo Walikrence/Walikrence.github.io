@@ -34,11 +34,11 @@ services:
     gitlab:
       image: 'twang2218/gitlab-ce-zh:11.1'
       restart: always
-      hostname: '172.20.10.8'
+      hostname: '172.20.10.9'
       environment:
         TZ: 'Asia/Shanghai'
         GITLAB_OMNIBUS_CONFIG: |
-          external_url 'http://172.20.10.8'
+          external_url 'http://172.20.10.9'
           gitlab_rails['time_zone'] = 'Asia/Shanghai'
           gitlab_rails['gitlab_shell_ssh_port'] = 2222
       ports:
@@ -52,6 +52,7 @@ services:
 volumes:
     config:
     data:
+    logs:
 ```
 ## 启动
 ```sh 

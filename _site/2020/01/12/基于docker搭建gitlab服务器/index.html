@@ -225,11 +225,11 @@
     <span class="na">gitlab</span><span class="pi">:</span>
       <span class="na">image</span><span class="pi">:</span> <span class="s1">'</span><span class="s">twang2218/gitlab-ce-zh:11.1'</span>
       <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
-      <span class="na">hostname</span><span class="pi">:</span> <span class="s1">'</span><span class="s">172.20.10.8'</span>
+      <span class="na">hostname</span><span class="pi">:</span> <span class="s1">'</span><span class="s">172.20.10.9'</span>
       <span class="na">environment</span><span class="pi">:</span>
         <span class="na">TZ</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Asia/Shanghai'</span>
         <span class="na">GITLAB_OMNIBUS_CONFIG</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">external_url 'http://172.20.10.8'</span>
+          <span class="s">external_url 'http://172.20.10.9'</span>
           <span class="s">gitlab_rails['time_zone'] = 'Asia/Shanghai'</span>
           <span class="s">gitlab_rails['gitlab_shell_ssh_port'] = 2222</span>
       <span class="na">ports</span><span class="pi">:</span>
@@ -243,6 +243,7 @@
 <span class="na">volumes</span><span class="pi">:</span>
     <span class="na">config</span><span class="pi">:</span>
     <span class="na">data</span><span class="pi">:</span>
+    <span class="na">logs</span><span class="pi">:</span>
 </code></pre></div></div>
 <h2 id="启动">启动</h2>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up <span class="nt">-d</span>
