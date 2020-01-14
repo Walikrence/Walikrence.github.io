@@ -187,6 +187,39 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2019/08/08/nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
+        <h2 class="post-title">
+            nginx配置反向代理
+        </h2>
+        
+        <div class="post-content-preview">
+            nginx配置反向代理
+
+下载nginx
+sudo apt install nginx -y
+
+
+配置反向代理
+vim /etc/nginx/nginx.conf
+
+
+修改为
+events {
+  worker_connections  4096;  ## Default: 1024
+}
+http {
+    server {
+            listen  80;
+        ...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 8, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2019/08/06/kubernetes%E5%AE%89%E8%A3%85/">
         <h2 class="post-title">
             Kubernetes 安装
@@ -448,28 +481,6 @@ proxychains ...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/">
-        <h2 class="post-title">
-            阿里云重置后mac用ssh登陆服务器失败
-        </h2>
-        
-        <div class="post-content-preview">
-            阿里云重置后mac用ssh登陆服务器失败
-
-出现
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 26, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -602,9 +613,11 @@ proxychains ...
                             
                         
                             
-                                <a href="/tags/#Ubuntu" title="Ubuntu" rel="2">
+                                <a href="/tags/#Ubuntu" title="Ubuntu" rel="3">
                                     Ubuntu
                                 </a>
+                            
+                        
                             
                         
                             

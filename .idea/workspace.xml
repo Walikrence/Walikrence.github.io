@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f606311b-5235-4e31-825e-7d53a998cab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2020-01-08-apt使用国内镜像源.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_posts/2020-01-08-docker安装.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2020-01-11-虚拟机磁盘扩容.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019-12-05 mysql中文乱码/scratch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-12-05 mysql中文乱码/scratch/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019/07/23/实习指南/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/23/实习指南/index.html" afterDir="false" />
@@ -26,12 +25,13 @@
       <change beforePath="$PROJECT_DIR$/_site/2019/09/24/ios开发1-oc基础/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/09/24/ios开发1-oc基础/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019/10/02/mysql求日期之差/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/10/02/mysql求日期之差/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2019/12/05/mysql中文乱码/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/12/05/mysql中文乱码/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2020/01/08/apt使用国内镜像源/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2020/01/08/apt使用国内镜像源/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2020/01/08/docker安装/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2020/01/08/docker安装/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/offline.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/offline.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,13 +58,14 @@
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/_posts" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/_posts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/2019-12-05 mysql中文乱码" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_posts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -90,7 +91,10 @@
       <option name="presentableId" value="Default" />
       <updated>1575557997725</updated>
       <workItem from="1575557999350" duration="1004000" />
-      <workItem from="1578453932237" duration="1792000" />
+      <workItem from="1578453932237" duration="2473000" />
+      <workItem from="1578887696561" duration="644000" />
+      <workItem from="1578908273823" duration="2000" />
+      <workItem from="1578908291758" duration="1123000" />
     </task>
     <task id="LOCAL-00001" summary="修正标题">
       <created>1578454013652</created>

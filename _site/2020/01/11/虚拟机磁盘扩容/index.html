@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>nginx配置反向代理 - walikrence的博客 | walirkrence Blog</title>
+    <title>虚拟机磁盘扩容 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/08/08/nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -158,13 +158,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/post-bg-2015.jpg" width="0" height="0"> -->
+<!-- <img src="/img/bg/post-bg-2020.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-2015.jpg')
+        background-image: url('/img/bg/post-bg-2020.jpg')
     }
 
     
@@ -177,15 +177,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#nginx" title="nginx">nginx</a>
+                        <a class="tag" href="/tags/#虚拟机" title="虚拟机">虚拟机</a>
+                        
+                        <a class="tag" href="/tags/#Ubuntu" title="Ubuntu">Ubuntu</a>
                         
                     </div>
-                    <h1>nginx配置反向代理</h1>
+                    <h1>虚拟机磁盘扩容</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on August 8, 2019</span>
+                    <span class="meta">Posted by walikrence on January 11, 2020</span>
                 </div>
             </div>
         </div>
@@ -203,51 +205,31 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="nginx配置反向代理">nginx配置反向代理</h1>
+				<h1 id="虚拟机磁盘扩容">虚拟机磁盘扩容</h1>
 
-<p>下载nginx</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>nginx <span class="nt">-y</span>
+<p>系统: ubuntu-18.04.3-live-server-amd64</p>
+
+<p>今天虚拟机安装gitlab的时候遇到一个问题，docker image拉取成功后解压失败，
+提示空间不足。</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">df</span> <span class="nt">-h</span>
 </code></pre></div></div>
 
-<p>配置反向代理</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/nginx/nginx.conf
+<p><img src="../../../../img/虚拟机磁盘扩容/2.png" alt="" /></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>fdisk <span class="nt">-l</span>
 </code></pre></div></div>
 
-<p>修改为</p>
-<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">events</span> {
-  <span class="n">worker_connections</span>  <span class="m">4096</span>;  <span class="c">## Default: 1024
-</span>}
-<span class="n">http</span> {
-    <span class="n">server</span> {
-            <span class="n">listen</span>  <span class="m">80</span>;
-            <span class="n">server_name</span> <span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>;
-            <span class="n">location</span> / {
-                    <span class="n">proxy_pass</span> <span class="n">http</span>://<span class="m">192</span>.<span class="m">168</span>.<span class="m">3</span>.<span class="m">51</span>:<span class="m">30003</span>;
-            }
-    }
-    <span class="n">server</span> {
-            <span class="n">listen</span>  <span class="m">8080</span>;
-            <span class="n">server_name</span> <span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>;
-            <span class="n">location</span> / {
-                    <span class="n">proxy_pass</span> <span class="n">http</span>://<span class="m">192</span>.<span class="m">168</span>.<span class="m">3</span>.<span class="m">51</span>:<span class="m">31678</span>;
-            }            
-    }
+<p><img src="../../../../img/虚拟机磁盘扩容/1.png" alt="" /></p>
 
-}
+<p>将 /dev/mapper/ubuntu–vg-ubuntu–lv 增大5000M</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lvextend <span class="nt">-L</span> + 5000M /dev/mapper/ubuntu--vg-ubuntu--lv
+resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 </code></pre></div></div>
-<p>上述配置讲指向本级的80端口的流量代理到 http://192.168.3.51:30003;
-把本机8080端口的流量代理到 http://192.168.3.51:31678;
-需要代理多个端口可直接增加</p>
+<p><img src="../../../../img/虚拟机磁盘扩容/3.png" alt="" /></p>
 
-<p>重启生效</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nginx -s reload
-</code></pre></div></div>
+<p>参考链接</p>
 
-<p>测试</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl 127.0.0.1:80
-curl 127.0.0.1:8080
-</code></pre></div></div>
-<p>完成</p>
+<p><a href="https://man.linuxde.net/lvextend">lvextend</a> <br />
+<a href="https://man.linuxde.net/resize2fs">resize2fs</a></p>
 
 
                 <hr style="visibility: hidden;">
@@ -255,19 +237,12 @@ curl 127.0.0.1:8080
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/08/06/kubernetes%E5%AE%89%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="Kubernetes 安装">
+                        <a href="/2020/01/08/docker%E5%AE%89%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="docker安装">
                         Previous<br>
-                        <span>Kubernetes 安装</span>
+                        <span>docker安装</span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2019/08/08/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0docker-registry/" data-toggle="tooltip" data-placement="top" title="搭建本地docker registry">
-                        Next<br>
-                        <span>搭建本地docker registry</span>
-                        </a>
-                    </li>
                     
                 </ul>
 
