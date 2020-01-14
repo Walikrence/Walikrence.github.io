@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f606311b-5235-4e31-825e-7d53a998cab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2020-01-11-虚拟机磁盘扩容.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019-12-05 mysql中文乱码/scratch/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019-12-05 mysql中文乱码/scratch/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/23/实习指南/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/23/实习指南/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/26/NUMA(非一致性内存架构)本/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/26/NUMA(非一致性内存架构)本/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/26/mac-使用ssh登陆阿里云-失败开发的/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/26/mac-使用ssh登陆阿里云-失败开发的/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/Hello-2019/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/Hello-2019/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/Ubuntu-终端使用-ss/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/Ubuntu-终端使用-ss/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/Ubuntu14.04-安装ss/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/Ubuntu14.04-安装ss/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/django2.2-结合-vue.js-开发/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/django2.2-结合-vue.js-开发/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/git-clone-速度慢/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/git-clone-速度慢/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/27/爬取吉林敖东财报/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/27/爬取吉林敖东财报/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/29/k8s部署应用-以nginx为例/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/29/k8s部署应用-以nginx为例/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/07/29/minikube_安装/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/07/29/minikube_安装/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/08/06/kubernetes安装/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/06/kubernetes安装/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/08/08/nginx配置反向代理/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/08/nginx配置反向代理/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/08/08/搭建本地docker-registry/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/08/搭建本地docker-registry/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/08/12/安装配置mysql/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/12/安装配置mysql/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/08/12/安装配置redis/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/12/安装配置redis/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/08/29/Mac下使用CImg/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/08/29/Mac下使用CImg/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/09/24/ios开发1-oc基础/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/09/24/ios开发1-oc基础/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/10/02/mysql求日期之差/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/10/02/mysql求日期之差/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2019/12/05/mysql中文乱码/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2019/12/05/mysql中文乱码/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2020/01/08/apt使用国内镜像源/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2020/01/08/apt使用国内镜像源/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2020/01/08/docker安装/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2020/01/08/docker安装/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-11-虚拟机磁盘扩容.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-11-虚拟机磁盘扩容.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +65,9 @@
       <workItem from="1578453932237" duration="2473000" />
       <workItem from="1578887696561" duration="644000" />
       <workItem from="1578908273823" duration="2000" />
-      <workItem from="1578908291758" duration="1123000" />
+      <workItem from="1578908291758" duration="1220000" />
+      <workItem from="1578964309124" duration="3000" />
+      <workItem from="1578964329120" duration="120000" />
     </task>
     <task id="LOCAL-00001" summary="修正标题">
       <created>1578454013652</created>

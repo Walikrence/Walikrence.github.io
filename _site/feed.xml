@@ -5,8 +5,8 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 14 Jan 2020 08:54:39 +0800</pubDate>
-    <lastBuildDate>Tue, 14 Jan 2020 08:54:39 +0800</lastBuildDate>
+    <pubDate>Tue, 14 Jan 2020 09:14:13 +0800</pubDate>
+    <lastBuildDate>Tue, 14 Jan 2020 09:14:13 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -31,11 +31,19 @@
 resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;../../../../img/虚拟机磁盘扩容/3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vgdisplay
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;../../../../img/虚拟机磁盘扩容/4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;pv,pe,vg,lv&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/虚拟机磁盘扩容/5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;参考链接&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://man.linuxde.net/lvextend&quot;&gt;lvextend&lt;/a&gt; &lt;br /&gt;
-&lt;a href=&quot;https://man.linuxde.net/resize2fs&quot;&gt;resize2fs&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;https://man.linuxde.net/resize2fs&quot;&gt;resize2fs&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://wangying.sinaapp.com/archives/2301&quot;&gt;Linux磁盘管理：LVM逻辑卷基本概念及LVM的工作原理&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 11 Jan 2020 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2020/01/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/</link>
