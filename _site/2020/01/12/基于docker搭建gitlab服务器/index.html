@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>实习指南 - walikrence的博客 | walirkrence Blog</title>
+    <title>基于docker搭建gitlab服务器 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/23/%E5%AE%9E%E4%B9%A0%E6%8C%87%E5%8D%97/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/12/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -158,13 +158,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/post-bg-2015.jpg" width="0" height="0"> -->
+<!-- <img src="/img/bg/post-bg-2020.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-2015.jpg')
+        background-image: url('/img/bg/post-bg-2020.jpg')
     }
 
     
@@ -177,21 +177,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#minikube" title="minikube">minikube</a>
+                        <a class="tag" href="/tags/#gitlab" title="gitlab">gitlab</a>
                         
-                        <a class="tag" href="/tags/#k8s" title="k8s">k8s</a>
-                        
-                        <a class="tag" href="/tags/#kubernetes" title="kubernetes">kubernetes</a>
-                        
-                        <a class="tag" href="/tags/#国内环境" title="国内环境">国内环境</a>
+                        <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
                         
                     </div>
-                    <h1>实习指南</h1>
+                    <h1>基于docker搭建gitlab服务器</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on July 23, 2019</span>
+                    <span class="meta">Posted by walikrence on January 12, 2020</span>
                 </div>
             </div>
         </div>
@@ -209,27 +205,70 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="实习">实习</h1>
-<p><a href="https://job.bytedance.com/inwtern">字节跳动</a> <br />
-<a href="https://campus.163.com/app/campus/recruitment4campus?projectId=19">网易</a><br />
-<a href="https://join.qq.com/">腾讯</a><br />
-<a href="https://campus.alibaba.com/trainProcess.html">阿里</a><br />
-<a href="http://hr.huya.com/campus_apply/huya/4112">虎牙</a><br /></p>
-<h1 id="简历">简历</h1>
-<p><a href="https://gitee.com/itsay/resume">效果</a><br />
-<a href="https://itsay.gitee.io/resume/">源码</a><br /></p>
+				<h1 id="基于docker搭建gitlab服务器">基于docker搭建gitlab服务器</h1>
 
+<p>系统: ubuntu-18.04.3-live-server-amd64</p>
+
+<p>今天想基于docker搭建一个gitlab服务器,以下步骤基于已有docker和docker-compose</p>
+
+<h2 id="找到一个docker-image">找到一个docker image</h2>
+
+<p><a href="https://hub.docker.com/r/twang2218/gitlab-ce-zh">gitlab中文社区版</a></p>
+
+<h2 id="找到一个合适的版本并下载">找到一个合适的版本并下载</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull twang2218/gitlab-ce-zh:11.1
+</code></pre></div></div>
+
+<h2 id="写一个docker-compose">写一个docker compose</h2>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+<span class="na">services</span><span class="pi">:</span>
+    <span class="na">gitlab</span><span class="pi">:</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s1">'</span><span class="s">twang2218/gitlab-ce-zh:11.1'</span>
+      <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+      <span class="na">hostname</span><span class="pi">:</span> <span class="s1">'</span><span class="s">172.20.10.8'</span>
+      <span class="na">environment</span><span class="pi">:</span>
+        <span class="na">TZ</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Asia/Shanghai'</span>
+        <span class="na">GITLAB_OMNIBUS_CONFIG</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">external_url 'http://172.20.10.8'</span>
+          <span class="s">gitlab_rails['time_zone'] = 'Asia/Shanghai'</span>
+          <span class="s">gitlab_rails['gitlab_shell_ssh_port'] = 2222</span>
+      <span class="na">ports</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s1">'</span><span class="s">80:80'</span>
+        <span class="pi">-</span> <span class="s1">'</span><span class="s">8443:443'</span>
+        <span class="pi">-</span> <span class="s1">'</span><span class="s">2222:22'</span>
+      <span class="na">volumes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">config:/etc/gitlab</span>
+        <span class="pi">-</span> <span class="s">data:/var/opt/gitlab</span>
+        <span class="pi">-</span> <span class="s">logs:/var/log/gitlab</span>
+<span class="na">volumes</span><span class="pi">:</span>
+    <span class="na">config</span><span class="pi">:</span>
+    <span class="na">data</span><span class="pi">:</span>
+</code></pre></div></div>
+<h2 id="启动">启动</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up <span class="nt">-d</span>
+</code></pre></div></div>
+
+<h2 id="关闭">关闭</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose down
+</code></pre></div></div>
 
 
                 <hr style="visibility: hidden;">
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2020/01/12/git%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/" data-toggle="tooltip" data-placement="top" title="git使用ssh登录">
+                        Previous<br>
+                        <span>git使用ssh登录</span>
+                        </a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2019/07/26/NUMA(%E9%9D%9E%E4%B8%80%E8%87%B4%E6%80%A7%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84)%E6%9C%AC/" data-toggle="tooltip" data-placement="top" title="NUMA(非一致性内存架构)（转）">
+                        <a href="/2020/01/12/%E8%87%AA%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/" data-toggle="tooltip" data-placement="top" title="自建gitlab服务器ssh需要密码">
                         Next<br>
-                        <span>NUMA(非一致性内存架构)（转）</span>
+                        <span>自建gitlab服务器ssh需要密码</span>
                         </a>
                     </li>
                     
