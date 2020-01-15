@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>Walikrence - walikrence的博客 | walirkrence Blog</title>
+    <title>netplan配置ip地址 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/about/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/15/netplan%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -156,350 +156,334 @@
 </script>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/post-bg-rwd.jpg')">
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/bg/post-bg-2020.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/bg/post-bg-2020.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Walikrence</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">Hey, this is walikrence.</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                        
+                        <a class="tag" href="/tags/#netplan" title="netplan">netplan</a>
+                        
+                    </div>
+                    <h1>netplan配置ip地址</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by walikrence on January 15, 2020</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h1 id="netplan配置ip地址">netplan配置ip地址</h1>
+
+<p>系统: ubuntu-18.04.3-live-server-amd64</p>
+
+<h2 id="修改-etcnetplan50-cloud-inityaml">修改 /etc/netplan/50-cloud-init.yaml</h2>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/netplan/50-cloud-init.yaml
+</code></pre></div></div>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">network</span><span class="pi">:</span>
+    <span class="na">ethernets</span><span class="pi">:</span>
+        <span class="na">enp0s3</span><span class="pi">:</span>
+            <span class="na">addresses</span><span class="pi">:</span>
+                    <span class="pi">-</span> <span class="s">192.168.56.10/8</span>
+            <span class="na">gateway4</span><span class="pi">:</span> <span class="s">192.168.56.1</span>
+    <span class="na">version</span><span class="pi">:</span> <span class="m">2</span>
+</code></pre></div></div>
+
+<h2 id="启动">启动</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netplan apply
+</code></pre></div></div>
+
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://www.hi-linux.com/posts/49513.html">运维之美</a></p>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/01/14/%E5%9F%BA%E4%BA%8Edocker%E8%87%AA%E5%BB%BAdocker-registry%E5%89%8D%E7%AB%AF/" data-toggle="tooltip" data-placement="top" title="基于docker自建docker-registry前端">
+                        Previous<br>
+                        <span>基于docker自建docker-registry前端</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                <!--Gitalk评论start  -->
+                
+                <!-- Gitalk end -->
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
-<!-- USE SIDEBAR -->
-    <!-- PostList Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
-    			<!-- Language Selector -->
-<!-- <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" selected> 中文 Chinese </option>
-    <option value="1"> 英文 English </option>
-</select> -->
-
-<!-- Chinese Version -->
-<div class="zh post-container">
-
-    <!--copied from markdown -->
-    <blockquote><p>山重水复疑无路<br>
-    柳暗花明又一村</p></blockquote>
-
-    <p>Hey，我是<strong>walikrence</strong>，一个学生。</p>
-
-    <p>工作、学习之余，我还是一个健身爱好者，同时也非常喜欢汽车。</p>
-
-    <p>这是我的利用 <a href="https://pages.github.com/">GitHub Pages</a> 与 <a href="http://jekyll.com.cn/">Jekyll</a> 搭建的 个人博客。我在GitHub主页<a href="https://github.com/walikrence">👉GitHub·walikrence</a> 。如果有什么问题，欢迎提出探讨~</p>
-
-    <p></p>
-    
-    <h5>Talks</h5>
-
-    <ul>
-        <li><a href="https://github.com">GitHub</a></li>
-        <li><a href="http://jekyll.com.cn/">jekyll</a></li>
-        <!-- <li><a href="http://huangxuan.me/">Hux</a></li>  -->
-        <li><a href="https://analytics.google.com/analytics">Google Analytics</a></li>
-    </ul>
-</div>
-
-<!-- English Version -->
-<!-- <div class="en post-container">
-    <blockquote><p>Yet another iOS Developer. <br>
-    Yet another Life-long Student.</p></blockquote>
-
-    <p>Hi, I am <strong>Baiying Qiu</strong>，you can call me <strong>walikrence</strong>. I am an iOS software engineer and currently working in Xiamen</p>
-
-    <p>This is my personal blog, through making Github Pages and Jekyll.My GitHub  👉 <a href="http://github.com/qiubaiying">Github·walikrence</a>.</p>
-    
-    <p>I am a sports enthusiast, I like fitness, running and boxing.</p>
-
-    <h5>Talks</h5>
-
-    <ul>
-    <li><a href="https://github.com">GitHub</a></li>
-    <li><a href="http://jekyll.com.cn/">jekyll</a></li>
-    <li><a href="https://pages.github.com/">GitHub Pages</a></li>
-    <li><a href="https://walikrence.github.io">walikrence</a></li>
-    </ul>
-</div> -->
-
-<!-- Handle Language Change -->
-<script type="text/javascript">
-    // get nodes
-    var $zh = document.querySelector(".zh");
-    var $en = document.querySelector(".en");
-    var $select = document.querySelector("select");
-
-    // bind hashchange event
-    window.addEventListener('hashchange', _render);
-
-    // handle render
-    function _render(){
-        var _hash = window.location.hash;
-        // en
-        if(_hash == "#en"){
-            $select.selectedIndex = 1;
-            $en.style.display = "block";
-            $zh.style.display = "none";
-        // zh by default
-        }else{
-            // not trigger onChange, otherwise cause a loop call.
-            $select.selectedIndex = 0;
-            $zh.style.display = "block";
-            $en.style.display = "none";
-        }
-    }
-
-    // handle select change
-    function onLanChange(index){
-        if(index == 0){
-            window.location.hash = "#zh"
-        }else{
-            window.location.hash = "#en"
-        }
-    }
-
-    // init
-    _render();
-</script>
-
-
-<!-- Gitalk 评论 start  -->
-
-<!-- Gitalk end -->
-
- <!-- disqus 评论框 start  -->
-
-
-
-    		</div>
     <!-- Sidebar Container -->
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
+        				
                             
-                                <a href="/tags/#minikube" title="minikube" rel="3">
+                				<a href="/tags/#minikube" title="minikube" rel="3">
                                     minikube
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#k8s" title="k8s" rel="3">
+                				<a href="/tags/#k8s" title="k8s" rel="3">
                                     k8s
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#kubernetes" title="kubernetes" rel="4">
+                				<a href="/tags/#kubernetes" title="kubernetes" rel="4">
                                     kubernetes
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#国内环境" title="国内环境" rel="4">
+                				<a href="/tags/#国内环境" title="国内环境" rel="4">
                                     国内环境
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#ssh" title="ssh" rel="2">
+                				<a href="/tags/#ssh" title="ssh" rel="2">
                                     ssh
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#python" title="python" rel="2">
+                				<a href="/tags/#python" title="python" rel="2">
                                     python
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="7">
+                				<a href="/tags/#ubuntu" title="ubuntu" rel="7">
                                     ubuntu
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#ss" title="ss" rel="3">
+                				<a href="/tags/#ss" title="ss" rel="3">
                                     ss
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#python3" title="python3" rel="2">
+                				<a href="/tags/#python3" title="python3" rel="2">
                                     python3
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#git" title="git" rel="2">
+                				<a href="/tags/#git" title="git" rel="2">
                                     git
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#nginx" title="nginx" rel="2">
+                				<a href="/tags/#nginx" title="nginx" rel="2">
                                     nginx
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#mysql" title="mysql" rel="2">
+                				<a href="/tags/#mysql" title="mysql" rel="2">
                                     mysql
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#Ubuntu" title="Ubuntu" rel="3">
+                				<a href="/tags/#Ubuntu" title="Ubuntu" rel="3">
                                     Ubuntu
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#Docker" title="Docker" rel="6">
+                				<a href="/tags/#Docker" title="Docker" rel="6">
                                     Docker
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#虚拟机" title="虚拟机" rel="2">
+                				<a href="/tags/#虚拟机" title="虚拟机" rel="2">
                                     虚拟机
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#gitlab" title="gitlab" rel="3">
+                				<a href="/tags/#gitlab" title="gitlab" rel="3">
                                     gitlab
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#nexus" title="nexus" rel="4">
+                				<a href="/tags/#nexus" title="nexus" rel="4">
                                     nexus
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#maven" title="maven" rel="4">
+                				<a href="/tags/#maven" title="maven" rel="4">
                                     maven
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#java" title="java" rel="4">
+                				<a href="/tags/#java" title="java" rel="4">
                                     java
                                 </a>
                             
-                        
+        				
                             
-                        
-                    </div>
+        				
+        			</div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <a href="/about">
-                                <img src="/img/about-walikrence-gentle.jpg"/>
-                            </a>
-                        
-                        
-                            <p>翻过那座山，人们就会听到你的故事</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            <!-- add jianshu add target = "_blank" to <a> by BY -->
-                            
-                            
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/walikrence">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
-                        
-                            <p>✉️ walikrence@163.com</p>
-                        
-                    </div>
-                </section>
                 <!-- Friends Blog -->
                 
-    		</div>
-        
-	</div>
-</div>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        // BY Fix:去除标题前的‘#’ issues:<https://github.com/qiubaiying/qiubaiying.github.io/issues/137>
+        // anchors.options = {
+        //   visible: 'always',
+        //   placement: 'right',
+        //   icon: '#'
+        // };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
 
     <!-- Footer -->
@@ -663,6 +647,50 @@
 
 
 <!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
 
 
 

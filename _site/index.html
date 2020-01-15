@@ -187,6 +187,35 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/01/15/netplan%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80/">
+        <h2 class="post-title">
+            netplan配置ip地址
+        </h2>
+        
+        <div class="post-content-preview">
+            netplan配置ip地址
+
+系统: ubuntu-18.04.3-live-server-amd64
+
+修改 /etc/netplan/50-cloud-init.yaml
+
+vim /etc/netplan/50-cloud-init.yaml
+
+
+network:
+    ethernets:
+        enp0s3:
+            addresses:
+       ...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 15, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/01/14/%E5%9F%BA%E4%BA%8Edocker%E8%87%AA%E5%BB%BAdocker-registry%E5%89%8D%E7%AB%AF/">
         <h2 class="post-title">
             基于docker自建docker-registry前端
@@ -438,37 +467,6 @@ lvextend -L + 5000M /dev/ma...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2020/01/08/docker%E5%AE%89%E8%A3%85/">
-        <h2 class="post-title">
-            docker安装
-        </h2>
-        
-        <div class="post-content-preview">
-            Docker 安装
-
-系统: ubuntu-18.04.3-live-server-amd64
-
-sudo apt install docker.io -y
-
-
-sudo systemctl enable docker
-sudo systemctl start docker
-
-使用国内镜像
-
-vim /etc/docker/daemon.json
-
-
-{ "registry-mirrors"...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on January 8, 2020
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -543,7 +541,7 @@ vim /etc/docker/daemon.json
                             
                         
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="6">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="7">
                                     ubuntu
                                 </a>
                             
@@ -644,6 +642,8 @@ vim /etc/docker/daemon.json
                                 <a href="/tags/#java" title="java" rel="4">
                                     java
                                 </a>
+                            
+                        
                             
                         
                     </div>

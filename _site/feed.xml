@@ -5,9 +5,47 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 15 Jan 2020 18:06:05 +0800</pubDate>
-    <lastBuildDate>Wed, 15 Jan 2020 18:06:05 +0800</lastBuildDate>
+    <pubDate>Thu, 16 Jan 2020 00:00:55 +0800</pubDate>
+    <lastBuildDate>Thu, 16 Jan 2020 00:00:55 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>netplan配置ip地址</title>
+        <description>&lt;h1 id=&quot;netplan配置ip地址&quot;&gt;netplan配置ip地址&lt;/h1&gt;
+
+&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
+
+&lt;h2 id=&quot;修改-etcnetplan50-cloud-inityaml&quot;&gt;修改 /etc/netplan/50-cloud-init.yaml&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/netplan/50-cloud-init.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;network&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;ethernets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;enp0s3&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.56.10/8&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;gateway4&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.56.1&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;启动&quot;&gt;启动&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netplan apply
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.hi-linux.com/posts/49513.html&quot;&gt;运维之美&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 15 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/15/netplan%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/15/netplan%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80/</guid>
+        
+        <category>ubuntu</category>
+        
+        <category>netplan</category>
+        
+        
+      </item>
     
       <item>
         <title>基于docker自建docker-registry前端</title>
@@ -487,41 +525,6 @@ resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
         <guid isPermaLink="true">http://localhost:4000/2020/01/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/</guid>
         
         <category>虚拟机</category>
-        
-        <category>Ubuntu</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>docker安装</title>
-        <description>&lt;h1 id=&quot;docker-安装&quot;&gt;Docker 安装&lt;/h1&gt;
-
-&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker.io &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;docker
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start docker
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;使用国内镜像&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/docker/daemon.json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;registry-mirrors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://registry.docker-cn.com&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl daemon-reload
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart docker
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Wed, 08 Jan 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/01/08/docker%E5%AE%89%E8%A3%85/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/01/08/docker%E5%AE%89%E8%A3%85/</guid>
-        
-        <category>Docker</category>
         
         <category>Ubuntu</category>
         
