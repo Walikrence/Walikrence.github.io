@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f606311b-5235-4e31-825e-7d53a998cab0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/_posts/2020-01-12-基于docker搭建gitlab服务器.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-12-基于docker搭建gitlab服务器.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2020-01-13-使用nexus私服.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2020-01-13-基于docker自建nexus私服.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-12-自建gitlab服务器ssh需要密码.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-12-自建gitlab服务器ssh需要密码.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +34,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/2019-12-05 mysql中文乱码" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/_posts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/2019-12-05 mysql中文乱码" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -69,7 +70,9 @@
       <workItem from="1578908291758" duration="1220000" />
       <workItem from="1578964309124" duration="3000" />
       <workItem from="1578964329120" duration="1390000" />
-      <workItem from="1578983735128" duration="1903000" />
+      <workItem from="1578983735128" duration="2173000" />
+      <workItem from="1578990149109" duration="95000" />
+      <workItem from="1579052291533" duration="733000" />
     </task>
     <task id="LOCAL-00001" summary="修正标题">
       <created>1578454013652</created>

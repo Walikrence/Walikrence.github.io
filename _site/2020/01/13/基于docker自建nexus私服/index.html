@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>自建gitlab服务器ssh需要密码 - walikrence的博客 | walirkrence Blog</title>
+    <title>基于docker自建nexus私服 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2020/01/12/%E8%87%AA%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/13/%E5%9F%BA%E4%BA%8Edocker%E8%87%AA%E5%BB%BAnexus%E7%A7%81%E6%9C%8D/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,19 +177,21 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#虚拟机" title="虚拟机">虚拟机</a>
+                        <a class="tag" href="/tags/#nexus" title="nexus">nexus</a>
                         
-                        <a class="tag" href="/tags/#gitlab" title="gitlab">gitlab</a>
+                        <a class="tag" href="/tags/#maven" title="maven">maven</a>
                         
                         <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
                         
+                        <a class="tag" href="/tags/#java" title="java">java</a>
+                        
                     </div>
-                    <h1>自建gitlab服务器ssh需要密码</h1>
+                    <h1>基于docker自建nexus私服</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on January 12, 2020</span>
+                    <span class="meta">Posted by walikrence on January 13, 2020</span>
                 </div>
             </div>
         </div>
@@ -207,49 +209,33 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="自建gitlab服务器ssh需要密码">自建gitlab服务器ssh需要密码</h1>
+				<h1 id="基于docker自建nexus私服">基于docker自建nexus私服</h1>
 
 <p>系统: ubuntu-18.04.3-live-server-amd64</p>
 
-<p>今天基于docker搭建了gitlab服务器,配置了ssh密钥，但是ssh下载的时候提示需要密码
-<img src="../../../../img/自建gitlab服务器ssh需要密码/1.png" alt="" />
-排查发现ssh在gitee和github上都可用，但是就是自建的gitlab不可用。</p>
-
-<p>发现命令需要加端口号</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone ssh://git@172.20.10.8:2222/walikrence/hello-gitlab.git
+<h2 id="下载nexus镜像">下载nexus镜像</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull sonatype/nexus3:3.20.1
 </code></pre></div></div>
-<p><img src="../../../../img/自建gitlab服务器ssh需要密码/2.png" alt="" /></p>
-
-<p>但是这样每次手动改git clone 命令太麻烦了，查资料发现可以通过修改docker-compose.yml 来指定ssh端口，让gitlab直接自动生成上面的命令</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
-<span class="na">services</span><span class="pi">:</span>
-    <span class="na">gitlab</span><span class="pi">:</span>
-      <span class="na">image</span><span class="pi">:</span> <span class="s1">'</span><span class="s">twang2218/gitlab-ce-zh:11.1'</span>
-      <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
-      <span class="na">hostname</span><span class="pi">:</span> <span class="s1">'</span><span class="s">172.20.10.8'</span>
-      <span class="na">environment</span><span class="pi">:</span>
-        <span class="na">TZ</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Asia/Shanghai'</span>
-        <span class="na">GITLAB_OMNIBUS_CONFIG</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">external_url 'http://172.20.10.8'</span>
-          <span class="s">gitlab_rails['time_zone'] = 'Asia/Shanghai'</span>
-          <span class="s">gitlab_rails['gitlab_shell_ssh_port'] = 2222</span>
-      <span class="na">ports</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s1">'</span><span class="s">80:80'</span>
-        <span class="pi">-</span> <span class="s1">'</span><span class="s">8443:443'</span>
-        <span class="pi">-</span> <span class="s1">'</span><span class="s">2222:22'</span>
-      <span class="na">volumes</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s">config:/etc/gitlab</span>
-        <span class="pi">-</span> <span class="s">data:/var/opt/gitlab</span>
-        <span class="pi">-</span> <span class="s">logs:/var/log/gitlab</span>
-<span class="na">volumes</span><span class="pi">:</span>
-    <span class="na">config</span><span class="pi">:</span>
-    <span class="na">data</span><span class="pi">:</span>
+<h2 id="编写docker-composeyml">编写docker-compose.yml</h2>
+<p>docker-compose.yml</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>version: <span class="s1">'3'</span>
+services:
+    nexus:
+        image : <span class="s1">'sonatype/nexus3:3.20.1'</span>
+        restart: always
+        ports:
+            - 8081:8081
+        volumes:
+            - data:/nexus-data
+volumes:
+    data:
 </code></pre></div></div>
-<p>设置ssh端口为2222</p>
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          <span class="s">gitlab_rails['gitlab_shell_ssh_port'] = </span><span class="m">2222</span>
+
+<h2 id="启动">启动</h2>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up <span class="nt">-d</span>
 </code></pre></div></div>
-<p>修改完后就能正常使用了</p>
+
 
 
                 <hr style="visibility: hidden;">
@@ -257,19 +243,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2020/01/12/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-toggle="tooltip" data-placement="top" title="基于docker搭建gitlab服务器">
-                        Previous<br>
-                        <span>基于docker搭建gitlab服务器</span>
-                        </a>
-                    </li>
-                    
-                    
-                    <li class="next">
                         <a href="/2020/01/13/%E4%BD%BF%E7%94%A8nexus%E7%A7%81%E6%9C%8D/" data-toggle="tooltip" data-placement="top" title="使用nexus私服">
-                        Next<br>
+                        Previous<br>
                         <span>使用nexus私服</span>
                         </a>
                     </li>
+                    
                     
                 </ul>
 

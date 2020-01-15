@@ -187,6 +187,73 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2019/09/24/ios%E5%BC%80%E5%8F%911-oc%E5%9F%BA%E7%A1%80/">
+        <h2 class="post-title">
+            ios开发-1
+        </h2>
+        
+        <h3 class="post-subtitle">
+            oc基础
+        </h3>
+        
+        <div class="post-content-preview">
+            ios开发-1
+
+oc基础
+
+ NSArray *nameArr = [NSArray array];
+    nameArr = @[@"张三",@"李四",@"王五"];
+    int name =arc4random() % 3 ;
+    
+    
+    NSArray *arr = [NSArray array];
+    arr =  @[[English new],[Ja...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on September 24, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/08/29/Mac%E4%B8%8B%E4%BD%BF%E7%94%A8CImg/">
+        <h2 class="post-title">
+            Mac下使用CImg
+        </h2>
+        
+        <div class="post-content-preview">
+            Mac下使用CImg
+
+环境
+macOS 10.14.4
+
+准备
+下载CImg.h
+编译
+
+  #include "CImg.h"
+
+
+
+g++ test.cpp -o main
+
+
+报错
+
+
+In file included from test.cpp:1:
+./CImg.h:371:10: fatal error: 'X11/Xlib.h' file not found
+#include...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 29, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2019/08/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEredis/">
         <h2 class="post-title">
             安装配置redis
@@ -431,57 +498,6 @@ html = res.read().decod...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/07/27/git-clone-%E9%80%9F%E5%BA%A6%E6%85%A2/">
-        <h2 class="post-title">
-            git clone 速度慢怎么办
-        </h2>
-        
-        <div class="post-content-preview">
-            git clone 速度慢怎么办
-天朝git clone 速度慢怎么办？
-解决方法
-
-git config --global http.proxy socks5://127.0.0.1:1080
-git config --global https.proxy socks5://127.0.0.1:1080
-
-1080替换成对应的ss本地端口，默认为1080
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/django2.2-%E7%BB%93%E5%90%88-vue.js-%E5%BC%80%E5%8F%91/">
-        <h2 class="post-title">
-            django2.2 结合 vue.js 开发
-        </h2>
-        
-        <div class="post-content-preview">
-            django2.2 结合 vue.js 开发
-最近在用django开发后端，配合同学的vue.js前端。没用过vue.js
-搜啦下教程终于解决啦。
-
-增加中间件
-
-'corsheaders.middleware.CorsMiddleware',
-CORS_ORIGIN_ALLOW_ALL = True
-
-完成后setting.py长这样
-MIDDLEWARE = [
-    'django....
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -628,7 +644,7 @@ MIDDLEWARE = [
                             
                         
                             
-                                <a href="/tags/#Docker" title="Docker" rel="3">
+                                <a href="/tags/#Docker" title="Docker" rel="4">
                                     Docker
                                 </a>
                             
@@ -642,6 +658,24 @@ MIDDLEWARE = [
                             
                                 <a href="/tags/#gitlab" title="gitlab" rel="3">
                                     gitlab
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#nexus" title="nexus" rel="2">
+                                    nexus
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#maven" title="maven" rel="2">
+                                    maven
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#java" title="java" rel="2">
+                                    java
                                 </a>
                             
                         

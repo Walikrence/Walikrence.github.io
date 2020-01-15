@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>自建gitlab服务器ssh需要密码 - walikrence的博客 | walirkrence Blog</title>
+    <title>使用nexus私服 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2020/01/12/%E8%87%AA%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/13/%E4%BD%BF%E7%94%A8nexus%E7%A7%81%E6%9C%8D/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,19 +177,19 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#虚拟机" title="虚拟机">虚拟机</a>
+                        <a class="tag" href="/tags/#nexus" title="nexus">nexus</a>
                         
-                        <a class="tag" href="/tags/#gitlab" title="gitlab">gitlab</a>
+                        <a class="tag" href="/tags/#maven" title="maven">maven</a>
                         
-                        <a class="tag" href="/tags/#Docker" title="Docker">Docker</a>
+                        <a class="tag" href="/tags/#java" title="java">java</a>
                         
                     </div>
-                    <h1>自建gitlab服务器ssh需要密码</h1>
+                    <h1>使用nexus私服</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on January 12, 2020</span>
+                    <span class="meta">Posted by walikrence on January 13, 2020</span>
                 </div>
             </div>
         </div>
@@ -207,49 +207,110 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="自建gitlab服务器ssh需要密码">自建gitlab服务器ssh需要密码</h1>
+				<h1 id="使用nexus私服">使用nexus私服</h1>
 
-<p>系统: ubuntu-18.04.3-live-server-amd64</p>
+<p>系统: MAC</p>
 
-<p>今天基于docker搭建了gitlab服务器,配置了ssh密钥，但是ssh下载的时候提示需要密码
-<img src="../../../../img/自建gitlab服务器ssh需要密码/1.png" alt="" />
-排查发现ssh在gitee和github上都可用，但是就是自建的gitlab不可用。</p>
+<h2 id="修改maven的settingxml">修改maven的setting.xml</h2>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;settings</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/SETTINGS/1.0.0"</span>
+          <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+          <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"</span><span class="nt">&gt;</span>
 
-<p>发现命令需要加端口号</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone ssh://git@172.20.10.8:2222/walikrence/hello-gitlab.git
+    <span class="nt">&lt;servers&gt;</span>
+        <span class="nt">&lt;server&gt;</span>
+            <span class="nt">&lt;id&gt;</span>nexus-releases<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;username&gt;</span>admin<span class="nt">&lt;/username&gt;</span>
+            <span class="nt">&lt;password&gt;</span>123456<span class="nt">&lt;/password&gt;</span>
+        <span class="nt">&lt;/server&gt;</span>
+        <span class="nt">&lt;server&gt;</span>
+            <span class="nt">&lt;id&gt;</span>nexus-snapshots<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;username&gt;</span>admin<span class="nt">&lt;/username&gt;</span>
+            <span class="nt">&lt;password&gt;</span>123456<span class="nt">&lt;/password&gt;</span>
+        <span class="nt">&lt;/server&gt;</span>
+    <span class="nt">&lt;/servers&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
 </code></pre></div></div>
-<p><img src="../../../../img/自建gitlab服务器ssh需要密码/2.png" alt="" /></p>
 
-<p>但是这样每次手动改git clone 命令太麻烦了，查资料发现可以通过修改docker-compose.yml 来指定ssh端口，让gitlab直接自动生成上面的命令</p>
+<h2 id="修改项目的pomxml">修改项目的pom.xml</h2>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
-<span class="na">services</span><span class="pi">:</span>
-    <span class="na">gitlab</span><span class="pi">:</span>
-      <span class="na">image</span><span class="pi">:</span> <span class="s1">'</span><span class="s">twang2218/gitlab-ce-zh:11.1'</span>
-      <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
-      <span class="na">hostname</span><span class="pi">:</span> <span class="s1">'</span><span class="s">172.20.10.8'</span>
-      <span class="na">environment</span><span class="pi">:</span>
-        <span class="na">TZ</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Asia/Shanghai'</span>
-        <span class="na">GITLAB_OMNIBUS_CONFIG</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">external_url 'http://172.20.10.8'</span>
-          <span class="s">gitlab_rails['time_zone'] = 'Asia/Shanghai'</span>
-          <span class="s">gitlab_rails['gitlab_shell_ssh_port'] = 2222</span>
-      <span class="na">ports</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s1">'</span><span class="s">80:80'</span>
-        <span class="pi">-</span> <span class="s1">'</span><span class="s">8443:443'</span>
-        <span class="pi">-</span> <span class="s1">'</span><span class="s">2222:22'</span>
-      <span class="na">volumes</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="s">config:/etc/gitlab</span>
-        <span class="pi">-</span> <span class="s">data:/var/opt/gitlab</span>
-        <span class="pi">-</span> <span class="s">logs:/var/log/gitlab</span>
-<span class="na">volumes</span><span class="pi">:</span>
-    <span class="na">config</span><span class="pi">:</span>
-    <span class="na">data</span><span class="pi">:</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+    <span class="nt">&lt;parent&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>2.2.2.RELEASE<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;relativePath/&gt;</span> <span class="c">&lt;!-- lookup parent from repository --&gt;</span>
+    <span class="nt">&lt;/parent&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.example<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>hello-nexus3<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;name&gt;</span>hello-nexus3<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>Demo project for Spring Boot<span class="nt">&lt;/description&gt;</span>
+
+    <span class="c">&lt;!--nexus私服 begin --&gt;</span>
+
+    <span class="nt">&lt;distributionManagement&gt;</span>
+        <span class="nt">&lt;repository&gt;</span>
+            <span class="nt">&lt;id&gt;</span>nexus-releases<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Nexus Release Repository<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;url&gt;</span>http://172.20.10.10:8081/repository/maven-releases<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/repository&gt;</span>
+        <span class="nt">&lt;snapshotRepository&gt;</span>
+            <span class="nt">&lt;id&gt;</span>nexus-snapshots<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Nexus Snapshot Repository<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;url&gt;</span>http://172.20.10.10:8081/repository/maven-snapshots/<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/snapshotRepository&gt;</span>
+    <span class="nt">&lt;/distributionManagement&gt;</span>
+    <span class="c">&lt;!--nexus私服 end --&gt;</span>
+    <span class="nt">&lt;properties&gt;</span>
+        <span class="nt">&lt;java.version&gt;</span>1.8<span class="nt">&lt;/java.version&gt;</span>
+    <span class="nt">&lt;/properties&gt;</span>
+
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-test<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+            <span class="nt">&lt;exclusions&gt;</span>
+                <span class="nt">&lt;exclusion&gt;</span>
+                    <span class="nt">&lt;groupId&gt;</span>org.junit.vintage<span class="nt">&lt;/groupId&gt;</span>
+                    <span class="nt">&lt;artifactId&gt;</span>junit-vintage-engine<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;/exclusions&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+
+    <span class="nt">&lt;build&gt;</span>
+        <span class="nt">&lt;plugins&gt;</span>
+            <span class="nt">&lt;plugin&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+        <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/build&gt;</span>
+
+<span class="nt">&lt;/project&gt;</span>
+
 </code></pre></div></div>
-<p>设置ssh端口为2222</p>
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          <span class="s">gitlab_rails['gitlab_shell_ssh_port'] = </span><span class="m">2222</span>
-</code></pre></div></div>
-<p>修改完后就能正常使用了</p>
+
+<h2 id="部署">部署</h2>
+
+<p><img src="../../../../img/使用nexus私服/1.png" alt="" /> <br /></p>
+<h2 id="查看">查看</h2>
+<p><img src="../../../../img/使用nexus私服/2.png" alt="" /></p>
 
 
                 <hr style="visibility: hidden;">
@@ -257,17 +318,17 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2020/01/12/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-toggle="tooltip" data-placement="top" title="基于docker搭建gitlab服务器">
+                        <a href="/2020/01/12/%E8%87%AA%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/" data-toggle="tooltip" data-placement="top" title="自建gitlab服务器ssh需要密码">
                         Previous<br>
-                        <span>基于docker搭建gitlab服务器</span>
+                        <span>自建gitlab服务器ssh需要密码</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2020/01/13/%E4%BD%BF%E7%94%A8nexus%E7%A7%81%E6%9C%8D/" data-toggle="tooltip" data-placement="top" title="使用nexus私服">
+                        <a href="/2020/01/13/%E5%9F%BA%E4%BA%8Edocker%E8%87%AA%E5%BB%BAnexus%E7%A7%81%E6%9C%8D/" data-toggle="tooltip" data-placement="top" title="基于docker自建nexus私服">
                         Next<br>
-                        <span>使用nexus私服</span>
+                        <span>基于docker自建nexus私服</span>
                         </a>
                     </li>
                     

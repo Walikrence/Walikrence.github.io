@@ -58,4 +58,4 @@ volumes:
 ```yml
           gitlab_rails['gitlab_shell_ssh_port'] = 2222
 ```
-修改完后就能正常使用了2020-01-12-自建gitlab服务器ssh需要密码.md
+修改完后就能正常使用了
