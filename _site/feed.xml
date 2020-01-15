@@ -5,9 +5,63 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 15 Jan 2020 09:51:40 +0800</pubDate>
-    <lastBuildDate>Wed, 15 Jan 2020 09:51:40 +0800</lastBuildDate>
+    <pubDate>Wed, 15 Jan 2020 11:17:48 +0800</pubDate>
+    <lastBuildDate>Wed, 15 Jan 2020 11:17:48 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>基于docker自建docker-registry前端</title>
+        <description>&lt;h1 id=&quot;registry前端&quot;&gt;registry前端&lt;/h1&gt;
+
+&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
+
+&lt;h2 id=&quot;下载nexus镜像&quot;&gt;下载nexus镜像&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker pull registry:2.7
+docker pull konradkleine/docker-registry-frontend:v2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;编写docker-composeyml&quot;&gt;编写docker-compose.yml&lt;/h2&gt;
+&lt;p&gt;docker-compose.yml&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: &lt;span class=&quot;s1&quot;&gt;'3'&lt;/span&gt;
+services:
+    registry:
+        image: &lt;span class=&quot;s1&quot;&gt;'registry:2.7'&lt;/span&gt;
+        restart: always
+        ports:
+            - 5000:5000
+        volumes:
+            - data:/var/lib/registry
+    frontend:
+        image: konradkleine/docker-registry-frontend:v2
+        restart: always
+        ports:
+            - 80:80
+        environment:
+            - &lt;span class=&quot;nv&quot;&gt;ENV_DOCKER_REGISTRY_HOST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;172.20.10.3
+            - &lt;span class=&quot;nv&quot;&gt;ENV_DOCKER_REGISTRY_PORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5000
+volumes:
+    data:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;启动&quot;&gt;启动&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker-compose up &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 14 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/14/%E5%9F%BA%E4%BA%8Edocker%E8%87%AA%E5%BB%BAdocker-registry%E5%89%8D%E7%AB%AF/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/14/%E5%9F%BA%E4%BA%8Edocker%E8%87%AA%E5%BB%BAdocker-registry%E5%89%8D%E7%AB%AF/</guid>
+        
+        <category>nexus</category>
+        
+        <category>maven</category>
+        
+        <category>Docker</category>
+        
+        <category>java</category>
+        
+        
+      </item>
     
       <item>
         <title>基于docker自建nexus私服</title>
@@ -482,32 +536,6 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
         <guid isPermaLink="true">http://localhost:4000/2019/12/05/mysql%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</guid>
         
         <category>Mysql</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>mysql求日期之差</title>
-        <description>&lt;h1 id=&quot;mysql求日期之差&quot;&gt;mysql求日期之差&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;SELECT * ,
-
-TIMESTAMPDIFF(HOUR,
-
-work_time,
-
-off_duty_time
-) AS duration
-FROM stationing_service
-
-
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Wed, 02 Oct 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/10/02/mysql%E6%B1%82%E6%97%A5%E6%9C%9F%E4%B9%8B%E5%B7%AE/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/10/02/mysql%E6%B1%82%E6%97%A5%E6%9C%9F%E4%B9%8B%E5%B7%AE/</guid>
-        
-        <category>mysql</category>
         
         
       </item>
