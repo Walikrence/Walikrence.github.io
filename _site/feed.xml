@@ -5,8 +5,8 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 15 Jan 2020 12:26:33 +0800</pubDate>
-    <lastBuildDate>Wed, 15 Jan 2020 12:26:33 +0800</lastBuildDate>
+    <pubDate>Wed, 15 Jan 2020 18:06:05 +0800</pubDate>
+    <lastBuildDate>Wed, 15 Jan 2020 18:06:05 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -101,6 +101,30 @@ volumes:
         <category>Docker</category>
         
         <category>java</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>ubuntu查看默认网关</title>
+        <description>&lt;h1 id=&quot;ubuntu查看默认网关&quot;&gt;ubuntu查看默认网关&lt;/h1&gt;
+
+&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ip route show
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;route &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netstat &lt;span class=&quot;nt&quot;&gt;-rn&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 14 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/14/ubuntu%E6%9F%A5%E7%9C%8B%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/14/ubuntu%E6%9F%A5%E7%9C%8B%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3/</guid>
+        
+        <category>ubuntu</category>
         
         
       </item>
@@ -498,51 +522,6 @@ resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
         <guid isPermaLink="true">http://localhost:4000/2020/01/08/docker%E5%AE%89%E8%A3%85/</guid>
         
         <category>Docker</category>
-        
-        <category>Ubuntu</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>apt使用国内镜像源</title>
-        <description>&lt;h1 id=&quot;apt使用国内镜像源&quot;&gt;apt使用国内镜像源&lt;/h1&gt;
-
-&lt;p&gt;apt国内镜像源有阿里源，163源，清华源，中科大源等。&lt;br /&gt;
-这里以阿里源为例子&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.aliyun.com/mirror&quot;&gt;阿里镜像站&lt;/a&gt; &lt;br /&gt;
-&lt;a href=&quot;https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.53322f70gKan05&quot;&gt;Ubuntu镜像&lt;/a&gt; &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;系统版本：Ubuntu 18.04(bionic)&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/apt/sources.list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt update
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Wed, 08 Jan 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/01/08/apt%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/01/08/apt%E4%BD%BF%E7%94%A8%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
-        
-        <category>apt</category>
         
         <category>Ubuntu</category>
         

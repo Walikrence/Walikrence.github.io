@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>阿里云重置后mac用ssh登陆服务器失败 - walikrence的博客 | walirkrence Blog</title>
+    <title>ubuntu查看默认网关 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/14/ubuntu%E6%9F%A5%E7%9C%8B%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -158,13 +158,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/post-bg-2015.jpg" width="0" height="0"> -->
+<!-- <img src="/img/bg/post-bg-2020.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-2015.jpg')
+        background-image: url('/img/bg/post-bg-2020.jpg')
     }
 
     
@@ -177,17 +177,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#ssh" title="ssh">ssh</a>
-                        
-                        <a class="tag" href="/tags/#mac" title="mac">mac</a>
+                        <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
                         
                     </div>
-                    <h1>阿里云重置后mac用ssh登陆服务器失败</h1>
+                    <h1>ubuntu查看默认网关</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on July 26, 2019</span>
+                    <span class="meta">Posted by walikrence on January 14, 2020</span>
                 </div>
             </div>
         </div>
@@ -205,32 +203,17 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="阿里云重置后mac用ssh登陆服务器失败">阿里云重置后mac用ssh登陆服务器失败</h1>
+				<h1 id="ubuntu查看默认网关">ubuntu查看默认网关</h1>
 
-<p>出现</p>
+<p>系统: ubuntu-18.04.3-live-server-amd64</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-Someone could be eavesdropping on you right now <span class="o">(</span>man-in-the-middle attack<span class="o">)!</span>
-It is also possible that a host key has just been changed.
-The fingerprint <span class="k">for </span>the ECDSA key sent by the remote host is
-SHA256:服务器发来的fingerprint
-Please contact your system administrator.
-Add correct host key <span class="k">in</span> /Users/wakirencedemac/.ssh/known_hosts to get rid of this message.
-Offending ECDSA key <span class="k">in</span> /Users/wakirencedemac/.ssh/known_hosts:2
-ECDSA host key <span class="k">for </span>服务器的IP地址 has changed and you have requested strict checking.
-Host key verification failed.
-
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip route show
 </code></pre></div></div>
 
-<p>原因：服务器被我重置了，发来的fingerprint跟我本地记录的不一样了
-解决方法</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>route <span class="nt">-n</span>
+</code></pre></div></div>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-R</span> 服务器的IP地址
-<span class="c">#例如</span>
-ssh-keygen <span class="nt">-R</span> 123.13.45.134
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netstat <span class="nt">-rn</span>
 </code></pre></div></div>
 
 
@@ -239,17 +222,17 @@ ssh-keygen <span class="nt">-R</span> 123.13.45.134
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/26/NUMA(%E9%9D%9E%E4%B8%80%E8%87%B4%E6%80%A7%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84)%E6%9C%AC/" data-toggle="tooltip" data-placement="top" title="NUMA(非一致性内存架构)（转）">
+                        <a href="/2020/01/13/%E5%9F%BA%E4%BA%8Edocker%E8%87%AA%E5%BB%BAnexus%E7%A7%81%E6%9C%8D/" data-toggle="tooltip" data-placement="top" title="基于docker自建nexus私服">
                         Previous<br>
-                        <span>NUMA(非一致性内存架构)（转）</span>
+                        <span>基于docker自建nexus私服</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/07/27/Hello-2019/" data-toggle="tooltip" data-placement="top" title="My First Post">
+                        <a href="/2020/01/14/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAmysql/" data-toggle="tooltip" data-placement="top" title="基于docker搭建mysql">
                         Next<br>
-                        <span>My First Post</span>
+                        <span>基于docker搭建mysql</span>
                         </a>
                     </li>
                     

@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>阿里云重置后mac用ssh登陆服务器失败 - walikrence的博客 | walirkrence Blog</title>
+    <title>walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/">
+    <link rel="canonical" href="http://localhost:4000/page4/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -156,342 +156,287 @@
 </script>
 
 
-    <!-- Image to hack wechat -->
-<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/post-bg-2015.jpg" width="0" height="0"> -->
-
-<!-- Post Header -->
-<style type="text/css">
-    header.intro-header{
-        position: relative;
-        background-image: url('/img/post-bg-2015.jpg')
-    }
-
-    
-</style>
-<header class="intro-header" >
-    <div class="header-mask"></div>
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-desk.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        
-                        <a class="tag" href="/tags/#ssh" title="ssh">ssh</a>
-                        
-                        <a class="tag" href="/tags/#mac" title="mac">mac</a>
-                        
-                    </div>
-                    <h1>阿里云重置后mac用ssh登陆服务器失败</h1>
-                    
-                    
-                    <h2 class="subheading"></h2>
-                    
-                    <span class="meta">Posted by walikrence on July 26, 2019</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>walikrence Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">翻过那座山，人们就会听到你的故事</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-				<h1 id="阿里云重置后mac用ssh登陆服务器失败">阿里云重置后mac用ssh登陆服务器失败</h1>
-
-<p>出现</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-Someone could be eavesdropping on you right now <span class="o">(</span>man-in-the-middle attack<span class="o">)!</span>
-It is also possible that a host key has just been changed.
-The fingerprint <span class="k">for </span>the ECDSA key sent by the remote host is
-SHA256:服务器发来的fingerprint
-Please contact your system administrator.
-Add correct host key <span class="k">in</span> /Users/wakirencedemac/.ssh/known_hosts to get rid of this message.
-Offending ECDSA key <span class="k">in</span> /Users/wakirencedemac/.ssh/known_hosts:2
-ECDSA host key <span class="k">for </span>服务器的IP地址 has changed and you have requested strict checking.
-Host key verification failed.
-
-</code></pre></div></div>
-
-<p>原因：服务器被我重置了，发来的fingerprint跟我本地记录的不一样了
-解决方法</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-R</span> 服务器的IP地址
-<span class="c">#例如</span>
-ssh-keygen <span class="nt">-R</span> 123.13.45.134
-</code></pre></div></div>
-
-
-                <hr style="visibility: hidden;">
-
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2019/07/26/NUMA(%E9%9D%9E%E4%B8%80%E8%87%B4%E6%80%A7%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84)%E6%9C%AC/" data-toggle="tooltip" data-placement="top" title="NUMA(非一致性内存架构)（转）">
-                        Previous<br>
-                        <span>NUMA(非一致性内存架构)（转）</span>
-                        </a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/2019/07/27/Hello-2019/" data-toggle="tooltip" data-placement="top" title="My First Post">
-                        Next<br>
-                        <span>My First Post</span>
-                        </a>
-                    </li>
-                    
-                </ul>
-
-
-                <!--Gitalk评论start  -->
-                
-                <!-- Gitalk end -->
-
-                
-
-            </div>  
-
-    <!-- Side Catalog Container -->
-        
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <hr class="hidden-sm hidden-xs">
-                    <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
-                    </h5>
-                    <ul class="catalog-body"></ul>
-                </div>
-            </div>
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
         
 
+<!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+    			
+<div class="post-preview">
+    <a href="/2019/07/23/%E5%AE%9E%E4%B9%A0%E6%8C%87%E5%8D%97/">
+        <h2 class="post-title">
+            实习指南
+        </h2>
+        
+        <div class="post-content-preview">
+            实习
+字节跳动 
+网易
+腾讯
+阿里
+虎牙
+简历
+效果
+源码
+
+
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on July 23, 2019
+    </p>
+</div>
+<hr>
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    <li class="previous">
+        <a href="/page3">&larr; Newer Posts</a>
+    </li>
+    
+    
+</ul>
+
+
+    		</div>
     <!-- Sidebar Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
                 <!-- Featured Tags -->
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-        				
+                        
                             
-                				<a href="/tags/#minikube" title="minikube" rel="3">
+                                <a href="/tags/#minikube" title="minikube" rel="3">
                                     minikube
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#k8s" title="k8s" rel="3">
+                                <a href="/tags/#k8s" title="k8s" rel="3">
                                     k8s
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#kubernetes" title="kubernetes" rel="4">
+                                <a href="/tags/#kubernetes" title="kubernetes" rel="4">
                                     kubernetes
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#国内环境" title="国内环境" rel="4">
+                                <a href="/tags/#国内环境" title="国内环境" rel="4">
                                     国内环境
                                 </a>
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-                				<a href="/tags/#ssh" title="ssh" rel="2">
+                                <a href="/tags/#ssh" title="ssh" rel="2">
                                     ssh
                                 </a>
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-                				<a href="/tags/#python" title="python" rel="2">
+                                <a href="/tags/#python" title="python" rel="2">
                                     python
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#ubuntu" title="ubuntu" rel="6">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="6">
                                     ubuntu
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#ss" title="ss" rel="3">
+                                <a href="/tags/#ss" title="ss" rel="3">
                                     ss
                                 </a>
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-                				<a href="/tags/#python3" title="python3" rel="2">
+                                <a href="/tags/#python3" title="python3" rel="2">
                                     python3
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#git" title="git" rel="2">
+                                <a href="/tags/#git" title="git" rel="2">
                                     git
                                 </a>
                             
-        				
+                        
                             
-        				
+                        
                             
-                				<a href="/tags/#nginx" title="nginx" rel="2">
+                                <a href="/tags/#nginx" title="nginx" rel="2">
                                     nginx
                                 </a>
                             
-        				
+                        
                             
-        				
+                        
                             
-                				<a href="/tags/#mysql" title="mysql" rel="2">
+                                <a href="/tags/#mysql" title="mysql" rel="2">
                                     mysql
                                 </a>
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-        				
+                        
                             
-                				<a href="/tags/#Ubuntu" title="Ubuntu" rel="3">
+                                <a href="/tags/#Ubuntu" title="Ubuntu" rel="3">
                                     Ubuntu
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#Docker" title="Docker" rel="6">
+                                <a href="/tags/#Docker" title="Docker" rel="6">
                                     Docker
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#虚拟机" title="虚拟机" rel="2">
+                                <a href="/tags/#虚拟机" title="虚拟机" rel="2">
                                     虚拟机
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#gitlab" title="gitlab" rel="3">
+                                <a href="/tags/#gitlab" title="gitlab" rel="3">
                                     gitlab
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#nexus" title="nexus" rel="4">
+                                <a href="/tags/#nexus" title="nexus" rel="4">
                                     nexus
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#maven" title="maven" rel="4">
+                                <a href="/tags/#maven" title="maven" rel="4">
                                     maven
                                 </a>
                             
-        				
+                        
                             
-                				<a href="/tags/#java" title="java" rel="4">
+                                <a href="/tags/#java" title="java" rel="4">
                                     java
                                 </a>
                             
-        				
-        			</div>
+                        
+                    </div>
                 </section>
                 
 
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <a href="/about">
+                                <img src="/img/about-walikrence-gentle.jpg"/>
+                            </a>
+                        
+                        
+                            <p>翻过那座山，人们就会听到你的故事</p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            <!-- add jianshu add target = "_blank" to <a> by BY -->
+                            
+                            
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/walikrence">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                        
+                            <p>✉️ walikrence@163.com</p>
+                        
+                    </div>
+                </section>
                 <!-- Friends Blog -->
                 
-            </div>
-        </div>
-    </div>
-</article>
-
-
-
-
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
-        // BY Fix:去除标题前的‘#’ issues:<https://github.com/qiubaiying/qiubaiying.github.io/issues/137>
-        // anchors.options = {
-        //   visible: 'always',
-        //   placement: 'right',
-        //   icon: '#'
-        // };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
+    		</div>
+        
+	</div>
+</div>
 
 
     <!-- Footer -->
@@ -655,50 +600,6 @@ ssh-keygen <span class="nt">-R</span> 123.13.45.134
 
 
 <!-- Side Catalog -->
-
-<script type="text/javascript">
-    function generateCatalog (selector) {
-        var P = $('div.post-container'),a,n,t,l,i,c;
-        a = P.find('h1,h2,h3,h4,h5,h6');
-        a.each(function () {
-            n = $(this).prop('tagName').toLowerCase();
-            i = "#"+$(this).prop('id');
-            t = $(this).text();
-            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
-            l = $('<li class="'+n+'_nav"></li>').append(c);
-            $(selector).append(l);
-        });
-        return true;    
-    }
-
-    generateCatalog(".catalog-body");
-
-    // toggle side catalog
-    $(".catalog-toggle").click((function(e){
-        e.preventDefault();
-        $('.side-catalog').toggleClass("fold")
-    }))
-
-    /*
-     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
-     * Fork by Hux to support padding
-     */
-    async("/js/jquery.nav.js", function () {
-        $('.catalog-body').onePageNav({
-            currentClass: "active",
-            changeHash: !1,
-            easing: "swing",
-            filter: "",
-            scrollSpeed: 700,
-            scrollOffset: 0,
-            scrollThreshold: .2,
-            begin: null,
-            end: null,
-            scrollChange: null,
-            padding: 80
-        });
-    });
-</script>
 
 
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f606311b-5235-4e31-825e-7d53a998cab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2020-01-14-基于docker搭建mysql.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2020-01-14-ubuntu查看默认网关.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,7 +73,7 @@
       <workItem from="1579052291533" duration="963000" />
       <workItem from="1579058145915" duration="229000" />
       <workItem from="1579058700008" duration="18000" />
-      <workItem from="1579062292839" duration="95000" />
+      <workItem from="1579062292839" duration="466000" />
     </task>
     <task id="LOCAL-00001" summary="修正标题">
       <created>1578454013652</created>
