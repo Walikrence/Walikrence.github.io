@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>Kubernetes 安装 - walikrence的博客 | walirkrence Blog</title>
+    <title>netplan配置双网卡 - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/08/06/kubernetes%E5%AE%89%E8%A3%85/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/15/netplan%E9%85%8D%E7%BD%AE%E5%8F%8C%E7%BD%91%E5%8D%A1/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -158,13 +158,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/post-bg-2015.jpg" width="0" height="0"> -->
+<!-- <img src="/img/bg/post-bg-2020.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-2015.jpg')
+        background-image: url('/img/bg/post-bg-2020.jpg')
     }
 
     
@@ -177,17 +177,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#kubernetes" title="kubernetes">kubernetes</a>
+                        <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
                         
-                        <a class="tag" href="/tags/#国内环境" title="国内环境">国内环境</a>
+                        <a class="tag" href="/tags/#netplan" title="netplan">netplan</a>
                         
                     </div>
-                    <h1>Kubernetes 安装</h1>
+                    <h1>netplan配置双网卡</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on August 6, 2019</span>
+                    <span class="meta">Posted by walikrence on January 15, 2020</span>
                 </div>
             </div>
         </div>
@@ -205,176 +205,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="kubernetes-安装">Kubernetes 安装</h1>
+				<h1 id="netplan配置双网卡">netplan配置双网卡</h1>
 
-<h2 id="安装docker">安装docker</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>vim <span class="nt">-y</span>
-</code></pre></div></div>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>curl <span class="nt">-y</span>
-</code></pre></div></div>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> get.docker.com <span class="nt">-o</span> get-docker.sh
-<span class="nb">sudo </span>sh get-docker.sh <span class="nt">--mirror</span> Aliyun
-<span class="nb">sudo </span>systemctl <span class="nb">enable </span>docker
-<span class="nb">sudo </span>systemctl start docker
-<span class="nb">sudo </span>groupadd docker
-<span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span>
-</code></pre></div></div>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker &lt;你的用户名&gt;
+<p>系统: ubuntu-18.04.3-live-server-amd64</p>
+
+<p>今天一台虚拟机要两个网卡，一个连接内网，一个连接外网，方便固定内网ip</p>
+<h2 id="修改-etcnetplan50-cloud-inityaml">修改 /etc/netplan/50-cloud-init.yaml</h2>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/netplan/50-cloud-init.yaml
 </code></pre></div></div>
 
-<p>docker使用镜像</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/docker/daemon.json
-</code></pre></div></div>
-<p>修改成</p>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"registry-mirrors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"https://registry.docker-cn.com"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl daemon-reload
-<span class="nb">sudo </span>systemctl restart docker
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">network</span><span class="pi">:</span>
+    <span class="na">network</span><span class="pi">:</span>
+        <span class="na">ethernets</span><span class="pi">:</span>
+            <span class="na">enp0s3</span><span class="pi">:</span>
+                <span class="na">addresses</span><span class="pi">:</span>
+                        <span class="pi">-</span> <span class="s">192.168.56.20/24</span>
+            <span class="na">enp0s8</span><span class="pi">:</span>
+                <span class="na">dhcp4</span><span class="pi">:</span> <span class="s">yes</span>
+        <span class="na">version</span><span class="pi">:</span> <span class="m">2</span>
 </code></pre></div></div>
 
-<h2 id="关闭交换">关闭交换</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>swapoff <span class="nt">-a</span>
+<h2 id="使用">使用</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netplan apply
 </code></pre></div></div>
-<p>永久关闭交换</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/fstab
-</code></pre></div></div>
+<h2 id="网络配置">网络配置</h2>
+<p><img src="../../../../img/netplan配置双网卡/1.png" alt="" /> <br />
+<img src="../../../../img/netplan配置双网卡/2.png" alt="" /> <br />
+<img src="../../../../img/netplan配置双网卡/3.png" alt="" /> <br /></p>
 
-<div class="language-vim highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UUID<span class="p">=</span><span class="m">42</span>cf9d46<span class="p">-</span>ae0d<span class="m">-488</span><span class="k">d</span><span class="m">-9</span>e3a<span class="p">-</span>b6f78708bea1 /               ext4    errors<span class="p">=</span>remount<span class="p">-</span>ro <span class="m">0</span>       <span class="m">1</span>
-#/swapfile                                 none            <span class="k">swap</span>    <span class="k">sw</span>              <span class="m">0</span>       <span class="m">0</span>
-</code></pre></div></div>
-<p>修改后重启</p>
-
-<h2 id="安装kubelet-kubeadm-kubectl">安装kubelet kubeadm kubectl</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> apt-transport-https curl
-<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; /etc/apt/sources.list.d/kubernetes.list
-deb http://mirrors.ustc.edu.cn/kubernetes/apt kubernetes-xenial main
-</span><span class="no">EOF
-</span>apt-get update
-apt-key adv <span class="nt">--keyserver</span> keyserver.ubuntu.com <span class="nt">--recv-keys</span> 6A030B21BA07F4FB
-
-apt-get update
-apt-get <span class="nb">install</span> <span class="nt">-y</span> kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl
-</code></pre></div></div>
-
-<p>这里可能会出一点问题，最开始中科大的源是可以用的，不过这几天用不了了，所以换成阿里云的源可以试试</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> /etc/apt/sources.list.d/kubernetes.list
-</code></pre></div></div>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> apt-transport-https curl
-<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; /etc/apt/sources.list.d/kubernetes.list
-deb http://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
-</span><span class="no">EOF
-</span>apt-get update
-apt-key adv <span class="nt">--keyserver</span> keyserver.ubuntu.com <span class="nt">--recv-keys</span> 6A030B21BA07F4FB
-
-apt-get update
-apt-get <span class="nb">install</span> <span class="nt">-y</span> kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl
-</code></pre></div></div>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-</code></pre></div></div>
-
-<p>在末尾添加</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs"
-</code></pre></div></div>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl daemon-reload
-systemctl restart kubelet
-</code></pre></div></div>
-
-<h2 id="关闭防火墙">关闭防火墙</h2>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/sysctl.conf
-</code></pre></div></div>
-<p>在末尾添加</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>net.bridge.bridge-nf-call-ip6tables <span class="o">=</span> 1
-net.bridge.bridge-nf-call-iptables <span class="o">=</span> 1
-</code></pre></div></div>
-
-<h2 id="下载需要的镜像并修改标签">下载需要的镜像并修改标签</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.15.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.15.1 k8s.gcr.io/kube-apiserver:v1.15.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.15.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.15.1 k8s.gcr.io/kube-controller-manager:v1.15.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.15.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.15.1 k8s.gcr.io/kube-scheduler:v1.15.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.15.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.15.1 k8s.gcr.io/kube-proxy:v1.15.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1 k8s.gcr.io/pause:3.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.3.10 k8s.gcr.io/etcd:3.3.10
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.3.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.3.1 k8s.gcr.io/coredns:1.3.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause-amd64:3.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/ k8s.gcr.io/
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.0
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4 k8s.gcr.io/heapster-amd64:v1.5.4
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-grafana-amd64:v5.0.4
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-grafana-amd64:v5.0.4 k8s.gcr.io/heapster-grafana-amd64:v5.0.4
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-influxdb-amd64:v1.5.2
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-influxdb-amd64:v1.5.2 k8s.gcr.io/heapster-influxdb-amd64:v1.5.2
-
-
-</code></pre></div></div>
-
-<hr />
-
-<p>以上所有步骤在所有master和slave机器上完成。</p>
-
-<h1 id="master节点步骤">master节点步骤</h1>
-
-<p>完成上面步骤后</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>kubeadm init <span class="nt">--kubernetes-version</span><span class="o">=</span>v1.15.1  <span class="nt">--pod-network-cidr</span><span class="o">=</span>192.168.0.0/16
-</code></pre></div></div>
-<!-- sudo kubeadm init --kubernetes-version=v1.15.1  --pod-network-cidr=10.244.0.0/16 -->
-<p>启动</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HOME</span>/.kube
-<span class="nb">sudo cp</span> <span class="nt">-i</span> /etc/kubernetes/admin.conf <span class="nv">$HOME</span>/.kube/config
-<span class="nb">sudo chown</span> <span class="si">$(</span><span class="nb">id</span> <span class="nt">-u</span><span class="si">)</span>:<span class="si">$(</span><span class="nb">id</span> <span class="nt">-g</span><span class="si">)</span> <span class="nv">$HOME</span>/.kube/config
-</code></pre></div></div>
-
-<p>初始化master节点</p>
-
-<p>拉取网络插件calico镜像</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull quay.io/calico/node:v3.1.3
-docker pull quay.io/calico/cni:v3.1.3
-docker pull quay.io/calico/typha:v0.7.4
-</code></pre></div></div>
-
-<p>配置网络插件</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-kubectl apply <span class="nt">-f</span> https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-</code></pre></div></div>
-
-<p>配置完成后可能ssh就断开了，因为calico的网段也是192.168.0.0。暂时没有什么很好的解决方案，但是通过连在同一个交换机上的电脑仍然可以ssh连接或者直接操作master节点。所以我用笔记本的有线网络连接集群，无线网络连接控制电脑来控制集群</p>
-
-<h2 id="打印加入集群的命令">打印加入集群的命令</h2>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubeadm token create <span class="nt">--print-join-command</span>
-</code></pre></div></div>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubeadm <span class="nb">join </span>192.168.3.51:6443 <span class="nt">--token</span> loi96z.64to8ymreeus3bi1     <span class="nt">--discovery-token-ca-cert-hash</span> sha256:fceb3233a84491d8ed9b5937869e92d236153fcab3f08d01356da01aea9ce916 
-</code></pre></div></div>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubeadm <span class="nb">join </span>192.168.3.51:6443 <span class="nt">--token</span> u2detf.qlouwrt8ee9ch2q5     <span class="nt">--discovery-token-ca-cert-hash</span> sha256:b035c8325964ae4ffcf25140a5f2ac89042b844b4c1c5084748c5dff5f3e2d07 
-</code></pre></div></div>
-
-<h1 id="slave节点">slave节点</h1>
-
-<p>完成初始化步骤后，通过master节点打印出的加入集群命令加入集群</p>
-
-<p>例如</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubeadm <span class="nb">join </span>192.168.3.51:6443 <span class="nt">--token</span> yrfk5v.o7jmxj03lopu5042     <span class="nt">--discovery-token-ca-cert-hash</span> sha256:b035c8325964ae4ffcf25140a5f2ac89042b844b4c1c5084748c5dff5f3e2d07 
-</code></pre></div></div>
-
+<p>有个坑，我先配置了host-only的网卡再配置网桥网卡结果一直联不通外网，后来我试着把host-only的网线拔掉之后重连，就一切正常了,orz</p>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://www.hi-linux.com/posts/49513.html">运维之美</a></p>
 
 
                 <hr style="visibility: hidden;">
@@ -382,19 +244,12 @@ kubectl apply <span class="nt">-f</span> https://docs.projectcalico.org/v3.1/get
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/29/minikube_%E5%AE%89%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="minikube安装（国内环境）">
+                        <a href="/2020/01/15/netplan%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80/" data-toggle="tooltip" data-placement="top" title="netplan配置ip地址">
                         Previous<br>
-                        <span>minikube安装（国内环境）</span>
+                        <span>netplan配置ip地址</span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2019/08/08/nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" data-toggle="tooltip" data-placement="top" title="nginx配置反向代理">
-                        Next<br>
-                        <span>nginx配置反向代理</span>
-                        </a>
-                    </li>
                     
                 </ul>
 

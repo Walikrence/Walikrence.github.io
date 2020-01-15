@@ -187,6 +187,34 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/01/15/netplan%E9%85%8D%E7%BD%AE%E5%8F%8C%E7%BD%91%E5%8D%A1/">
+        <h2 class="post-title">
+            netplan配置双网卡
+        </h2>
+        
+        <div class="post-content-preview">
+            netplan配置双网卡
+
+系统: ubuntu-18.04.3-live-server-amd64
+
+今天一台虚拟机要两个网卡，一个连接内网，一个连接外网，方便固定内网ip
+修改 /etc/netplan/50-cloud-init.yaml
+
+vim /etc/netplan/50-cloud-init.yaml
+
+
+network:
+    network:
+        ether...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 15, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/01/15/netplan%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80/">
         <h2 class="post-title">
             netplan配置ip地址
@@ -435,38 +463,6 @@ git clone ssh://git@172.20.10.8/walikrence/hello-gitlab.git
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2020/01/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/">
-        <h2 class="post-title">
-            虚拟机磁盘扩容
-        </h2>
-        
-        <div class="post-content-preview">
-            虚拟机磁盘扩容
-
-系统: ubuntu-18.04.3-live-server-amd64
-
-今天虚拟机安装gitlab的时候遇到一个问题，docker image拉取成功后解压失败，
-提示空间不足。
-df -h
-
-
-
-sudo fdisk -l
-
-
-
-
-将 /dev/mapper/ubuntu–vg-ubuntu–lv 增大5000M
-lvextend -L + 5000M /dev/ma...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on January 11, 2020
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -541,7 +537,7 @@ lvextend -L + 5000M /dev/ma...
                             
                         
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="7">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="8">
                                     ubuntu
                                 </a>
                             
@@ -644,6 +640,10 @@ lvextend -L + 5000M /dev/ma...
                                 </a>
                             
                         
+                            
+                                <a href="/tags/#netplan" title="netplan" rel="2">
+                                    netplan
+                                </a>
                             
                         
                     </div>

@@ -5,9 +5,55 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 16 Jan 2020 00:00:55 +0800</pubDate>
-    <lastBuildDate>Thu, 16 Jan 2020 00:00:55 +0800</lastBuildDate>
+    <pubDate>Thu, 16 Jan 2020 01:15:01 +0800</pubDate>
+    <lastBuildDate>Thu, 16 Jan 2020 01:15:01 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>netplan配置双网卡</title>
+        <description>&lt;h1 id=&quot;netplan配置双网卡&quot;&gt;netplan配置双网卡&lt;/h1&gt;
+
+&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
+
+&lt;p&gt;今天一台虚拟机要两个网卡，一个连接内网，一个连接外网，方便固定内网ip&lt;/p&gt;
+&lt;h2 id=&quot;修改-etcnetplan50-cloud-inityaml&quot;&gt;修改 /etc/netplan/50-cloud-init.yaml&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/netplan/50-cloud-init.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;network&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;network&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ethernets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;enp0s3&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.56.20/24&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;enp0s8&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;dhcp4&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;yes&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;使用&quot;&gt;使用&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netplan apply
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;网络配置&quot;&gt;网络配置&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;../../../../img/netplan配置双网卡/1.png&quot; alt=&quot;&quot; /&gt; &lt;br /&gt;
+&lt;img src=&quot;../../../../img/netplan配置双网卡/2.png&quot; alt=&quot;&quot; /&gt; &lt;br /&gt;
+&lt;img src=&quot;../../../../img/netplan配置双网卡/3.png&quot; alt=&quot;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;有个坑，我先配置了host-only的网卡再配置网桥网卡结果一直联不通外网，后来我试着把host-only的网线拔掉之后重连，就一切正常了,orz&lt;/p&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.hi-linux.com/posts/49513.html&quot;&gt;运维之美&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 15 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/15/netplan%E9%85%8D%E7%BD%AE%E5%8F%8C%E7%BD%91%E5%8D%A1/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/15/netplan%E9%85%8D%E7%BD%AE%E5%8F%8C%E7%BD%91%E5%8D%A1/</guid>
+        
+        <category>ubuntu</category>
+        
+        <category>netplan</category>
+        
+        
+      </item>
     
       <item>
         <title>netplan配置ip地址</title>
@@ -24,7 +70,7 @@
     &lt;span class=&quot;na&quot;&gt;ethernets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;na&quot;&gt;enp0s3&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
             &lt;span class=&quot;na&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.56.10/8&lt;/span&gt;
+                    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.56.20/24&lt;/span&gt;
             &lt;span class=&quot;na&quot;&gt;gateway4&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.56.1&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -480,53 +526,6 @@ volumes:
         <category>gitlab</category>
         
         <category>ssh</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>虚拟机磁盘扩容</title>
-        <description>&lt;h1 id=&quot;虚拟机磁盘扩容&quot;&gt;虚拟机磁盘扩容&lt;/h1&gt;
-
-&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
-
-&lt;p&gt;今天虚拟机安装gitlab的时候遇到一个问题，docker image拉取成功后解压失败，
-提示空间不足。&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;df&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/虚拟机磁盘扩容/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;fdisk &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/虚拟机磁盘扩容/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;将 /dev/mapper/ubuntu–vg-ubuntu–lv 增大5000M&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lvextend &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; + 5000M /dev/mapper/ubuntu--vg-ubuntu--lv
-resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../../../img/虚拟机磁盘扩容/3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vgdisplay
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../../../img/虚拟机磁盘扩容/4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;pv,pe,vg,lv&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/虚拟机磁盘扩容/5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;参考链接&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://man.linuxde.net/lvextend&quot;&gt;lvextend&lt;/a&gt; &lt;br /&gt;
-&lt;a href=&quot;https://man.linuxde.net/resize2fs&quot;&gt;resize2fs&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://wangying.sinaapp.com/archives/2301&quot;&gt;Linux磁盘管理：LVM逻辑卷基本概念及LVM的工作原理&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 11 Jan 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/01/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/01/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/</guid>
-        
-        <category>虚拟机</category>
-        
-        <category>Ubuntu</category>
         
         
       </item>
