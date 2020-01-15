@@ -214,6 +214,36 @@ servi...
 <hr>
 
 <div class="post-preview">
+    <a href="/2020/01/14/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAmysql/">
+        <h2 class="post-title">
+            基于docker搭建mysql
+        </h2>
+        
+        <div class="post-content-preview">
+            基于docker搭建mysql
+
+下载镜像
+docker pull mysql:5.7
+
+
+编写docker-compose.yml
+version: '3'
+
+services:
+
+  db:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 14, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/01/13/%E5%9F%BA%E4%BA%8Edocker%E8%87%AA%E5%BB%BAnexus%E7%A7%81%E6%9C%8D/">
         <h2 class="post-title">
             基于docker自建nexus私服
@@ -439,36 +469,6 @@ deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe mul...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/12/05/mysql%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">
-        <h2 class="post-title">
-            Mysql解决中文乱码
-        </h2>
-        
-        <div class="post-content-preview">
-            Mysql解决中文乱码
-系统：ubuntu
-
-最近自己搭建后台出现中文乱码情况，经过排查发现是mysql的charater_set_server默认为latin1
-
-查看方法
-show variables like '%char%'
-
-修改方法
-vim /etc/mysql/mysql.conf.d/mysqld.cnf
-
-
-在末尾添加
-
-character_set_server = utf...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on December 5, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -611,7 +611,7 @@ character_set_server = utf...
                             
                         
                             
-                                <a href="/tags/#Docker" title="Docker" rel="5">
+                                <a href="/tags/#Docker" title="Docker" rel="6">
                                     Docker
                                 </a>
                             
@@ -629,19 +629,19 @@ character_set_server = utf...
                             
                         
                             
-                                <a href="/tags/#nexus" title="nexus" rel="3">
+                                <a href="/tags/#nexus" title="nexus" rel="4">
                                     nexus
                                 </a>
                             
                         
                             
-                                <a href="/tags/#maven" title="maven" rel="3">
+                                <a href="/tags/#maven" title="maven" rel="4">
                                     maven
                                 </a>
                             
                         
                             
-                                <a href="/tags/#java" title="java" rel="3">
+                                <a href="/tags/#java" title="java" rel="4">
                                     java
                                 </a>
                             
