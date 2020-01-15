@@ -27,7 +27,7 @@ network:
     ethernets:
         enp0s3:
             addresses:
-                    - 192.168.56.10/8
+                    - 192.168.56.20/24
             gateway4: 192.168.56.1
     version: 2
 ```
