@@ -187,6 +187,54 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/01/13/%E4%BD%BF%E7%94%A8nexus%E7%A7%81%E6%9C%8D/">
+        <h2 class="post-title">
+            使用nexus私服
+        </h2>
+        
+        <div class="post-content-preview">
+            使用nexus私服
+
+系统: MAC
+
+修改maven的setting.xml
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchem...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 13, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/01/12/%E8%87%AA%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/">
+        <h2 class="post-title">
+            自建gitlab服务器ssh需要密码
+        </h2>
+        
+        <div class="post-content-preview">
+            自建gitlab服务器ssh需要密码
+
+系统: ubuntu-18.04.3-live-server-amd64
+
+今天基于docker搭建了gitlab服务器,配置了ssh密钥，但是ssh下载的时候提示需要密码
+
+排查发现ssh在gitee和github上都可用，但是就是自建的gitlab不可用。
+
+发现命令需要加端口号
+git clone ssh://git@172.20.10.8:22...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 12, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/01/12/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8/">
         <h2 class="post-title">
             基于docker搭建gitlab服务器
@@ -268,7 +316,7 @@ sudo fdisk -l
 
 
 将 /dev/mapper/ubuntu–vg-ubuntu–lv 增大5000M
-lvextend -L + 5000M /dev/ma...
+lvextend -L +5000M /dev/map...
         </div>
     </a>
     <p class="post-meta">
@@ -426,76 +474,6 @@ oc基础
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/08/29/Mac%E4%B8%8B%E4%BD%BF%E7%94%A8CImg/">
-        <h2 class="post-title">
-            Mac下使用CImg
-        </h2>
-        
-        <div class="post-content-preview">
-            Mac下使用CImg
-
-环境
-macOS 10.14.4
-
-准备
-下载CImg.h
-编译
-
-  #include "CImg.h"
-
-
-
-g++ test.cpp -o main
-
-
-报错
-
-
-In file included from test.cpp:1:
-./CImg.h:371:10: fatal error: 'X11/Xlib.h' file not found
-#include...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on August 29, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/08/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEredis/">
-        <h2 class="post-title">
-            安装配置redis
-        </h2>
-        
-        <div class="post-content-preview">
-            安装配置redis
-
-环境
-Ubuntu 18.04
-
-apt安装
-sudo apt install redis-server
-
-
-检查是否安装成功
-redis-cli -v 
-
-
-源代码安装
-apt install make -y
-apt install gcc -y
-wget http://download.redis.io/releases/redis-4.0.11.tar.gz
-ta...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on August 12, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -574,7 +552,7 @@ ta...
                             
                         
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="10">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="12">
                                     ubuntu
                                 </a>
                             
@@ -648,7 +626,7 @@ ta...
                             
                         
                             
-                                <a href="/tags/#虚拟机" title="虚拟机" rel="2">
+                                <a href="/tags/#虚拟机" title="虚拟机" rel="4">
                                     虚拟机
                                 </a>
                             
@@ -684,9 +662,11 @@ ta...
                             
                         
                             
-                                <a href="/tags/#virtual box" title="virtual box" rel="3">
+                                <a href="/tags/#virtual box" title="virtual box" rel="5">
                                     virtual box
                                 </a>
+                            
+                        
                             
                         
                     </div>

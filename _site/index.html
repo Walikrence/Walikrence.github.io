@@ -187,6 +187,67 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/01/16/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%A3%81%E7%9B%98/">
+        <h2 class="post-title">
+            虚拟机添加新磁盘
+        </h2>
+        
+        <div class="post-content-preview">
+            虚拟机添加新磁盘
+
+系统: ubuntu-18.04.3-live-server-amd64
+
+今天虚拟机磁盘不够用了，要再加一个磁盘
+总流程
+通过lvm添加磁盘大致流程是 　
+接上磁盘-&gt;磁盘分区-&gt;pvcreate-&gt;vgextend-&gt;lvextend-&gt;resize2fs
+
+磁盘分区
+
+
+
+pvcreate
+pvcreate /dev/sdb1
+
+
+vg...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 16, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/01/16/vg%E7%A7%BB%E9%99%A4%E4%B8%A2%E5%A4%B1%E7%9A%84pv/">
+        <h2 class="post-title">
+            vg移除丢失的pv
+        </h2>
+        
+        <div class="post-content-preview">
+            vg移除丢失的pv
+
+系统: ubuntu-18.04.3-live-server-amd64
+
+今天虚拟机添加硬盘的时候遇到点问题，pv创建后加入了vg，再把pv的磁盘重新格式化，但是vgdisplay显示pv依然存在
+
+移除已经miss的pv
+vgreduce --removemissing ubuntu-vg
+
+ubuntu-vg是我的vg名称
+vgdisplay
+
+
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 16, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/01/16/ubuntu%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8root%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/">
         <h2 class="post-title">
             ubuntu设置允许root远程登录
@@ -404,54 +465,6 @@ services:
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2020/01/13/%E4%BD%BF%E7%94%A8nexus%E7%A7%81%E6%9C%8D/">
-        <h2 class="post-title">
-            使用nexus私服
-        </h2>
-        
-        <div class="post-content-preview">
-            使用nexus私服
-
-系统: MAC
-
-修改maven的setting.xml
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchem...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on January 13, 2020
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2020/01/12/%E8%87%AA%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8ssh%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81/">
-        <h2 class="post-title">
-            自建gitlab服务器ssh需要密码
-        </h2>
-        
-        <div class="post-content-preview">
-            自建gitlab服务器ssh需要密码
-
-系统: ubuntu-18.04.3-live-server-amd64
-
-今天基于docker搭建了gitlab服务器,配置了ssh密钥，但是ssh下载的时候提示需要密码
-
-排查发现ssh在gitee和github上都可用，但是就是自建的gitlab不可用。
-
-发现命令需要加端口号
-git clone ssh://git@172.20.10.8:22...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on January 12, 2020
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -526,7 +539,7 @@ git clone ssh://git@172.20.10.8:22...
                             
                         
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="10">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="12">
                                     ubuntu
                                 </a>
                             
@@ -600,7 +613,7 @@ git clone ssh://git@172.20.10.8:22...
                             
                         
                             
-                                <a href="/tags/#虚拟机" title="虚拟机" rel="2">
+                                <a href="/tags/#虚拟机" title="虚拟机" rel="4">
                                     虚拟机
                                 </a>
                             
@@ -636,9 +649,11 @@ git clone ssh://git@172.20.10.8:22...
                             
                         
                             
-                                <a href="/tags/#virtual box" title="virtual box" rel="3">
+                                <a href="/tags/#virtual box" title="virtual box" rel="5">
                                     virtual box
                                 </a>
+                            
+                        
                             
                         
                     </div>

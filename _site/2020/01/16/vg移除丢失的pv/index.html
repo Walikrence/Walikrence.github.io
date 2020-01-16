@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>walikrence的博客 | walirkrence Blog</title>
+    <title>vg移除丢失的pv - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/page4/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/16/vg%E7%A7%BB%E9%99%A4%E4%B8%A2%E5%A4%B1%E7%9A%84pv/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -156,469 +156,343 @@
 </script>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/post-bg-desk.jpg')">
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/bg/post-bg-2020.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/bg/post-bg-2020.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>walikrence Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">翻过那座山，人们就会听到你的故事</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                        
+                        <a class="tag" href="/tags/#虚拟机" title="虚拟机">虚拟机</a>
+                        
+                        <a class="tag" href="/tags/#virtual box" title="virtual box">virtual box</a>
+                        
+                    </div>
+                    <h1>vg移除丢失的pv</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by walikrence on January 16, 2020</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h1 id="vg移除丢失的pv">vg移除丢失的pv</h1>
+
+<p>系统: ubuntu-18.04.3-live-server-amd64</p>
+
+<p>今天虚拟机添加硬盘的时候遇到点问题，pv创建后加入了vg，再把pv的磁盘重新格式化，但是vgdisplay显示pv依然存在</p>
+
+<p>移除已经miss的pv</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgreduce <span class="nt">--removemissing</span> ubuntu-vg
+</code></pre></div></div>
+<p>ubuntu-vg是我的vg名称</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vgdisplay
+</code></pre></div></div>
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/01/16/ubuntu%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8root%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" data-toggle="tooltip" data-placement="top" title="ubuntu设置允许root远程登录">
+                        Previous<br>
+                        <span>ubuntu设置允许root远程登录</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/01/16/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%A3%81%E7%9B%98/" data-toggle="tooltip" data-placement="top" title="虚拟机添加新磁盘">
+                        Next<br>
+                        <span>虚拟机添加新磁盘</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                <!--Gitalk评论start  -->
+                
+                <!-- Gitalk end -->
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
         
 
-<!-- USE SIDEBAR -->
-    <!-- PostList Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
-    			
-<div class="post-preview">
-    <a href="/2019/07/27/django2.2-%E7%BB%93%E5%90%88-vue.js-%E5%BC%80%E5%8F%91/">
-        <h2 class="post-title">
-            django2.2 结合 vue.js 开发
-        </h2>
-        
-        <div class="post-content-preview">
-            django2.2 结合 vue.js 开发
-最近在用django开发后端，配合同学的vue.js前端。没用过vue.js
-搜啦下教程终于解决啦。
-
-增加中间件
-
-'corsheaders.middleware.CorsMiddleware',
-CORS_ORIGIN_ALLOW_ALL = True
-
-完成后setting.py长这样
-MIDDLEWARE = [
-    'django....
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/Ubuntu14.04-%E5%AE%89%E8%A3%85ss/">
-        <h2 class="post-title">
-            Ubuntu18.04 安装ss
-        </h2>
-        
-        <div class="post-content-preview">
-            Ubuntu18.04 安装ss
-代码如下
-先进入root用户
-apt install python-pi
-pip install git+https://github.com/shadowsocks/shadowsocks.git@master
-
-
-{
-    "server":"服务器 IP 或是域名",
-    "server_port":端口号,
-    "local_address...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/">
-        <h2 class="post-title">
-            Ubuntu 终端使用 ss
-        </h2>
-        
-        <div class="post-content-preview">
-            Ubuntu 终端使用 ss
-
-  python Ubuntu
-
-
-
-  安装 proxychains
-
-
-apt install proxychains
-
-
-
-  编辑配置文件
-
-
-vi /etc/proxychains.conf
-
-在最后一行加上
-socks5 127.0.0.1 1080
-
-
-
-  重启
-
-
-使用
-在命令前加上proxychains即可
-例如：
-proxychains ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/Hello-2019/">
-        <h2 class="post-title">
-            My First Post
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Hello World, Hello Blog
-        </h3>
-        
-        <div class="post-content-preview">
-            Hey
-
-  这是我的第一篇博客。
-
-
-进入你的博客主页，新的文章将会出现在你的主页上.
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/26/mac-%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E9%99%86%E9%98%BF%E9%87%8C%E4%BA%91-%E5%A4%B1%E8%B4%A5%E5%BC%80%E5%8F%91%E7%9A%84/">
-        <h2 class="post-title">
-            阿里云重置后mac用ssh登陆服务器失败
-        </h2>
-        
-        <div class="post-content-preview">
-            阿里云重置后mac用ssh登陆服务器失败
-
-出现
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 26, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/26/NUMA(%E9%9D%9E%E4%B8%80%E8%87%B4%E6%80%A7%E5%86%85%E5%AD%98%E6%9E%B6%E6%9E%84)%E6%9C%AC/">
-        <h2 class="post-title">
-            NUMA(非一致性内存架构)（转）
-        </h2>
-        
-        <div class="post-content-preview">
-            NUMA(非一致性内存架构)（转）
-
-原文地址
-—
-—
-一、基本概念
-  非一致性内存架构(Non-uniform Memory Architecture)是为了解决传统的对称多处理(Symmetric Multi-processor)系统中的可扩展性问题而诞生的。在对称多处理系统中，处理器共享北桥中的内存控制器来达到共同访问外部内存和IO的目的，也就是说所有的处理器对内存和I/O的访问方式...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 26, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/23/%E5%AE%9E%E4%B9%A0%E6%8C%87%E5%8D%97/">
-        <h2 class="post-title">
-            实习指南
-        </h2>
-        
-        <div class="post-content-preview">
-            实习
-字节跳动 
-网易
-腾讯
-阿里
-虎牙
-简历
-效果
-源码
-
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 23, 2019
-    </p>
-</div>
-<hr>
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page3">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
-
-
-    		</div>
     <!-- Sidebar Container -->
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
+        				
                             
-                                <a href="/tags/#minikube" title="minikube" rel="3">
+                				<a href="/tags/#minikube" title="minikube" rel="3">
                                     minikube
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#k8s" title="k8s" rel="3">
+                				<a href="/tags/#k8s" title="k8s" rel="3">
                                     k8s
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#kubernetes" title="kubernetes" rel="4">
+                				<a href="/tags/#kubernetes" title="kubernetes" rel="4">
                                     kubernetes
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#国内环境" title="国内环境" rel="4">
+                				<a href="/tags/#国内环境" title="国内环境" rel="4">
                                     国内环境
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#ssh" title="ssh" rel="3">
+                				<a href="/tags/#ssh" title="ssh" rel="3">
                                     ssh
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#python" title="python" rel="2">
+                				<a href="/tags/#python" title="python" rel="2">
                                     python
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="12">
+                				<a href="/tags/#ubuntu" title="ubuntu" rel="12">
                                     ubuntu
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#ss" title="ss" rel="3">
+                				<a href="/tags/#ss" title="ss" rel="3">
                                     ss
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#python3" title="python3" rel="2">
+                				<a href="/tags/#python3" title="python3" rel="2">
                                     python3
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#git" title="git" rel="2">
+                				<a href="/tags/#git" title="git" rel="2">
                                     git
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#nginx" title="nginx" rel="2">
+                				<a href="/tags/#nginx" title="nginx" rel="2">
                                     nginx
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#mysql" title="mysql" rel="2">
+                				<a href="/tags/#mysql" title="mysql" rel="2">
                                     mysql
                                 </a>
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                        
+        				
                             
-                                <a href="/tags/#Ubuntu" title="Ubuntu" rel="3">
+                				<a href="/tags/#Ubuntu" title="Ubuntu" rel="3">
                                     Ubuntu
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#Docker" title="Docker" rel="6">
+                				<a href="/tags/#Docker" title="Docker" rel="6">
                                     Docker
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#虚拟机" title="虚拟机" rel="4">
+                				<a href="/tags/#虚拟机" title="虚拟机" rel="4">
                                     虚拟机
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#gitlab" title="gitlab" rel="3">
+                				<a href="/tags/#gitlab" title="gitlab" rel="3">
                                     gitlab
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#nexus" title="nexus" rel="4">
+                				<a href="/tags/#nexus" title="nexus" rel="4">
                                     nexus
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#maven" title="maven" rel="4">
+                				<a href="/tags/#maven" title="maven" rel="4">
                                     maven
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#java" title="java" rel="4">
+                				<a href="/tags/#java" title="java" rel="4">
                                     java
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#netplan" title="netplan" rel="3">
+                				<a href="/tags/#netplan" title="netplan" rel="3">
                                     netplan
                                 </a>
                             
-                        
+        				
                             
-                                <a href="/tags/#virtual box" title="virtual box" rel="5">
+                				<a href="/tags/#virtual box" title="virtual box" rel="5">
                                     virtual box
                                 </a>
                             
-                        
+        				
                             
-                        
-                    </div>
+        				
+        			</div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <a href="/about">
-                                <img src="/img/about-walikrence-gentle.jpg"/>
-                            </a>
-                        
-                        
-                            <p>翻过那座山，人们就会听到你的故事</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            <!-- add jianshu add target = "_blank" to <a> by BY -->
-                            
-                            
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/walikrence">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
-                        
-                            <p>✉️ walikrence@163.com</p>
-                        
-                    </div>
-                </section>
                 <!-- Friends Blog -->
                 
-    		</div>
-        
-	</div>
-</div>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        // BY Fix:去除标题前的‘#’ issues:<https://github.com/qiubaiying/qiubaiying.github.io/issues/137>
+        // anchors.options = {
+        //   visible: 'always',
+        //   placement: 'right',
+        //   icon: '#'
+        // };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
 
     <!-- Footer -->
@@ -782,6 +656,50 @@ proxychains ...
 
 
 <!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
 
 
 
