@@ -10,7 +10,7 @@
     <meta name="keywords"  content="walikrence的博客, sysu, k8s, docker, django">
     <meta name="theme-color" content="#000000">
     
-    <title>k8s部署应用（以nginx为例） - walikrence的博客 | walirkrence Blog</title>
+    <title>a start job is running for wait for network to be configured - walikrence的博客 | walirkrence Blog</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/07/29/k8s%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8-%E4%BB%A5nginx%E4%B8%BA%E4%BE%8B/">
+    <link rel="canonical" href="http://localhost:4000/2020/01/16/a-start-job-is-running-for-wait-for-network-to-be-configured/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -158,13 +158,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/post-bg-2015.jpg" width="0" height="0"> -->
+<!-- <img src="/img/bg/post-bg-2020.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/post-bg-2015.jpg')
+        background-image: url('/img/bg/post-bg-2020.jpg')
     }
 
     
@@ -177,23 +177,19 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#minikube" title="minikube">minikube</a>
+                        <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
                         
-                        <a class="tag" href="/tags/#k8s" title="k8s">k8s</a>
+                        <a class="tag" href="/tags/#netplan" title="netplan">netplan</a>
                         
-                        <a class="tag" href="/tags/#kubernetes" title="kubernetes">kubernetes</a>
-                        
-                        <a class="tag" href="/tags/#国内环境" title="国内环境">国内环境</a>
-                        
-                        <a class="tag" href="/tags/#nginx" title="nginx">nginx</a>
+                        <a class="tag" href="/tags/#virtual box" title="virtual box">virtual box</a>
                         
                     </div>
-                    <h1>k8s部署应用（以nginx为例）</h1>
+                    <h1>a start job is running for wait for network to be configured</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by walikrence on July 29, 2019</span>
+                    <span class="meta">Posted by walikrence on January 16, 2020</span>
                 </div>
             </div>
         </div>
@@ -211,274 +207,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h1 id="k8s部署应用以nginx为例">k8s部署应用（以nginx为例）</h1>
+				<h1 id="a-start-job-is-running-for-wait-for-network-to-be-configured">a start job is running for wait for network to be configured</h1>
 
-<h2 id="概念">概念</h2>
+<p>系统: ubuntu-18.04.3-live-server-amd64</p>
 
-<h3 id="deploy">deploy</h3>
-<blockquote>
-  <p>A Deployment controller provides declarative updates for Pods and ReplicaSets.</p>
-</blockquote>
+<p>a start job is running for wait for network to be configured
+今天虚拟机开机遇到一个问题，当我拔掉网卡网线后,开机就出现一个读条</p>
 
-<p>deploy 提供一个更新pod 和 replicasets的更新说明</p>
+<p><img src="../../../../img/2018-01-16/1.png" alt="" /> <br /></p>
 
-<blockquote>
-  <p>You describe a desired state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.</p>
-</blockquote>
+<h2 id="修改-etcnetplan50-cloud-inityaml">修改 /etc/netplan/50-cloud-init.yaml</h2>
 
-<p>通俗来讲就是你可以声明你需要多少个，什么样的pod，写一个yaml告诉集群，集群自动帮你实现</p>
-
-<h3 id="service">service</h3>
-<blockquote>
-  <p>An abstract way to expose an application running on a set of Pods as a network service.</p>
-</blockquote>
-
-<p>service 是一个抽象的，用来expose 已经创建的pods的 对象。 client通过访问service来访问一组pods中的某一个pod</p>
-
-<blockquote>
-  <p>With Kubernetes you don’t need to modify your application to use an unfamiliar service discovery mechanism. Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.</p>
-</blockquote>
-
-<p>你也可以不使用service而直接指定使用某个pod，但是这样并不推荐。</p>
-
-<blockquote>
-  <p>Kubernetes Pod 是有生命周期的，它们可以被创建，也可以被销毁，然而一旦被销毁生命就永远结束。 通过 ReplicaSets 能够动态地创建和销毁 Pod（例如，需要进行扩缩容，或者执行 滚动升级）。 每个 Pod 都会获取它自己的 IP 地址，即使这些 IP 地址不总是稳定可依赖的。 这会导致一个问题：在 Kubernetes 集群中，如果一组 Pod（称为 backend）为其它 Pod （称为 frontend）提供服务，那么那些 frontend 该如何发现，并连接到这组 Pod 中的哪些 backend 呢？</p>
-</blockquote>
-
-<p>关于 Service</p>
-
-<p>Kubernetes Service 定义了这样一种抽象：逻辑上的一组 Pod，一种可以访问它们的策略 —— 通常称为微服务。 这一组 Pod 能够被 Service 访问到，通常是通过 Label Selector（查看下面了解，为什么可能需要没有 selector 的 Service）实现的。</p>
-
-<p>举个例子，考虑一个图片处理 backend，它运行了3个副本。这些副本是可互换的 —— frontend 不需要关心它们调用了哪个 backend 副本。 然而组成这一组 backend 程序的 Pod 实际上可能会发生变化，frontend 客户端不应该也没必要知道，而且也不需要跟踪这一组 backend 的状态。 Service 定义的抽象能够解耦这种关联。</p>
-
-<h2 id="示例">示例</h2>
-<h3 id="deploy-1">deploy</h3>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># nginx-deployment.yaml</span>
-<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1beta1</span> <span class="c1"># for versions before 1.6.0 use extensions/v1beta1</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">nginx-deployment</span> <span class="c1">#这个随便起</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">replicas</span><span class="pi">:</span> <span class="m">3</span> <span class="c1">#重复的份数</span>
-  <span class="na">template</span><span class="pi">:</span> <span class="c1">#每一份pod长什么样子</span>
-    <span class="na">metadata</span><span class="pi">:</span>
-      <span class="na">labels</span><span class="pi">:</span> <span class="c1"># 标签，用来跟service 匹配</span>
-        <span class="na">app</span><span class="pi">:</span> <span class="s">nginx</span>
-    <span class="na">spec</span><span class="pi">:</span>
-      <span class="na">containers</span><span class="pi">:</span> <span class="c1">#使用的容器</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">nginx</span>
-        <span class="na">image</span><span class="pi">:</span> <span class="s">nginx:1.7.9</span> <span class="c1"># 镜像版本</span>
-        <span class="na">ports</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">80</span> <span class="c1"># 容器端口</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/netplan/50-cloud-init.yaml
 </code></pre></div></div>
-<p>部署</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create <span class="nt">-f</span> nginx-deployment.yaml <span class="nt">--record</span>
-</code></pre></div></div>
-<p>查看</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get deployments
-kubectl get rs
-kubectl get pods
-</code></pre></div></div>
-<p>修改</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl <span class="nb">set </span>image deployment/nginx-deployment <span class="nv">nginx</span><span class="o">=</span>nginx:1.9.1
+<p>添加 optional: true</p>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">network</span><span class="pi">:</span>
+    <span class="na">network</span><span class="pi">:</span>
+        <span class="na">ethernets</span><span class="pi">:</span>
+            <span class="na">enp0s3</span><span class="pi">:</span>
+                <span class="na">addresses</span><span class="pi">:</span>
+                        <span class="pi">-</span> <span class="s">192.168.56.20/24</span>
+                <span class="na">optional</span><span class="pi">:</span> <span class="no">true</span>
+            <span class="na">enp0s8</span><span class="pi">:</span>
+                <span class="na">dhcp4</span><span class="pi">:</span> <span class="s">yes</span>
+        <span class="na">version</span><span class="pi">:</span> <span class="m">2</span>
 </code></pre></div></div>
 
-<h3 id="service-1">service</h3>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># my-service.yml</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">Service</span>
-<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">my-service</span>    <span class="c1">#名字，这个随便写</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">selector</span><span class="pi">:</span>      <span class="c1">#选择器</span>
-    <span class="na">app</span><span class="pi">:</span> <span class="s">MyApp</span>   <span class="c1">#标签，用来选择对应的pod</span>
-  <span class="na">ports</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">protocol</span><span class="pi">:</span> <span class="s">TCP</span>         <span class="c1">#协议</span>
-      <span class="na">port</span><span class="pi">:</span> <span class="m">80</span>         <span class="c1">#端口号</span>
-      <span class="na">targetPort</span><span class="pi">:</span> <span class="m">9376</span>       <span class="c1">#target端口号</span>
+<h2 id="使用">使用</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netplan apply
 </code></pre></div></div>
-
-<p>部署</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create <span class="nt">-f</span> my-service.yaml 
-</code></pre></div></div>
-<p>查看</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get service 
-<span class="c">#或者</span>
-kubectl get svc
-</code></pre></div></div>
-
-<h2 id="nginx-部署">nginx 部署</h2>
-
-<p>部署一个两份pod的deploy，每个pod包含一个nginx容器</p>
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># a.yml</span>
-<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span> <span class="c1"># for versions before 1.9.0 use apps/v1beta2</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">nginx-deployment</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">selector</span><span class="pi">:</span>
-    <span class="na">matchLabels</span><span class="pi">:</span>
-      <span class="na">app</span><span class="pi">:</span> <span class="s">nginx</span>
-  <span class="na">replicas</span><span class="pi">:</span> <span class="m">2</span> <span class="c1"># tells deployment to run 2 pods matching the template</span>
-  <span class="na">template</span><span class="pi">:</span> <span class="c1"># create pods using pod definition in this template</span>
-    <span class="na">metadata</span><span class="pi">:</span>
-      <span class="na">labels</span><span class="pi">:</span>
-        <span class="na">app</span><span class="pi">:</span> <span class="s">nginx</span>
-    <span class="na">spec</span><span class="pi">:</span>
-      <span class="na">containers</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">nginx</span>
-          <span class="na">image</span><span class="pi">:</span> <span class="s">nginx</span>     <span class="c1"># 定义使用的docker镜像，镜像必须在本地存在或者存在于仓库</span>
-          <span class="na">ports</span><span class="pi">:</span>
-            <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">80</span>
-
-
-</code></pre></div></div>
-
-<p>定义service，通过 NodePort方式把服务映射到任意节点的 30003端口，即可通过任意节点的ip加端口号访问服务</p>
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># b.yml</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">Service</span>
-<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">nginx</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">type</span><span class="pi">:</span> <span class="s">NodePort</span>
-  <span class="na">ports</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">port</span><span class="pi">:</span> <span class="m">80</span>
-      <span class="na">nodePort</span><span class="pi">:</span> <span class="m">30003</span>
-  <span class="na">selector</span><span class="pi">:</span>
-    <span class="na">app</span><span class="pi">:</span> <span class="s">nginx</span>
-</code></pre></div></div>
-
-<p>部署</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create <span class="nt">-f</span> a.yml
-kubectl create <span class="nt">-f</span> b.yml
-</code></pre></div></div>
-<p>查看</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get svc
-kubectl get pod
-kubectl get deploy
-kubectl get rs
-<span class="c">#或者使用dashboard图形化界面查看</span>
-</code></pre></div></div>
-
-<h2 id="访问我们部署的nginx">访问我们部署的nginx</h2>
-
-<h3 id="初始状态">初始状态</h3>
-
-<p>我们在minikube上部署了nginx, 我们的架构是  服务器-》服务器创建的VM-〉VM上面运行的集群</p>
-
-<p>所以我们要访问集群需要先登陆节点，然后通过</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl cluster-info
-</code></pre></div></div>
-<p>获得节点的ip地址</p>
-
-<p>再通过</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl &lt;节点ip地址&gt;:30003 
-</code></pre></div></div>
-<p>或者浏览器打开<节点ip地址>:30003 来访问我们部署的nginx应用。</节点ip地址></p>
-
-<h3 id="改进">改进</h3>
-
-<p>当然我们用户不能ssh我们的服务器再在服务器上执行这么多命令。</p>
-
-<p>所以我们在我们的节点上配置一个反向代理</p>
-
-<h4 id="反向代理">反向代理</h4>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#安装nginx</span>
-<span class="nb">sudo </span>apt <span class="nb">install </span>nginx <span class="nt">-y</span>
-</code></pre></div></div>
-
-<p>修改 nginx.conf文件，Ubuntu位于 /etc/nginx/nginx.conf</p>
-
-<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">events</span> {
-  <span class="n">worker_connections</span>  <span class="m">4096</span>;  <span class="c">## Default: 1024
-</span>}
-<span class="n">http</span> {
-    <span class="n">server</span> {
-            <span class="n">listen</span>  <span class="m">80</span>;
-            <span class="n">server_name</span> <span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>;
- 
- 
-            <span class="n">location</span> / {
-                    <span class="n">proxy_pass</span> <span class="n">http</span>://&lt;节点的<span class="n">ip</span>地址&gt;:<span class="m">30003</span>;
-            }
-            
-    }
-}
-</code></pre></div></div>
-
-<p>例如</p>
-<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">events</span> {
-  <span class="n">worker_connections</span>  <span class="m">4096</span>;  <span class="c">## Default: 1024
-</span>}
-<span class="n">http</span> {
-    <span class="n">server</span> {
-            <span class="n">listen</span>  <span class="m">80</span>;
-            <span class="n">server_name</span> <span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>;
- 
- 
-            <span class="n">location</span> / {
-                    <span class="n">proxy_pass</span> <span class="n">http</span>://<span class="m">192</span>.<span class="m">168</span>.<span class="m">99</span>.<span class="m">102</span>:<span class="m">30003</span>;
-            }
-            
-    }
-}
-</code></pre></div></div>
-
-<p>然后</p>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nginx <span class="nt">-s</span> reload
-</code></pre></div></div>
-<p>更新配置</p>
-
-<p>此时我们就成功设置了反向代理。所有指向我们服务器80端口的请求都会被代理到节点的30003端口，也就是我们刚刚部署的nginx应用。</p>
-
-<p>此时我们就可以通过服务器的ip地址在任意电脑上访问我们刚刚部署的nginx应用了。</p>
-
-<h4 id="把dashboard代理出来">把dashboard代理出来</h4>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#启动dashboard</span>
-minikube dashboard
-</code></pre></div></div>
-<p>此时dashboard已经激活在30000端口，我们可以通过反向代理将dashboard代理出来</p>
-
-<p>假设我们节点的ip地址为192.168.99.102,修改nginx.conf</p>
-
-<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">events</span> {
-  <span class="n">worker_connections</span>  <span class="m">4096</span>;  <span class="c">## Default: 1024
-</span>}
-<span class="n">http</span> {
-    <span class="n">server</span> {
-            <span class="n">listen</span>  <span class="m">80</span>;
-            <span class="n">server_name</span> <span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>;
- 
- 
-            <span class="n">location</span> / {
-                    <span class="n">proxy_pass</span> <span class="n">http</span>://<span class="m">192</span>.<span class="m">168</span>.<span class="m">99</span>.<span class="m">102</span>:<span class="m">30003</span>;
-            }
-            
-    }
-    <span class="n">server</span> {
-            <span class="n">listen</span>  <span class="m">8080</span>;
-            <span class="n">server_name</span> <span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>;
- 
- 
-            <span class="n">location</span> / {
-                    <span class="n">proxy_pass</span> <span class="n">http</span>://<span class="m">192</span>.<span class="m">168</span>.<span class="m">99</span>.<span class="m">102</span>:<span class="m">30000</span>;
-            }
-            
-    }
-}
-</code></pre></div></div>
-
-<p>更新nginx配置</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nginx <span class="nt">-s</span> reload
-</code></pre></div></div>
-
-<p>此时我们就把dashboard图形化界面反向代理出来了，就可以在其他主机上通过 <服务器ip>：8080 访问图形化管理界面</服务器ip></p>
-
+<p>读条消失</p>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://www.hi-linux.com/posts/49513.html">运维之美</a></p>
 
 
                 <hr style="visibility: hidden;">
@@ -486,17 +246,17 @@ minikube dashboard
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/07/27/%E7%88%AC%E5%8F%96%E5%90%89%E6%9E%97%E6%95%96%E4%B8%9C%E8%B4%A2%E6%8A%A5/" data-toggle="tooltip" data-placement="top" title="爬取吉林敖东财报">
+                        <a href="/2020/01/15/netplan%E9%85%8D%E7%BD%AE%E5%8F%8C%E7%BD%91%E5%8D%A1/" data-toggle="tooltip" data-placement="top" title="netplan配置双网卡">
                         Previous<br>
-                        <span>爬取吉林敖东财报</span>
+                        <span>netplan配置双网卡</span>
                         </a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/07/29/minikube_%E5%AE%89%E8%A3%85/" data-toggle="tooltip" data-placement="top" title="minikube安装（国内环境）">
+                        <a href="/2020/01/16/ubuntu%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8root%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" data-toggle="tooltip" data-placement="top" title="ubuntu设置允许root远程登录">
                         Next<br>
-                        <span>minikube安装（国内环境）</span>
+                        <span>ubuntu设置允许root远程登录</span>
                         </a>
                     </li>
                     

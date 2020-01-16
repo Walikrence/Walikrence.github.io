@@ -187,6 +187,54 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/01/16/ubuntu%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8root%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/">
+        <h2 class="post-title">
+            ubuntu设置允许root远程登录
+        </h2>
+        
+        <div class="post-content-preview">
+            ubuntu设置允许root远程登录
+
+系统: ubuntu-18.04.3-live-server-amd64
+
+vim /etc/ssh/sshd_config 
+
+在末尾添加 PermitRootLogin yes
+#	$OpenBSD: sshd_config,v 1.101 2017/03/14 07:19:07 djm Exp $
+
+# This is the sshd serv...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 16, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/01/16/a-start-job-is-running-for-wait-for-network-to-be-configured/">
+        <h2 class="post-title">
+            a start job is running for wait for network to be configured
+        </h2>
+        
+        <div class="post-content-preview">
+            a start job is running for wait for network to be configured
+
+系统: ubuntu-18.04.3-live-server-amd64
+
+a start job is running for wait for network to be configured
+今天虚拟机开机遇到一个问题，当我拔掉网卡网线后,开机就出现一个读条
+
+ ...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 16, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/01/15/netplan%E9%85%8D%E7%BD%AE%E5%8F%8C%E7%BD%91%E5%8D%A1/">
         <h2 class="post-title">
             netplan配置双网卡
@@ -404,65 +452,6 @@ git clone ssh://git@172.20.10.8:22...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2020/01/12/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-        <h2 class="post-title">
-            基于docker搭建gitlab服务器
-        </h2>
-        
-        <div class="post-content-preview">
-            基于docker搭建gitlab服务器
-
-系统: ubuntu-18.04.3-live-server-amd64
-
-今天想基于docker搭建一个gitlab服务器,以下步骤基于已有docker和docker-compose
-
-找到一个docker image
-
-gitlab中文社区版
-
-找到一个合适的版本并下载
-docker pull twang2218/gitlab-ce-zh:11....
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on January 12, 2020
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2020/01/12/git%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/">
-        <h2 class="post-title">
-            git使用ssh登录
-        </h2>
-        
-        <div class="post-content-preview">
-            git使用ssh登录
-
-系统: MAC
-
-生成公钥私钥
-ssh-keygen -t rsa -C "walikrence@163.com"
-
-
-
-输入公钥
-
-
-
-使用ssh下载代码
-git clone ssh://git@172.20.10.8/walikrence/hello-gitlab.git
-
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on January 12, 2020
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -521,7 +510,7 @@ git clone ssh://git@172.20.10.8/walikrence/hello-gitlab.git
                             
                         
                             
-                                <a href="/tags/#ssh" title="ssh" rel="2">
+                                <a href="/tags/#ssh" title="ssh" rel="3">
                                     ssh
                                 </a>
                             
@@ -537,7 +526,7 @@ git clone ssh://git@172.20.10.8/walikrence/hello-gitlab.git
                             
                         
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="8">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="10">
                                     ubuntu
                                 </a>
                             
@@ -641,8 +630,14 @@ git clone ssh://git@172.20.10.8/walikrence/hello-gitlab.git
                             
                         
                             
-                                <a href="/tags/#netplan" title="netplan" rel="2">
+                                <a href="/tags/#netplan" title="netplan" rel="3">
                                     netplan
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#virtual box" title="virtual box" rel="3">
+                                    virtual box
                                 </a>
                             
                         

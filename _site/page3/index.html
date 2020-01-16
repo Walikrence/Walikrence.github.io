@@ -187,6 +187,71 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2019/08/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEmysql/">
+        <h2 class="post-title">
+            安装配置mysql
+        </h2>
+        
+        <div class="post-content-preview">
+            安装配置mysql
+
+环境
+Ubuntu 18.04
+
+安装
+sudo apt install mysql-server -y
+
+初始化配置
+sudo mysql_secure_installation
+
+
+修改配置
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+原为
+bind-address            = 127.0.0.1
+
+修改为
+bind...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 12, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/08/08/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0docker-registry/">
+        <h2 class="post-title">
+            搭建本地docker registry
+        </h2>
+        
+        <div class="post-content-preview">
+            搭建本地docker registry
+
+服务器配置
+下载registry 镜像
+
+docker pull registry:2
+
+运行
+
+docker run -d -p 5000:5000 --name registry -v /mnt/docker/data/registry:/var/lib/registry registry:2
+
+
+使用镜像的机器的配置
+
+vim /etc/doc...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on August 8, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2019/08/08/nginx%E9%85%8D%E7%BD%AE%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
         <h2 class="post-title">
             nginx配置反向代理
@@ -410,77 +475,6 @@ pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/07/27/Ubuntu-%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8-ss/">
-        <h2 class="post-title">
-            Ubuntu 终端使用 ss
-        </h2>
-        
-        <div class="post-content-preview">
-            Ubuntu 终端使用 ss
-
-  python Ubuntu
-
-
-
-  安装 proxychains
-
-
-apt install proxychains
-
-
-
-  编辑配置文件
-
-
-vi /etc/proxychains.conf
-
-在最后一行加上
-socks5 127.0.0.1 1080
-
-
-
-  重启
-
-
-使用
-在命令前加上proxychains即可
-例如：
-proxychains ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/27/Hello-2019/">
-        <h2 class="post-title">
-            My First Post
-        </h2>
-        
-        <h3 class="post-subtitle">
-            Hello World, Hello Blog
-        </h3>
-        
-        <div class="post-content-preview">
-            Hey
-
-  这是我的第一篇博客。
-
-
-进入你的博客主页，新的文章将会出现在你的主页上.
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on July 27, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -543,7 +537,7 @@ proxychains ...
                             
                         
                             
-                                <a href="/tags/#ssh" title="ssh" rel="2">
+                                <a href="/tags/#ssh" title="ssh" rel="3">
                                     ssh
                                 </a>
                             
@@ -559,7 +553,7 @@ proxychains ...
                             
                         
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="8">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="10">
                                     ubuntu
                                 </a>
                             
@@ -663,8 +657,14 @@ proxychains ...
                             
                         
                             
-                                <a href="/tags/#netplan" title="netplan" rel="2">
+                                <a href="/tags/#netplan" title="netplan" rel="3">
                                     netplan
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#virtual box" title="virtual box" rel="3">
+                                    virtual box
                                 </a>
                             
                         

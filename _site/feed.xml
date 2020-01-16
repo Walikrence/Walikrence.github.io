@@ -5,9 +5,209 @@
     <description>翻过那座山，人们就会听到你的故事</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 16 Jan 2020 01:15:01 +0800</pubDate>
-    <lastBuildDate>Thu, 16 Jan 2020 01:15:01 +0800</lastBuildDate>
+    <pubDate>Thu, 16 Jan 2020 10:21:00 +0800</pubDate>
+    <lastBuildDate>Thu, 16 Jan 2020 10:21:00 +0800</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>ubuntu设置允许root远程登录</title>
+        <description>&lt;h1 id=&quot;ubuntu设置允许root远程登录&quot;&gt;ubuntu设置允许root远程登录&lt;/h1&gt;
+
+&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/ssh/sshd_config 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;在末尾添加 PermitRootLogin yes&lt;/p&gt;
+&lt;div class=&quot;language-config highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#	$OpenBSD: sshd_config,v 1.101 2017/03/14 07:19:07 djm Exp $
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_ecdsa_key
+#HostKey /etc/ssh/ssh_host_ed25519_key
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Ciphers and keying
+#RekeyLimit default none
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Logging
+#SyslogFacility AUTH
+#LogLevel INFO
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Authentication:
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#LoginGraceTime 2m
+#PermitRootLogin prohibit-password
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#PubkeyAuthentication yes
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Expect .ssh/authorized_keys2 to be disregarded by default in future.
+#AuthorizedKeysFile	.ssh/authorized_keys .ssh/authorized_keys2
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#AuthorizedPrincipalsFile none
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#AuthorizedKeysCommand none
+#AuthorizedKeysCommandUser nobody
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+#HostbasedAuthentication no
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+# HostbasedAuthentication
+#IgnoreUserKnownHosts no
+# Don't read the user's ~/.rhosts and ~/.shosts files
+#IgnoreRhosts yes
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# To disable tunneled clear text passwords, change to no here!
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ChallengeResponseAuthentication&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;no&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Kerberos options
+#KerberosAuthentication no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KerberosGetAFSToken no
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+#GSSAPIStrictAcceptorCheck yes
+#GSSAPIKeyExchange no
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of &quot;PermitRootLogin without-password&quot;.
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UsePAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X11Forwarding&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PrintMotd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;no&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#PrintLastLog yes
+#TCPKeepAlive yes
+#UseLogin no
+#PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#UseDNS no
+#PidFile /var/run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# no default banner path
+#Banner none
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Allow client to pass locale environment variables
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AcceptEnv&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LANG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LC_&lt;/span&gt;*
+
+&lt;span class=&quot;c&quot;&gt;# override default of no subsystems
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Subsystem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sftp&lt;/span&gt;	/&lt;span class=&quot;n&quot;&gt;usr&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;lib&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;openssh&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;sftp&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#	X11Forwarding no
+#	AllowTcpForwarding no
+#	PermitTTY no
+#	ForceCommand cvs server
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PasswordAuthentication&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PermitRootLogin&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;重启-ssh&quot;&gt;重启 ssh&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl restart ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Thu, 16 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/16/ubuntu%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8root%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/16/ubuntu%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8root%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/</guid>
+        
+        <category>ubuntu</category>
+        
+        <category>ssh</category>
+        
+        <category>virtual box</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>a start job is running for wait for network to be configured</title>
+        <description>&lt;h1 id=&quot;a-start-job-is-running-for-wait-for-network-to-be-configured&quot;&gt;a start job is running for wait for network to be configured&lt;/h1&gt;
+
+&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
+
+&lt;p&gt;a start job is running for wait for network to be configured
+今天虚拟机开机遇到一个问题，当我拔掉网卡网线后,开机就出现一个读条&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../img/2018-01-16/1.png&quot; alt=&quot;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;修改-etcnetplan50-cloud-inityaml&quot;&gt;修改 /etc/netplan/50-cloud-init.yaml&lt;/h2&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/netplan/50-cloud-init.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;添加 optional: true&lt;/p&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;network&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;network&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ethernets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;enp0s3&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;addresses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.56.20/24&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;optional&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;enp0s8&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;dhcp4&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;yes&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;使用&quot;&gt;使用&lt;/h2&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;netplan apply
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;读条消失&lt;/p&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;参考资料&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.hi-linux.com/posts/49513.html&quot;&gt;运维之美&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 16 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/16/a-start-job-is-running-for-wait-for-network-to-be-configured/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/16/a-start-job-is-running-for-wait-for-network-to-be-configured/</guid>
+        
+        <category>ubuntu</category>
+        
+        <category>netplan</category>
+        
+        <category>virtual box</category>
+        
+        
+      </item>
     
       <item>
         <title>netplan配置双网卡</title>
@@ -51,6 +251,8 @@
         <category>ubuntu</category>
         
         <category>netplan</category>
+        
+        <category>virtual box</category>
         
         
       </item>
@@ -433,99 +635,6 @@ volumes:
         <category>gitlab</category>
         
         <category>Docker</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>基于docker搭建gitlab服务器</title>
-        <description>&lt;h1 id=&quot;基于docker搭建gitlab服务器&quot;&gt;基于docker搭建gitlab服务器&lt;/h1&gt;
-
-&lt;p&gt;系统: ubuntu-18.04.3-live-server-amd64&lt;/p&gt;
-
-&lt;p&gt;今天想基于docker搭建一个gitlab服务器,以下步骤基于已有docker和docker-compose&lt;/p&gt;
-
-&lt;h2 id=&quot;找到一个docker-image&quot;&gt;找到一个docker image&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://hub.docker.com/r/twang2218/gitlab-ce-zh&quot;&gt;gitlab中文社区版&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;找到一个合适的版本并下载&quot;&gt;找到一个合适的版本并下载&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker pull twang2218/gitlab-ce-zh:11.1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;写一个docker-compose&quot;&gt;写一个docker compose&lt;/h2&gt;
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;3'&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;gitlab&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;twang2218/gitlab-ce-zh:11.1'&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;restart&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;always&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;172.20.10.9'&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;TZ&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Asia/Shanghai'&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;GITLAB_OMNIBUS_CONFIG&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;external_url 'http://172.20.10.9'&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;gitlab_rails['time_zone'] = 'Asia/Shanghai'&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;gitlab_rails['gitlab_shell_ssh_port'] = 2222&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;ports&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;80:80'&lt;/span&gt;
-        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;8443:443'&lt;/span&gt;
-        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2222:22'&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;config:/etc/gitlab&lt;/span&gt;
-        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;data:/var/opt/gitlab&lt;/span&gt;
-        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;logs:/var/log/gitlab&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;volumes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;logs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h2 id=&quot;启动&quot;&gt;启动&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker-compose up &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;关闭&quot;&gt;关闭&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker-compose down
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Sun, 12 Jan 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/01/12/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/01/12/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
-        
-        <category>gitlab</category>
-        
-        <category>Docker</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>git使用ssh登录</title>
-        <description>&lt;h1 id=&quot;git使用ssh登录&quot;&gt;git使用ssh登录&lt;/h1&gt;
-
-&lt;p&gt;系统: MAC&lt;/p&gt;
-
-&lt;h2 id=&quot;生成公钥私钥&quot;&gt;生成公钥私钥&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh-keygen &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; rsa &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;walikrence@163.com&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;../../../../img/git使用ssh登录/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;输入公钥&quot;&gt;输入公钥&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;../../../../img/git使用ssh登录/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;使用ssh下载代码&quot;&gt;使用ssh下载代码&lt;/h2&gt;
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone ssh://git@172.20.10.8/walikrence/hello-gitlab.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Sun, 12 Jan 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/01/12/git%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/01/12/git%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/</guid>
-        
-        <category>git</category>
-        
-        <category>gitlab</category>
-        
-        <category>ssh</category>
         
         
       </item>

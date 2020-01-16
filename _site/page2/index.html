@@ -187,6 +187,65 @@
             ">
     			
 <div class="post-preview">
+    <a href="/2020/01/12/%E5%9F%BA%E4%BA%8Edocker%E6%90%AD%E5%BB%BAgitlab%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+        <h2 class="post-title">
+            基于docker搭建gitlab服务器
+        </h2>
+        
+        <div class="post-content-preview">
+            基于docker搭建gitlab服务器
+
+系统: ubuntu-18.04.3-live-server-amd64
+
+今天想基于docker搭建一个gitlab服务器,以下步骤基于已有docker和docker-compose
+
+找到一个docker image
+
+gitlab中文社区版
+
+找到一个合适的版本并下载
+docker pull twang2218/gitlab-ce-zh:11....
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 12, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2020/01/12/git%E4%BD%BF%E7%94%A8ssh%E7%99%BB%E5%BD%95/">
+        <h2 class="post-title">
+            git使用ssh登录
+        </h2>
+        
+        <div class="post-content-preview">
+            git使用ssh登录
+
+系统: MAC
+
+生成公钥私钥
+ssh-keygen -t rsa -C "walikrence@163.com"
+
+
+
+输入公钥
+
+
+
+使用ssh下载代码
+git clone ssh://git@172.20.10.8/walikrence/hello-gitlab.git
+
+
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by walikrence on January 12, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
     <a href="/2020/01/11/%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/">
         <h2 class="post-title">
             虚拟机磁盘扩容
@@ -437,71 +496,6 @@ ta...
 </div>
 <hr>
 
-<div class="post-preview">
-    <a href="/2019/08/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEmysql/">
-        <h2 class="post-title">
-            安装配置mysql
-        </h2>
-        
-        <div class="post-content-preview">
-            安装配置mysql
-
-环境
-Ubuntu 18.04
-
-安装
-sudo apt install mysql-server -y
-
-初始化配置
-sudo mysql_secure_installation
-
-
-修改配置
-vim /etc/mysql/mysql.conf.d/mysqld.cnf
-
-原为
-bind-address            = 127.0.0.1
-
-修改为
-bind...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on August 12, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/08/08/%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0docker-registry/">
-        <h2 class="post-title">
-            搭建本地docker registry
-        </h2>
-        
-        <div class="post-content-preview">
-            搭建本地docker registry
-
-服务器配置
-下载registry 镜像
-
-docker pull registry:2
-
-运行
-
-docker run -d -p 5000:5000 --name registry -v /mnt/docker/data/registry:/var/lib/registry registry:2
-
-
-使用镜像的机器的配置
-
-vim /etc/doc...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by walikrence on August 8, 2019
-    </p>
-</div>
-<hr>
-
 
 <!-- Pager -->
 
@@ -564,7 +558,7 @@ vim /etc/doc...
                             
                         
                             
-                                <a href="/tags/#ssh" title="ssh" rel="2">
+                                <a href="/tags/#ssh" title="ssh" rel="3">
                                     ssh
                                 </a>
                             
@@ -580,7 +574,7 @@ vim /etc/doc...
                             
                         
                             
-                                <a href="/tags/#ubuntu" title="ubuntu" rel="8">
+                                <a href="/tags/#ubuntu" title="ubuntu" rel="10">
                                     ubuntu
                                 </a>
                             
@@ -684,8 +678,14 @@ vim /etc/doc...
                             
                         
                             
-                                <a href="/tags/#netplan" title="netplan" rel="2">
+                                <a href="/tags/#netplan" title="netplan" rel="3">
                                     netplan
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#virtual box" title="virtual box" rel="3">
+                                    virtual box
                                 </a>
                             
                         
