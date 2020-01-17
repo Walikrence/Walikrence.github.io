@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f606311b-5235-4e31-825e-7d53a998cab0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2020-01-17-ubuntu根据进程名结束进程.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2020-01-17-ubuntu根据进程名结束进程.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2020-01-17-ubuntu根据进程名结束进程.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +79,7 @@
       <workItem from="1579155388687" duration="1000" />
       <workItem from="1579164739837" duration="24000" />
       <workItem from="1579168789182" duration="653000" />
-      <workItem from="1579221266316" duration="117000" />
+      <workItem from="1579221266316" duration="128000" />
     </task>
     <task id="LOCAL-00001" summary="修正标题">
       <created>1578454013652</created>
